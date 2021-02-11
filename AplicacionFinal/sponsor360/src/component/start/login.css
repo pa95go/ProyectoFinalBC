@@ -1,0 +1,33 @@
+.login-content{
+    
+    
+    background-size: cover;
+    background-image: url("../../images/FondoApp.jpg"); 
+    background-position: center; 
+   
+   height: 100vh;
+   
+   background-repeat: no-repeat;
+}
+.logo{
+    
+
+    background-image: url("../../images/sponsor_L1.png");
+    background-size: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 200px;
+    
+    
+
+    height: 100%;
+    width: 100%;
+      font-weight: 900; 
+      font-size: 30px;
+      color: #c04435;
+      height: 10%;
+   
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ } 
