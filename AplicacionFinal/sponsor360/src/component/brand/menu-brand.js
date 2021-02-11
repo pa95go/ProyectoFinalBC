@@ -1,7 +1,7 @@
-import './menu.css';
+import './menu-brand.css';
 
 
-function Menu (){
+function MenuBrand (){
 
 
 
@@ -14,14 +14,15 @@ function Menu (){
         <div className="panel">
             <div className="image"></div>
        
-            <h3 className = 'name'>NOMBRE APELLIDO </h3>
-            <h5 className='deporte'>DEPORTE</h5>
+            <h3 className = 'name'>REPSOL S.L</h3>
+            
         <div className="sections">
             <ul>
                 <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </button> </li>
                 <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-person"></i><span> Perfil</span></button></li>
-                <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-cube"></i> <span> Soportes</span></button></li>
-                <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-star"></i><span> Marcas</span></button></li>
+                <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-search"></i><span> Tienda</span></button></li>
+                <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-shirt"></i> <span>Mis Soportes</span></button></li>
+                <li><button className="btn-menu"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i> <span>Mis Deportistas</span></button></li>
             </ul>
         </div>
         </div>
@@ -31,4 +32,4 @@ function Menu (){
 }
 
 
-export {Menu};
+export {MenuBrand};

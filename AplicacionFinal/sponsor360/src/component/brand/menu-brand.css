@@ -1,0 +1,145 @@
+/* https://ionicons.com/v4/    ICONOS*/
+
+
+.menu-content {
+   height: 100vh;
+   width: 300px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+    
+}
+.logo{
+    
+
+    background-image: url("../../images/sponsor_L1.png");
+    background-size: 260px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    height: 100%;
+    width: 100%;
+      font-weight: 900; 
+      font-size: 30px;
+      color: #c04435;
+      height: 10%;
+   
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ } 
+
+.panel{
+    height: 90%;
+    background-color: #c04435;
+    border-radius: 0px 30px  0px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: -10px 10px 10px 0px  rgba(65, 61, 61, 0.144) inset;
+    
+}
+
+
+.image{
+    margin-top: 50px;
+    background-size: 100px;
+     background-image: url("https://logos-marcas.com/wp-content/uploads/2020/03/Repsol-Emblema.jpg"); 
+     background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    height: 110px;
+    width: 110px;
+    border: solid white 6px;
+    background-color: white;
+}
+
+.name{
+    color: white;
+    font-weight: 1000;
+    font-size:xx-large;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+ul{
+padding: 0px;
+width: 230px;
+
+}
+
+li{
+    list-style: none;
+    padding: 10px 0px;
+    
+     
+}
+
+.btn-menu{
+    background-color: rgba(0, 0, 0, 0);
+    color: white ;
+    width: 100%; 
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+    border-style: none;
+    text-align: start;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight:normal;
+    
+    
+}
+.btn-menu:hover{
+    background-color:white;
+    color:#c04435 ;
+  
+}
+
+
+
+@media screen and (max-width: 1024px){
+
+    
+    .menu-content {
+        width: 60px;
+        align-items:initial;
+        
+        
+    }
+    
+    ul{
+        width: 40px;
+        
+    }
+    .btn-menu{
+        text-align: center;
+    }
+    .btn-menu span{
+        display: none;
+        
+    }
+    .name{
+        
+        display: none;
+    }
+  
+
+    .image{
+        height: 40px;
+        width: 40px;
+        background-size: 50px;
+        border: solid white 3px;
+    }
+    .logo{
+    
+
+        background-image: url("../../images/sponsor_Lmini.png");
+        background-size: 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+}

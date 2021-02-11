@@ -1,7 +1,8 @@
 
 import './App.css';
 
-import {Menu} from './component/player/menu'
+import {MenuPlayer} from './component/player/menu-player'
+import {MenuBrand} from './component/brand/menu-brand'
 
 
 
@@ -9,7 +10,14 @@ import {Menu} from './component/player/menu'
 function App() {
   return (
     <div className="App2">
-    <Menu/>
+     <div>
+
+    <MenuPlayer/>
+      </div>
+
+    <div>
+    <MenuBrand/>
+    </div>
     </div>
   );
 }
