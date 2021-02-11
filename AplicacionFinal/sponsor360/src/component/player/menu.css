@@ -1,25 +1,39 @@
 
-.logo{
-   /*  color: #b7cfb8; */
-    /* font-family: 'Nunito Sans', sans-serif; */
-     font-weight: 900; 
-     font-size: 30px;
-     margin-left: 30px;
-     color: #c04435;
-} 
+
 
 .menu-content {
    height: 100vh;
    width: 300px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
     
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
+.logo{
+    
+
+    background-image: url("../../images/sponsor_L1.png");
+    background-size: 260px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    height: 100%;
+    width: 100%;
+      font-weight: 900; 
+      font-size: 30px;
+      color: #c04435;
+      height: 10%;
+   
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ } 
 
 .panel{
+    height: 90%;
     background-color: #b7cfb8;
-    height: 100vh;
-    border-radius: 0px 40px  0px 0px;
-    margin-top: 30px;
+    border-radius: 0px 30px  0px 0px;
 
     display: flex;
     align-items: center;
@@ -27,29 +41,18 @@
     box-shadow: -10px 10px 10px 0px  rgba(65, 61, 61, 0.144) inset;
     
 }
-.photo{
-     
-    margin-top: 50px;
-    height: 120px;
-    width: 120px ;
-    border: solid white 3px;
-    border-radius: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
 
 .image{
-
-  /*   background-color: blue; */
-    background-image: url("https://www.lapi.com.mx/si-storage/Ecommerce/Images/57/57067/115321.png");
+    margin-top: 50px;
+    background-size: 150px;
+     background-image: url("https://www.lapi.com.mx/si-storage/Ecommerce/Images/57/57067/115321.png"); 
     background-position: center;
-    border-radius: 100%;
+    border-radius: 100px;
     height: 110px;
     width: 110px;
-   
+    border: solid white 6px;
+    background-color:  #b7cfb8;
 }
 
 .name{
@@ -67,11 +70,7 @@
     font-weight: 500;
 
 }
-.sections{
-   /*  background-color: violet; */
-   
-    margin-top: 0px;
-}
+
 ul{
 padding: 0px;
 width: 220px;
@@ -79,32 +78,73 @@ width: 220px;
 }
 
 li{
-    /* ackground-color: white; */
     list-style: none;
     padding: 10px 0px;
      
 }
 
 .btn-menu{
-    background-color: rgba(0, 128, 128, 0);
+    background-color: rgba(0, 0, 0, 0);
     color: white ;
-    width: 100%;
+     width: 100%; 
     height: 40px;
-    font-size: large;
-    border-radius: 20px;
+    font-size: 24px;
+    border-radius: 50px;
     border-style: none;
     text-align: start;
     font-weight: bold;
     
+    
 }
 .btn-menu:hover{
-    background-color: white;
+    background-color:white;
     color: #b7cfb8 ;
-    width: 100%;
-    height: 40px;
-    font-size: large;
-    border-radius: 20px;
-    border-style: none;
-    text-align: start;
+  
+}
+
+@media screen and (max-width: 1024px){
+
     
+    .menu-content {
+      /*   height: 100vh;
+        width: 75px;
+        
+        align-items: end;  */
+        width: 60px;
+        align-items:initial;
+        
+        
+    }
+    .panel{
+        
+       /*  background-color: #2f00ff; */
+        
+    }
+    ul{
+        width: 40px;
+        
+    }
+    .btn-menu{
+        text-align: center;
+    }
+    .btn-menu span{
+        display: none;
+        
+    }
+    .name{
+        
+        display: none;
+    }
+    .deporte{
+        opacity: 0;
+    }
+
+    .image{
+        height: 40px;
+        width: 40px;
+        background-size: 50px;
+        border: solid white 3px;
+    }
+
+
 }
