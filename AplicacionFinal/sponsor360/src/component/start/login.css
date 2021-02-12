@@ -2,32 +2,111 @@
     
     
     background-size: cover;
-    background-image: url("../../images/FondoApp.jpg"); 
+/*     background-image: url("../../images/FondoApp.jpg");  */
+/*     background-image: url("../../images/PistaFondoRojo.jpg");  */
+  background-image: url("../../images/PistaFondoBN.jpg");
     background-position: center; 
    
    height: 100vh;
    
    background-repeat: no-repeat;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+  
 }
-.logo{
+.logo-l{
     
 
-    background-image: url("../../images/sponsor_L1.png");
+    background-image: url("../../images/sponsorL2.png");
     background-size: 500px;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 200px;
+    margin: 00px 0px 40px;
+    padding-top: 100px ;
+    width: 1000px;
+    height: 100px;
     
-    
-
-    height: 100%;
-    width: 100%;
-      font-weight: 900; 
-      font-size: 30px;
-      color: #c04435;
-      height: 10%;
-   
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  
  } 
+
+ .login-form{
+   
+   width: 360px;
+   height: 400px;
+  background-color: white;
+   
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   border: solid #3333 3px;
+   box-shadow: 3px 3px 15px 0px  rgba(65, 61, 61, 0.267) ;
+  
+ }
+
+ .txt-1{
+   font-size: 30px;
+   font-weight: 100;
+   font-family: 'Nunito Sans', sans-serif; 
+   color: #333;
+   margin: 50px 0px 20px;
+ }
+
+.width-full{
+  box-sizing: border-box;
+  width: 85% ;
+}
+.input-1{
+  border:none;
+
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  height: 40px;
+  
+  border-bottom: solid #333 3px;
+  margin-bottom: 25px;
+  color:#333;
+  font-family: 'Nunito', sans-serif;
+  font-size: medium;
+  font-weight:normal;
+
+}
+.btn-l{
+  margin-bottom: 50px;
+
+  border:none;
+  background-color:  #1a2079;
+  height: 40px;
+  border-radius: 5px;
+  color:white;
+  font-family: 'Nunito', sans-serif;
+  font-size: medium;
+  font-weight:normal;
+}
+.btn-l:hover{
+  background-color: #c04435;
+  color: white;
+}
+
+.btn-r{
+  
+
+  border:none;
+  background-color:  #c04435;
+  height: 40px;
+  border-radius: 5px;
+  color:white;
+  font-family: 'Nunito', sans-serif;
+  font-size: medium;
+  font-weight:normal;
+  width: 120px;
+}
+.btn-r:hover{
+
+  background-color:  #1a2079;
+  font-weight: 200;
+}

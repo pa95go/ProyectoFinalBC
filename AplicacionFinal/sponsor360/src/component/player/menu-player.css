@@ -9,10 +9,10 @@
    flex-direction: column;
     
 }
-.logo{
+.logo-p{
     
 
-    background-image: url("../../images/sponsor_L1.png");
+     background-image: url("../../images/sponsorL2.png"); 
     background-size: 260px;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,7 +31,7 @@
 
 .panel-p{
     height: 90%;
-    background-color: #b7cfb8;
+    background-color: #1a2079;
     border-radius: 0px 30px  0px 0px;
     width: 100%;
     display: flex;
@@ -99,7 +99,7 @@ li{
 }
 .btn-menu-p:hover{
     background-color:white;
-    color: #b7cfb8 ;
+    color: #1a2079 ;
   
 }
 
@@ -138,10 +138,10 @@ li{
         background-size: 50px;
         border: solid white 3px;
     }
-    .logo{
+    .logo-p{
     
 
-        background-image: url("../../images/sponsor_Lmini.png");
+        background-image: url("../../images/sponsorL2mini.png");
         background-size: 50px;
         background-position: center;
         background-repeat: no-repeat;

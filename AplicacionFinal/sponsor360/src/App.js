@@ -13,9 +13,9 @@ function App() {
     <div className="App2">
      
 
-    {/* <MenuPlayer/>
-    <MenuBrand/> */}
     <Login/>
+      <MenuPlayer/>
+    <MenuBrand/>  
     
     </div>
   );

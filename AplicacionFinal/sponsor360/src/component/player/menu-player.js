@@ -8,7 +8,7 @@ function MenuPlayer (){
     return(
     
     <div className ="menu-content"  >
-        <span className ='logo'></span>
+        <span className ='logo-p'></span>
         
         
         <div className="panel-p">

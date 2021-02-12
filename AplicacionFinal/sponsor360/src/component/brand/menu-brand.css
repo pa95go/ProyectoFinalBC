@@ -9,10 +9,10 @@
    flex-direction: column;
     
 }
-.logo{
+.logo-b{
     
 
-    background-image: url("../../images/sponsor_L1.png");
+    background-image: url("../../images/sponsorL2.png");
     background-size: 260px;
     background-position: center;
     background-repeat: no-repeat;
@@ -132,10 +132,10 @@ li{
         background-size: 50px;
         border: solid white 3px;
     }
-    .logo{
+    .logo-b{
     
 
-        background-image: url("../../images/sponsor_Lmini.png");
+        background-image: url("../../images/sponsorL2mini.png");
         background-size: 50px;
         background-position: center;
         background-repeat: no-repeat;
