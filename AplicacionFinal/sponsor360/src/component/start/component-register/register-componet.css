@@ -1,0 +1,32 @@
+.box-position{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 450px;
+
+}
+.box-dimensions{
+    box-sizing: border-box;
+    height: 500px;
+    width: 85%;
+    padding-top: 0px;
+       
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+    
+}
+
+.border-red{
+    border: #c04435 solid 5px;
+}
+.border-blue{
+    border: #1a2079 solid 5px;
+}
+
+.txt-red{
+    color:#c04435;
+}
+.txt-blue{
+    color: #1a2079;
+}

@@ -24,7 +24,7 @@
     background-repeat: no-repeat;
     margin: 00px 0px 40px;
     padding-top: 100px ;
-    width: 1000px;
+    width: 500px;
     height: 100px;
     
   
@@ -45,7 +45,7 @@
   
  }
 
- .txt-1{
+ .txt-l{
    font-size: 30px;
    font-weight: 100;
    font-family: 'Nunito Sans', sans-serif; 
