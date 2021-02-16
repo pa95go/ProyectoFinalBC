@@ -19,7 +19,7 @@
     
 
     background-image: url("../../images/sponsorL2.png");
-    background-size: 500px;
+    background-size: 400px;
     background-position: center;
     background-repeat: no-repeat;
     margin: 00px 0px 40px;
@@ -67,13 +67,17 @@
 
   height: 40px;
   
-  border-bottom: solid #333 3px;
+  border-bottom: solid #333 2px;
   margin-bottom: 25px;
   color:#333;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif; 
   font-size: medium;
   font-weight:normal;
 
+}
+.input-1:focus { 
+  outline-color: transparent; 
+  outline-style: none;
 }
 .btn-l{
   margin-bottom: 50px;
@@ -83,7 +87,7 @@
   height: 40px;
   border-radius: 5px;
   color:white;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif; 
   font-size: medium;
   font-weight:normal;
 }
@@ -100,7 +104,7 @@
   height: 40px;
   border-radius: 5px;
   color:white;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif; 
   font-size: medium;
   font-weight:normal;
   width: 120px;
@@ -108,5 +112,5 @@
 .btn-r:hover{
 
   background-color:  #1a2079;
-  font-weight: 200;
+  
 }

@@ -1,11 +1,18 @@
+import {useState} from "react";
+
 import './register.css';
 import {RegisterPlayer} from './component-register/register-player'
+import {RegisterBrand} from './component-register/register-brand'
 
 
 function Register (){
 
-
-
+     const [register, setRegister] = useState(<RegisterPlayer/>); 
+    
+    /* function sayHello(){
+        register = <RegisterPlayer/>
+      }
+ */
     return(
     
     <div className ="register-content"  >
@@ -15,12 +22,12 @@ function Register (){
 
            <dir className=' width-full-r'>
 
-            <button className='btn-blue btn-select'><i class="icon ion-md-tennisball"></i> Deportista</button>
-             <button className='btn-red btn-select'><i class="icon ion-md-planet"></i> Marca</button>
+            <button className='btn-blue ' /* onClick={sayHello()} */><i class="icon ion-md-tennisball"></i> Deportista</button>
+             <button className='btn-red '><i class="icon ion-md-planet"></i> Marca</button>
 
            </dir>
            <div >
-               <RegisterPlayer/>
+                {register} 
            </div>
 
        </div>

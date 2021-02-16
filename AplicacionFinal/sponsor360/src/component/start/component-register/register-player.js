@@ -11,9 +11,26 @@ function RegisterPlayer (){
         <div className="box-dimensions border-blue">
 
        <form action="Login" >
-          hola
+          
            </form>
-           {/* Poner los input del register del Player y de la brandcss comun */}
+           <input type="text" name="" id="" placeholder='Nombre y Apellidos' className='reg-text-input reg-style-blue'/>
+           <input type="text" name="" id="" placeholder='Email' className='reg-text-input reg-style-blue'/>
+           <input type="password" name="" id="" placeholder='Contraseña' className='reg-text-input reg-style-blue'/>
+           <input type="text" name="" id="" placeholder='Deporte' className='reg-text-input reg-style-blue '/>
+           <input type="date" name="" id="" placeholder='Fecha de Nacimiento' className ='reg-style-date' />
+           <select name="transporte"className="reg-select-sex" >
+                <option selected disabled>Sexo</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Otro">Otro</option>
+
+            </select>
+            <input type="submit" value='Registrar Deportista' className='reg-btn-blue'/>
+
+
+
+
+
         </div>
     </div>
     );
