@@ -62,17 +62,19 @@
 .reg-style-date{
    
     box-sizing: border-box;
-    width: 85% ;
+   
 
     border:none;
-    border-bottom: solid #1a2079 2px;
+    border: solid #1a2079 2px;
+    border-radius: 5px;
+    text-align: center;
    
-    color:#333;
+    color: #1a2079 ;
     font-family: 'Nunito Sans', sans-serif; 
     font-size: medium;
     font-weight:normal;
-    padding-bottom: 8px;
-    margin-top: 5px;
+    padding: 5px 5px;
+    margin-top: 10px;
 }
 .reg-style-date:focus{
     outline-color: transparent; 
@@ -84,17 +86,18 @@
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
     box-sizing: border-box;
-    width: 85% ;
+    text-align: center;
 
     border:none;
-    border-bottom: solid #1a2079 2px;
+    border: solid #1a2079 2px;
+    border-radius: 5px;
    
-    color:#333;
+    color: #1a2079;
     font-family: 'Nunito Sans', sans-serif; 
     font-size: medium;
     font-weight:normal;
-    padding-bottom: 8px;
-    margin-top: 18px;
+    padding: 5px 5px;
+    margin-top: 10px;
     background-color: transparent;
 }
 .reg-select-sex:focus{
@@ -143,4 +146,14 @@
     
     background-color:  white;
     color: #c04435;
+  }
+
+  .width-full-component{
+    box-sizing: border-box;
+    width: 85% ;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+     
   }
