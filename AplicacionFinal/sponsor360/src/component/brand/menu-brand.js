@@ -7,7 +7,7 @@ function MenuBrand (){
 
     return(
     
-    <div className ="menu-content"  >
+    <div className ="menu-content-b"  >
         <span className ='logo-b'></span>
         
         

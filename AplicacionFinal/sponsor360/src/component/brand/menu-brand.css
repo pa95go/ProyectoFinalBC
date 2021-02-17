@@ -1,10 +1,10 @@
 /* https://ionicons.com/v4/    ICONOS*/
 
 
-.menu-content {
+.menu-content-b {
    height: 100vh;
    width: 300px;
-   display: flex;
+   display: inline-block;
    align-items: center;
    flex-direction: column;
     
@@ -102,7 +102,7 @@ li{
 @media screen and (max-width: 1024px){
 
     
-    .menu-content {
+    .menu-content-b {
         width: 60px;
         align-items:initial;
         
