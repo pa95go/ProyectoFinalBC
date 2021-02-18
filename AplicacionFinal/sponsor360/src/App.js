@@ -16,7 +16,8 @@ function App() {
       <Register/>
     <Login/> 
        <div className='prueba'>
-       <MenuPlayer/>
+        <MenuPlayer/> 
+     
      
        </div>
     {/* <MenuBrand/>   */}

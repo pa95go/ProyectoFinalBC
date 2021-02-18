@@ -2,18 +2,24 @@
 
 
 .content-p {
-    height: 100vh;
-    width: 300px;
     display: inline-block;
-     background-color: lightskyblue;
+    vertical-align:top;
+
+   
+
+    height: 100vh;
+    width: 67%;
+     /* background-color: lightskyblue; */
 }
 
 .menu-content-p{
+    display: inline-block;
+    vertical-align:top;
+
     height: 100vh;
     width: 30%;
-    display: inline-block;
     align-items: center;
-     background-color: lightgoldenrodyellow;
+    /*  background-color: lightgoldenrodyellow; */
 
 }
 .logo-p{
@@ -54,12 +60,11 @@
 
 
 .image-p{
-    margin-top: 50px;
-    background-size: 150px;
-     background-image: url("https://www.lapi.com.mx/si-storage/Ecommerce/Images/57/57067/115321.png"); 
-    background-position: center;
-    border-radius: 100px;
-    height: 110px;
+    
+     margin-top: 50px; 
+    
+     border-radius: 100px;
+     height: 110px;
     width: 110px;
     border: solid white 6px;
     background-color:  #b7cfb8;
@@ -120,8 +125,11 @@ li{
     .menu-content-p {
         width: 15%;
         align-items:initial;
-        
-        
+      
+    }
+    .content-p {
+        width: 82%;
+      
     }
     .logo-p{
         width: 60px;

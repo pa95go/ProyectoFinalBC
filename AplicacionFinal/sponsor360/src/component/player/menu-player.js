@@ -9,11 +9,15 @@ function MenuPlayer (){
     return(
     <div>
         <div className ="menu-content-p"  >
-            <span className ='logo-p'></span>
+
+            
+             <span className ='logo-p'></span>
             
             
             <div className="panel-p">
-                <div className="image-p"></div>
+                
+          <img className="image-p" src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg" alt=""/>
+             
         
                 <h3 className = 'name'>NOMBRE APELLIDOS</h3>
                 <h5 className='deporte'>DEPORTE</h5>
@@ -25,11 +29,11 @@ function MenuPlayer (){
                     <li><button className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-planet"></i><span> Marcas</span></button></li>
                 </ul>
             </div>
-            </div>
+            </div> 
         </div >
         <div className ='content-p'>
 
-        <InicioPlayer/>
+         <InicioPlayer/>  
         </div>
     </div>
     );
