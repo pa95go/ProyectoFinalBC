@@ -20,26 +20,29 @@ function InicioPlayer (){
      <hr/>
    
      <div className="card-c cblue-c cw1-c ">
-         <h1 >PABLO GÓMEZ OSUNA</h1>
-         <p className='ctcenter-c'>DEPORTE</p>
+         <h1 ><i class="icon ion-md-person"></i></h1>
+         <p className='ctcenter-c ctbold-c'>PABLO GÓMEZ OSUNA</p>
          <hr />
+         
          <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis laborum non nihil, 
              labore accusamus assumenda quisquam quibusdam quos, vitae, 
              velit ad porro architecto aspernatur omnis ratione sunt esse! Perspiciatis, voluptas.</p>
+        <hr/>
+        <p>Deporte</p>
      </div>
     
     <div className="box-c">
 
         <div className="card-c cblack-c cw3-c ">
-            <h1 >SOPORTE 1</h1>
+            <h1 ><i class="icon ion-md-shirt"></i></h1>
             <p className='ctcenter-c ctbold-c'>CAMISETA DELANTERA LOGO </p>
         </div>
         <div className="card-c cblack-c cw3-c ">
-            <h1 >SOPORTE 2</h1>
+            <h1 ><i class="icon ion-md-shirt"></i></h1>
             <p className='ctcenter-c ctbold-c'>CAMISETA DELANTERA LOGO </p>
         </div>
         <div className="card-c cblack-c cw3-c ">
-            <h1 >SOPORTE 3</h1>
+            <h1 ><i class="icon ion-md-shirt"></i></h1>
             <p className='ctcenter-c ctbold-c'>CAMISETA DELANTERA LOGO </p>
         </div>
     </div>
@@ -47,7 +50,7 @@ function InicioPlayer (){
     <div className="box-c">
 
         <div className="card-c cred-c cw3-c ">
-            <h1 >MARCA 1</h1>
+            <h1 ><i class="icon ion-md-planet"></i></h1>
             <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
             <hr/>
             <p>IMAGEN</p>
@@ -55,7 +58,7 @@ function InicioPlayer (){
             <p>IMAGEN</p>
         </div>
         <div className="card-c cred-c cw3-c ">
-            <h1 >MARCA 2</h1>
+            <h1 ><i class="icon ion-md-planet"></i></h1>
             <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
             <hr/>
             <p>IMAGEN</p>
@@ -63,7 +66,7 @@ function InicioPlayer (){
             <p>IMAGEN</p>
         </div>
         <div className="card-c cred-c cw3-c ">
-            <h1 >MARCA 3</h1>
+            <h1 ><i class="icon ion-md-planet"></i></h1>
             <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
             <hr/>
             <p>IMAGEN</p>
