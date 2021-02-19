@@ -24,60 +24,147 @@ color: #1a2079;
 }
 
 
-.title2-c{
+
+
+/* STYLOS PRINCIPALES CARD */
+.card-c{
+  
+
+    margin: 20px 0px;
+    padding-bottom: 5px;
+    border-radius:  5px;
+    
+    background-color: white; 
+    box-shadow: 1px 1px 3px 1px  rgba(65, 61, 61, 0.144) ;
+    
+
+}
+
+.card-c h1{
     margin: 0px;
     padding: 5px 0px;
+
     font-weight: bold;
+    font-size: x-large;
+   
+    text-align: center;
+   
+    border-radius: 5px 5px 0px 0px;
+    
 }
 
-.subtitle-c{
+.card-c p{
+    margin: 10px 20px;
+}
+
+.card-c hr{
+    margin: 0px 20px;
+}
+
+/* CONFIGURACION TEXTO CARD */
+
+ .ctcenter-c{
+     text-align: center;
+ }
+
+ .ctbold-c{
+     font-weight: bold;
+ }
+
+/*  COLOR CARD AZUL */
+
+.cblue-c{
+    
+    border: solid  #1a207959 1px  ;
+}
+.cblue-c h1{
+    background-color: #1a2079;
+    color: white;
+}
+
+.cblue-c hr{
+    border: #1a207938 solid 1px;
+}
+
+/*  COLOR CARD ROJO */
+
+.cred-c{
+    
+    border: solid  #c043354b 1px  ;
+}
+.cred-c h1{
+    background-color: #c04435;
+    color: white;
+}
+
+.cred-c hr{
+    border: #c043354b solid 1px;
+}
+
+
+/*  COLOR CARD NEGRO */
+
+.cblack-c{
+    
+    border: solid  #3335 1px  ;
+}
+.cblack-c h1{
+    background-color: #3339;
+    color: white;
+}
+
+.cblack-c hr{
+    border: #3335 solid 1px;
+}
+
+
+
+
+/*  TAMAÑOS CARD */
+
+.cw1-c{
+    
+    width: 100%;
+}
+
+.cw2-c{
+    
+    width: 50%;
+    
+}
+
+.cw3-c{
     margin: 0px;
-    font-weight: lighter;
-}
-.text-c{
-    margin: 5px 0px;
-    font-weight: lighter
+  /*   display: inline; */
+    width:30%;
+  
 }
 
-.text-center-c{
-    text-align: center;
-}
-.bg-red-c{
-    background-color:#c04435 ;
-    color: white;
-    margin-bottom: 10px;
-}
-.support-inicio-c{
-    width: 30%;
-    display: inline-block;
-    border: solid  #c04435 2px ;
-    border-radius: 10px;
-    margin: 5px;
-}
+.box-c{
+ 
+   
+ display: flex;
 
-.support-inicio-c h2{
-    background-color:#c04435 ;
-    color: white;
-    margin-bottom: 10px;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
-}
-.support-inicio-c h4{
-    text-align: center;
-    padding: 20px;
-    font-weight: bold;
+ justify-content:space-between;
+ padding: 0px;
+ margin: 20px 0px;
+    
 }
 
 
-.profile-inicio-c{
-    margin: 20px 0px;
-    background-color: rgba(51, 51, 51, 0.103);
-    padding: 10px 30px;
-    border: solid  #333 2px ;
-    border-radius: 10px;
-}
-.box-inicio-c{
+@media screen and (max-width: 780px){
+
+
+.box-c{
     display: flex;
-    align-content: space-between;
+   align-items: center;
+   flex-direction: column;
+   margin-bottom: 10px;
+        
+    }
+    .cw3-c{
+        width:100%;
+        margin-bottom: 10px;
+      
+    }
 }
