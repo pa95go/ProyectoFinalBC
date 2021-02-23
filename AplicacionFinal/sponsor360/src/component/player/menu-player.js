@@ -1,5 +1,6 @@
 import './menu-player.css';
 import {InicioPlayer} from './component-player/inicio-player'
+import {PerfilPlayer} from './component-player/perfil-player'
 
 
 function MenuPlayer (){
@@ -33,7 +34,7 @@ function MenuPlayer (){
         </div >
         <div className ='content-p'>
 
-         <InicioPlayer/>  
+         <PerfilPlayer/>  
         </div>
     </div>
     );

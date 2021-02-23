@@ -28,7 +28,8 @@ color: #1a2079;
 
 /* STYLOS PRINCIPALES CARD */
 .card-c{
-  
+
+    
 
     margin: 20px 0px;
     padding-bottom: 5px;
@@ -36,28 +37,42 @@ color: #1a2079;
     
     background-color: white; 
     box-shadow: 1px 1px 3px 1px  rgba(65, 61, 61, 0.144) ;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
     
-
 }
 
 .card-c h1{
     margin: 0px;
     padding: 5px 0px;
+    margin: 0px -20px;
 
     font-weight: bold;
     font-size: x-large;
    
     text-align: center;
+    padding-left: 0px;
    
     border-radius: 5px 5px 0px 0px;
     
 }
+.card-c img{
+    display: block;
+  margin: auto;
+  margin-top: 10px;
+ 
+  
+}
 
 .card-c p{
-    margin: 10px 20px;
+    margin: 10px 0px;
 }
 
 .card-c hr{
+    margin: 0px
+}
+.card-c input{
     margin: 0px 20px;
 }
 
@@ -85,6 +100,47 @@ color: #1a2079;
 .cblue-c hr{
     border: #1a207938 solid 1px;
 }
+.cblue-c input{
+  
+
+    display: block;
+    background-color: #0026ff17;
+    border-radius: 5px;
+    color:#1a2079  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.cblue-c input:focus{
+   
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+   
+}
+
+
+.cblue-c input:disabled{
+    display: block;
+    color: #333;
+
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+}
+
 
 /*  COLOR CARD ROJO */
 
@@ -151,6 +207,42 @@ color: #1a2079;
     
 }
 
+/* BOTONES STILO */
+
+.btn-blue-c{
+    
+    
+    background-color: #1a2079;
+    color: white;
+   
+    height: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+    border-style: none;
+    
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    vertical-align:middle;
+    padding: 0px 10px 0px 10px;
+    
+}
+
+.btn-blue-c span{
+   
+    font-weight: bold;
+    font-size: small;
+   vertical-align:middle;
+    text-align: center;
+    padding-bottom: 2px;
+    font-weight: 900;
+}
+.btn-blue-c:hover{
+    border: #1a2079 solid 2px;
+    
+    background-color: white;
+    color: #1a2079;
+  
+}
 
 @media screen and (max-width: 780px){
 

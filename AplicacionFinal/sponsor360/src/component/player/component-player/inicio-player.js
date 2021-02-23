@@ -9,10 +9,10 @@ function InicioPlayer (){
     
     <div >
         <div className="nav-top">
-            salir
-            <button>but</button>
-            <button>but2</button>
-            lo que quiera
+            
+            
+            <button className='btn-blue-c'> <span> CERRAR SESIÓN </span>  <i class="icon ion-md-exit"></i></button>
+           
         </div>
 
 
@@ -20,7 +20,7 @@ function InicioPlayer (){
      <hr/>
    
      <div className="card-c cblue-c cw1-c ">
-         <h1 ><i class="icon ion-md-person"></i></h1>
+         <h1 ><i class="icon ion-md-person"></i> </h1>
          <p className='ctcenter-c ctbold-c'>PABLO GÓMEZ OSUNA</p>
          <hr />
          
@@ -51,28 +51,23 @@ function InicioPlayer (){
 
         <div className="card-c cred-c cw3-c ">
             <h1 ><i class="icon ion-md-planet"></i></h1>
-            <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
+            <p className='ctcenter-c ctbold-c'>NIKE </p>
             <hr/>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
+            <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4f3.png" width='150px' alt=""/>
         </div>
         <div className="card-c cred-c cw3-c ">
             <h1 ><i class="icon ion-md-planet"></i></h1>
-            <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
+            <p className='ctcenter-c ctbold-c'>NIKE </p>
             <hr/>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
+            <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4f3.png" width='150px' alt=""/>
         </div>
         <div className="card-c cred-c cw3-c ">
             <h1 ><i class="icon ion-md-planet"></i></h1>
-            <p className='ctcenter-c ctbold-c'>NOMBRE LOGO </p>
+            <p className='ctcenter-c ctbold-c'>NIKE </p>
             <hr/>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
-            <p>IMAGEN</p>
+            <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4f3.png" width='150px' alt=""/>
         </div>
+        
     </div>
 
 
