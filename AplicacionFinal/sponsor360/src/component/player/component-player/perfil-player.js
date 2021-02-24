@@ -22,20 +22,22 @@ function PerfilPlayer (){
      <div className="card-c cblue-c cw1-c ">
          
          
-         <p className=' ctbold-c'>NOMBRE Y APELLIDOS</p>
-         <hr />
-         <p className=' ctbold-c'>NOMBRE Y APELLIDOS</p>
-         <hr />
-        <input type="text" name="" id="" value ='Hola' disabled/>
-        <input type="text" name="" id="" placeholder='Nombre' />
-        <input type="text" name="" id=""  placeholder='Nombre'/>
-        <input type="text" name="" id="" placeholder='Nombre' />
-         
-         <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis laborum non nihil, 
-             labore accusamus assumenda quisquam quibusdam quos, vitae, 
-             velit ad porro architecto aspernatur omnis ratione sunt esse! Perspiciatis, voluptas.</p>
-        <hr/>
-        <p>Deporte</p>
+        
+        <input type="text" name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value='Nombre y Apellidos' disabled/>
+        <input type="text" name="" id="" placeholder='Email' placeholder="email" value='email@email.com' disabled />
+        <input type="password" name="" id="" placeholder='Contraseña' disabled   />
+        <input type="text" name="" id="" placeholder='Deporte' value='deporte' disabled />
+        <input type="date" name="" id="" placeholder='Fecha de Nacimiento' value='Fecha de Nacimiento'  />
+        <select name="sexo"  disabled>
+                <option selected >Sexo</option> 
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Otro">Otro</option>
+
+            </select>
+        <input type="text" name="" id="" placeholder='Descripción' value='Descripción' disabled />
+      
+        
      </div>
     
     
