@@ -34,17 +34,17 @@ function PerfilPlayer (){
         <input type="password" name="" id="" placeholder='Contraseña'    />
         <input type="text" name="" id="" placeholder='Deporte' value='deporte'  />
         <input type="date" name="" id="" placeholder='Fecha de Nacimiento' value='Fecha de Nacimiento'  />
-        <select name="sexo" disabled >
-                <option selected>Sexo</option> 
+        <select name="sexo"  >
+                <option selected disabled>Sexo</option> 
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
 
             </select>
         
-        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' disabled></textarea>
+        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' ></textarea>
 
-        <input type="submit" className='btn-blue-c d-none' value="Guardar" />
+        <input type="submit" className='btn-blue-c d-none0' value="Guardar" />
         </form>
         
      </div>
