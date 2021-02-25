@@ -20,32 +20,35 @@ function PerfilPlayer (){
      <hr/>
    
      <div className="card-c cblue-c cw1-c ">
-         
-         
-        
-        <input type="text" name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value='Nombre y Apellidos' disabled/>
-        <input type="text" name="" id="" placeholder='Email' placeholder="email" value='email@email.com' disabled />
-        <input type="password" name="" id="" placeholder='Contraseña' disabled   />
-        <input type="text" name="" id="" placeholder='Deporte' value='deporte' disabled />
+         <div className="banner-blue-c"></div>
+      <button className='btn-blue-c d-rigth margin-edit-c'><i class="icon ion-md-list-box"></i></button> 
+        <form action=""> 
+        <label for="file-input"  >
+        <img className='img-profile-c' src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg"   />
+        </label>
+        <input id="file-input" type="file" className='d-none' disabled />
+
+
+        <input type="text" className='text-bold text-xl ' name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value='Nombre y Apellidos' />
+        <input type="text" name="" id="" placeholder='Email' placeholder="email" value='email@email.com'  />
+        <input type="password" name="" id="" placeholder='Contraseña'    />
+        <input type="text" name="" id="" placeholder='Deporte' value='deporte'  />
         <input type="date" name="" id="" placeholder='Fecha de Nacimiento' value='Fecha de Nacimiento'  />
-        <select name="sexo"  disabled>
-                <option selected >Sexo</option> 
+        <select name="sexo" disabled >
+                <option selected>Sexo</option> 
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
 
             </select>
-        <input type="text" name="" id="" placeholder='Descripción' value='Descripción' disabled />
-      
+        
+        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' disabled></textarea>
+
+        <input type="submit" className='btn-blue-c d-none' value="Guardar" />
+        </form>
         
      </div>
     
-    
-   
-    
-
-
-
 
     </div>
     );
