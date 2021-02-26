@@ -21,7 +21,7 @@ function PerfilPlayer (){
    
      <div className="card-c cblue-c cw1-c ">
          <div className="banner-blue-c"></div>
-      <button className='btn-blue-c d-rigth margin-edit-c'><i class="icon ion-md-list-box"></i></button> 
+      <button className='btn-blue-c d-rigth margin-edit-c'><i class="icon ion-md-create"></i></button> 
         <form action=""> 
         <label for="file-input"  >
         <img className='img-profile-c' src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg"   />
@@ -29,7 +29,7 @@ function PerfilPlayer (){
         <input id="file-input" type="file" className='d-none' disabled />
 
 
-        <input type="text" className='text-bold text-xl ' name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value='Nombre y Apellidos' />
+        <input type="text"  className='text-bold text-xl ctcenter-c ' name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value='Nombre y Apellidos' />
         <input type="text" name="" id="" placeholder='Email' placeholder="email" value='email@email.com'  />
         <input type="password" name="" id="" placeholder='Contraseña'    />
         <input type="text" name="" id="" placeholder='Deporte' value='deporte'  />

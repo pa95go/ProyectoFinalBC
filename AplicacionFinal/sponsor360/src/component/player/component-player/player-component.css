@@ -9,6 +9,11 @@
     align-items: center;
 
 }
+.mt10-c{
+    
+    margin-top: 10px;
+    
+}
 
 .blue-textcolor-c{
 color: #1a2079;
@@ -38,6 +43,16 @@ color: #1a2079;
     display: none !important; 
   
 }
+.d-inline{
+    display: inline-block;
+}
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
 
 .d-rigth{
     display:block;
@@ -107,240 +122,7 @@ color: #1a2079;
      font-weight: bold;
  }
 
-/*  COLOR CARD AZUL */
 
-.cblue-c{
-    
-    border: solid  #1a207959 1px  ;
-}
-.cblue-c h1{
-    background-color: #1a2079;
-    color: white;
-}
-
-.cblue-c hr{
-    border: #1a207938 solid 1px;
-}
-.cblue-c select{
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-  
-
-    display: block;
-    background-color: #0026ff17;
-     border-radius: 5px;
-    color:#1a2079  ;
-    border: none;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: normal;
-    font-size: large;
-    width: 100%;
-    padding: 5px 10px;
-    margin: 0;
-    box-sizing: border-box;
-    margin-top: 10px;
-    border: solid transparent 1px ;
-
-}
-
-.cblue-c select:focus{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-.cblue-c select:hover{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-
-
-.cblue-c select:disabled{
-    display: block;
-    color: #333;
-
-    background-color: transparent;
-    border: none;
-    font-weight: normal;
-    padding-left: 0px;
-    border-radius: 0%;
-    border-bottom: solid #1a207938 2px;
-}
-.cblue-c input{
-  
-
-    display: block;
-    background-color: #0026ff17;
-     border-radius: 5px;
-    color:#1a2079  ;
-    border: none;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: normal;
-    font-size: large;
-    width: 100%;
-    padding: 5px 10px;
-    margin: 0;
-    box-sizing: border-box;
-    margin-top: 10px;
-    border: solid transparent 1px ;
-
-}
-
-.cblue-c input:focus{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-.cblue-c input:hover{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-
-.cblue-c input:disabled{
-    display: block;
-    color: #333;
-
-    background-color: transparent;
-    border: none;
-    font-weight: normal;
-    padding-left: 0px;
-    border-radius: 0%;
-    border-bottom: solid #1a207938 2px;
-}
-
-textarea{
-    resize: none;
-}
-.cblue-c textarea{
-  
-
-    display: block;
-    background-color: #0026ff17;
-     border-radius: 5px;
-    color:#1a2079  ;
-    border: none;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: normal;
-    font-size: large;
-    width: 100%;
-    padding: 5px 10px;
-    margin: 0;
-    box-sizing: border-box;
-    margin-top: 10px;
-    border: solid transparent 1px ;
-
-}
-
-.cblue-c textarea:focus{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-.cblue-c textarea:hover{
-   
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border: solid #1a2079 1px ;
-    box-sizing: border-box;
-   
-}
-.cblue-c textarea:disabled{
-    display: block;
-    color: #333;
-
-    background-color: transparent;
-    border: none;
-    font-weight: normal;
-    padding-left: 0px;
-    border-radius: 0%;
-    border-bottom: solid #1a207938 2px;
-}
-
-.cblue-c input[type=submit]{
-    background-color: #1a2079;
-    color: white;
-   
-    height: 40px;
-    font-size: 24px;
-    border-radius: 5px;
-    border-style: none;
-    
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: normal;
-    vertical-align:middle;
-    padding: 0px 10px 0px 10px;
-}
-.cblue-c input[type=submit]:hover{
-    border: #1a2079 solid 2px;
-    background-color: white;
-    color: #1a2079;
-}
-
-/*  COLOR CARD ROJO */
-
-.cred-c{
-    
-    border: solid  #c043354b 1px  ;
-}
-.cred-c h1{
-    background-color: #c04435;
-    color: white;
-}
-
-.cred-c hr{
-    border: #c043354b solid 1px;
-}
-
-
-/*  COLOR CARD NEGRO */
-
-.cblack-c{
-    
-    border: solid  #3335 1px  ;
-}
-.cblack-c h1{
-    background-color: #3339;
-    color: white;
-}
-
-.cblack-c hr{
-    border: #3335 solid 1px;
-}
 
 
 
@@ -364,6 +146,20 @@ textarea{
     width:30%;
   
 }
+/* MAQUETADO LOGROS */
+.cw1l-c{
+    width: 62%; 
+}
+.cw2l-c{
+    width: 23%; 
+}
+.cw3l-c{
+     
+ display: flex;
+    justify-content:space-between;
+    width: 10%; 
+}
+/* Box sizing */
 
 .box-c{
  
@@ -372,15 +168,15 @@ textarea{
 
  justify-content:space-between;
  padding: 0px;
- margin: 20px 0px;
+ margin: 10px 0px;
+ 
     
 }
 
-/* BOTONES STILO */
+/* BOTONES STILO azul */
+
 
 .btn-blue-c{
-    
-    
     background-color: #1a2079;
     color: white;
    
@@ -393,11 +189,10 @@ textarea{
     font-weight: normal;
     vertical-align:middle;
     padding: 0px 10px 0px 10px;
-    
+    box-sizing: border-box;
 }
 
 .btn-blue-c span{
-   
     font-weight: bold;
     font-size: small;
    vertical-align:middle;
@@ -410,11 +205,78 @@ textarea{
     
     background-color: white;
     color: #1a2079;
+    box-sizing: border-box;
+  
+}
+/* BOTON STILO Gris */
+.btn-black-c{
+    background-color: #3337;
+    color: white;
+   
+    height: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+    border-style: none;
+    
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    vertical-align:middle;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
+}
+
+.btn-black-c span{
+    font-weight: bold;
+    font-size: small;
+   vertical-align:middle;
+    text-align: center;
+    padding-bottom: 2px;
+    font-weight: 900;
+}
+.btn-black-c:hover{
+    border: #3337 solid 2px;
+    
+    background-color: white;
+    color: #3337;
+    box-sizing: border-box;
+  
+}
+/* BOTON STILO Rojo */
+.btn-red-c{
+    background-color: #c04435;
+    color: white;
+   
+    height: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+    border-style: none;
+    
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    vertical-align:middle;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
+}
+
+.btn-red-c span{
+    font-weight: bold;
+    font-size: small;
+   vertical-align:middle;
+    text-align: center;
+    padding-bottom: 2px;
+    font-weight: 900;
+}
+.btn-red-c:hover{
+    border: #c04435 solid 2px;
+    
+    background-color: white;
+    color: #c04435;
+    box-sizing: border-box;
   
 }
 
 
-
+/* Personalizacion Perfil */
 
 .img-profile-c{
    
@@ -458,11 +320,353 @@ textarea{
     margin-top: -90px;
     margin-right: -10px;
 }
+.margin-add-c{
+    margin-top: -52px;
+    margin-right: -5px;
+    
+}
 
+
+
+/*  COLOR CARD AZUL */
+
+.cblue-c{
+    border: solid  #1a207959 1px  ;
+}
+.cblue-c h1{
+    background-color: #1a2079;
+    color: white;
+}
+.cblue-c hr{
+    border: #1a207938 solid 1px;
+}
+.cblue-c select{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    display: block;
+    background-color: #0026ff17;
+     border-radius: 5px;
+    color:#1a2079  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblue-c select:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c select:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c select:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #1a207938 2px;
+}
+.cblue-c input{
+    display: block;
+    background-color: #0026ff17;
+     border-radius: 5px;
+    color:#1a2079  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblue-c input:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c input:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c input:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #1a207938 2px;
+}
+textarea{
+    resize: none;
+}
+.cblue-c textarea{
+    display: block;
+    background-color: #0026ff17;
+     border-radius: 5px;
+    color:#1a2079  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblue-c textarea:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c textarea:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #1a2079 1px ;
+    box-sizing: border-box;
+}
+.cblue-c textarea:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #1a207938 2px;
+}
+.cblue-c input[type=submit]{
+    background-color: #1a2079;
+    color: white;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+    border-style: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    vertical-align:middle;
+    padding: 0px 10px 0px 10px;
+}
+.cblue-c input[type=submit]:hover{
+    border: #1a2079 solid 2px;
+    background-color: white;
+    color: #1a2079;
+}
+
+/*  COLOR CARD GRIS */
+
+.cblack-c{
+    border: solid  #3333 1px  ;
+}
+.cblack-c h1{
+    background-color: #3337;
+    color: white;
+}
+.cblack-c hr{
+    border: #3337 solid 1px;
+}
+.cblack-c select{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    display: block;
+    background-color: #3331;
+     border-radius: 5px;
+    color:#333  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblack-c select:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c select:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c select:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #3337 2px;
+}
+.cblack-c input{
+    display: block;
+    background-color: #3331;
+     border-radius: 5px;
+    color:#333  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblack-c input:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c input:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c input:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #3337 2px;
+}
+textarea{
+    resize: none;
+}
+.cblack-c textarea{
+    display: block;
+    background-color: #3331;
+     border-radius: 5px;
+    color:#333  ;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: large;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: solid transparent 1px ;
+}
+.cblack-c textarea:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c textarea:hover{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: solid #3337 1px ;
+    box-sizing: border-box;
+}
+.cblack-c textarea:disabled{
+    display: block;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+    padding-left: 0px;
+    border-radius: 0%;
+    border-bottom: solid #3337 2px;
+}
+.cblack-c input[type=submit]{
+    background-color: #3337;
+    color: white;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+    border-style: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    vertical-align:middle;
+    padding: 0px 10px 0px 10px;
+}
+.cblack-c input[type=submit]:hover{
+    border: #3337 solid 2px;
+    background-color: white;
+    color: #3337;
+}
 @media screen and (max-width: 780px){
 
 
-.box-c{
+    .box-c{
     display: flex;
    align-items: center;
    flex-direction: column;
@@ -474,4 +678,26 @@ textarea{
         margin-bottom: 10px;
       
     }
+        /* MAQUETADO LOGROS */
+    .cw1l-c{
+        text-align: center ;
+        width: 100%; 
+    }
+    .cw1l-c input{
+        text-align: center ;
+        width: 100%; 
+    }
+    .cw2l-c{
+        width: 100%; 
+        display: inline-block;
+    }
+    .cw3l-c{
+        justify-content:flex-end;
+        width: 100%; 
+    }
+    .cw3l-c button{
+        margin-left: 10px; 
+        
+    }
+    
 }

@@ -1,6 +1,7 @@
 import './menu-player.css';
 import {InicioPlayer} from './component-player/inicio-player'
 import {PerfilPlayer} from './component-player/perfil-player'
+import {LogrosPlayer} from './component-player/logros-player'
 
 
 function MenuPlayer (){
@@ -35,7 +36,7 @@ function MenuPlayer (){
         </div >
         <div className ='content-p'>
 
-         <PerfilPlayer/>  
+         <LogrosPlayer/>  
         </div>
     </div>
     );
