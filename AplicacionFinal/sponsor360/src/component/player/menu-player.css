@@ -1,19 +1,24 @@
 
-
+.center-p{
+    display: flex;
+    justify-content: center;
+}
 
 .content-p {
     display: inline-block;
     vertical-align:top;
 
-   
+    
 
     height: 100vh;
+    margin-left: 300px;
     width: 67%;
      /* background-color: lightskyblue; */
 }
 
 .menu-content-p{
     display: inline-block;
+    position:fixed; 
     vertical-align:top;
 
     height: 100vh;
@@ -100,18 +105,26 @@ li{
 }
 
 .btn-menu-p{
+    display: block;
+    text-decoration:none;
     background-color: rgba(0, 0, 0, 0);
     color: white ;
-    width: 100%; 
-    height: 40px;
+    width: 100% ; 
+    height: 36px;
     font-size: 24px;
     border-radius: 5px;
     border-style: none;
     text-align: start;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: normal;
+    padding-top: 4px;
+    padding-left: 4px;
     
+}
+.btn-menu-p-active{
     
+    color: #9199e4
+
 }
 .btn-menu-p:hover{
     background-color:white;
@@ -123,12 +136,13 @@ li{
 
     
     .menu-content-p {
-        width: 15%;
+        
         align-items:initial;
       
     }
     .content-p {
         width: 82%;
+        margin-left: 60px;
       
     }
     .logo-p{
@@ -144,6 +158,7 @@ li{
     }
     .btn-menu-p{
         text-align: center;
+        padding-left: 0px;
     }
     .btn-menu-p span{
         display: none;

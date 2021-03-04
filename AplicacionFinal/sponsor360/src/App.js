@@ -11,17 +11,11 @@ import {Register} from './component/start/register'
 
 function App() {
   return (
-    <div className="App2">
+    <div >
      
-      <Register/>
-    <Login/> 
-       <div className='prueba'>
+    
         <MenuPlayer/> 
      
-     
-       </div>
-      <MenuBrand/>   
-    
     </div>
   );
 }
