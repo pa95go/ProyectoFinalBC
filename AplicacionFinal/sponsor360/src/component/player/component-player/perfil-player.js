@@ -42,7 +42,7 @@ function PerfilPlayer (){
         <form action=""> 
       <button type='submit' className='btn-blue-c d-rigth margin-edit-c' onClick={(e)=>handleEdit(e)}><i class={handleIcon(edit)}></i></button> 
         <label for="file-input"  >
-        <img className='img-profile-c' src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg" disabled={edit}  />
+        <img className='img-profile-blue-c' src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg" disabled={edit}  />
         </label>
         <input id="file-input" type="file" className='d-none' disabled={edit}  />
 

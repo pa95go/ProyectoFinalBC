@@ -19,7 +19,7 @@
 color: #1a2079;
 }
 .red-textcolor-c{
-    color:#c04435 ;
+    color:#c04435 !important ;
 }
 
 .title-c{
@@ -64,7 +64,6 @@ color: #1a2079;
 /* STYLOS PRINCIPALES CARD */
 .card-c{
 
-    
 
     margin: 20px 0px;
     padding-bottom: 5px;
@@ -136,7 +135,8 @@ color: #1a2079;
 
 .cw2-c{
     
-    width: 50%;
+    width: 48%;
+    margin-bottom: 0px;
     
 }
 
@@ -210,7 +210,7 @@ color: #1a2079;
 }
 /* BOTON STILO Gris */
 .btn-black-c{
-    background-color: #3337;
+    background-color: rgb(158, 158, 158);
     color: white;
    
     height: 40px;
@@ -277,8 +277,9 @@ color: #1a2079;
 
 
 /* Personalizacion Perfil */
+/*  COLOR CARD AZUL */
 
-.img-profile-c{
+.img-profile-blue-c{
    
      margin: 20px auto !important;
    
@@ -291,14 +292,14 @@ color: #1a2079;
    background-color:  white !important;
    padding: 5px !important;
 }
-.img-profile-c:hover{
+.img-profile-blue-c:hover{
     border: solid #1a2079 6px !important;
 }
-.img-profile-c:focus{
+.img-profile-blue-c:focus{
     border: solid #1a2079 6px !important
 }
 
-.img-profile-c[disabled]{
+.img-profile-blue-c[disabled]{
     margin: 20px auto !important;
     margin-top: -30px !important;
    
@@ -316,6 +317,27 @@ color: #1a2079;
     margin: 0px -20px;
     border-radius: 5px 5px 0px 0px;
 }
+.mini-banner-blue-c{
+    display: inline-block;
+    background-color: #1a2079;
+    color: white;
+    margin: 0px -20px;
+    border-radius: 0px 50px 50px 0px;
+    padding: 10px 15px 10px 20px;
+    text-align: end;
+     
+    margin-top: 20px;
+   
+}
+.mini-banner-blue-c span{
+    font-size: large; 
+    vertical-align:middle;
+    text-align: center;
+    padding-bottom: 6px;
+    margin-right: 20px;
+  
+}
+
 .margin-edit-c{
     margin-top: -90px;
     margin-right: -10px;
@@ -328,7 +350,7 @@ color: #1a2079;
 
 
 
-/*  COLOR CARD AZUL */
+
 
 .cblue-c{
     border: solid  #1a207959 1px  ;
@@ -498,6 +520,74 @@ textarea{
 
 /*  COLOR CARD GRIS */
 
+.img-profile-black-c{
+   
+    margin: 20px auto !important;
+  
+    margin-top: -30px !important;
+
+   border-radius: 100px !important;
+   height: 150px !important;
+  width: 150px !important;
+  border: solid #3332 6px !important;
+  background-color:  white !important;
+  padding: 5px !important;
+}
+.img-profile-black-c:hover{
+   border: solid #3337 6px !important;
+}
+.img-profile-black-c:focus{
+   border: solid #3337 6px !important
+}
+
+.img-profile-black-c[disabled]{
+   margin: 20px auto !important;
+   margin-top: -30px !important;
+  
+   border-radius: 100px !important;
+   height: 160px !important;
+  width: 160px !important;
+  border: solid #3337 6px !important;
+ /*  background-color:  #3337!important; */
+  padding: 0% !important;
+}
+.banner-black-c{
+   display: flex;
+   background-color: #3337;
+   height: 100px;
+   margin: 0px -20px;
+   border-radius: 5px 5px 0px 0px;
+}
+.mini-banner-black-c{
+    display: inline-block;
+    background-color: #3337;
+    color: white;
+    margin: 0px -20px;
+    border-radius: 0px 50px 50px 0px;
+    padding: 10px 15px 10px 20px;
+    text-align: end;
+     
+    margin-top: 20px;
+   
+}
+.mini-banner-black-c span{
+    font-size: large; 
+    vertical-align:middle;
+    text-align: center;
+    padding-bottom: 6px;
+    margin-right: 20px;
+  
+}
+.margin-edit-c{
+   margin-top: -90px;
+   margin-right: -10px;
+}
+.margin-add-c{
+   margin-top: -52px;
+   margin-right: -5px;
+   
+}
+
 .cblack-c{
     border: solid  #3333 1px  ;
 }
@@ -663,6 +753,39 @@ textarea{
     background-color: white;
     color: #3337;
 }
+
+
+
+
+
+.mini-banner-red-c{
+    display: inline-block;
+    background-color: #c04435;
+    color: white;
+    margin: 0px -20px;
+   /*  width: 60%; */
+    border-radius: 0px 50px 50px 0px;
+    padding: 10px 15px 10px 20px;
+    
+    text-align: end;
+     
+    margin-top: 20px;
+   
+}
+.mini-banner-red-c span{
+    font-size: large; 
+    vertical-align:middle;
+    text-align: center;
+    padding-bottom: 6px;
+    margin-right: 20px;
+  
+}
+
+
+
+
+
+
 @media screen and (max-width: 780px){
 
 
@@ -674,6 +797,11 @@ textarea{
         
     }
     .cw3-c{
+        width:100%;
+        margin-bottom: 10px;
+      
+    }
+    .cw2-c{
         width:100%;
         margin-bottom: 10px;
       

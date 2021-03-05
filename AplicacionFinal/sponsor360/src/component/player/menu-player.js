@@ -3,6 +3,7 @@ import {BrowserRouter, Route, NavLink } from 'react-router-dom';
 import {InicioPlayer} from './component-player/inicio-player'
 import {PerfilPlayer} from './component-player/perfil-player'
 import {LogrosPlayer} from './component-player/logros-player'
+import {SoportesPlayer} from './component-player/soportes-player'
 
 
 function MenuPlayer (){
@@ -40,6 +41,7 @@ function MenuPlayer (){
         <Route path="/Inicio" exact component={InicioPlayer} />
         <Route path="/Perfil" exact component={PerfilPlayer} />
         <Route path="/Eventos" exact component={LogrosPlayer} />
+        <Route path="/Soportes" exact component={SoportesPlayer} />
          
         </div>
         </div>
