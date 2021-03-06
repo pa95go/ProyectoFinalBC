@@ -1,27 +1,84 @@
 import './../player-component.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 
-function CardSoporte ({soporte, setSoportes}){
+function CardSoporte ({soporte, soportes, setSoportes}){
 
    
     const [edit, setEdit] = useState(true);
+    const [dtext, setDtext]= useState("Disponible");
+    const [dstyle, setDstyle]= useState("mini-banner-black-c");
+    const [dicon, setDicon]= useState("icon ion-md-information-circle-outline");
+
+    function Inicializar(soporte) {
+       
+
+        if(soporte.marca === ""){
+            if(soporte.publicado === true){
+                setDtext ( "Publicado ");
+                setDstyle ( "mini-banner-blue-c");
+                setDicon  ("icon ion-md-checkmark-circle-outline");
+                if(edit!== true){
+                    setDtext ( "Disponible");
+                      setDstyle ( "mini-banner-black-c");
+                     setDicon ("icon ion-md-information-circle-outline"); 
+                     setEdit(false);  
+                }
+        
+            }
+            else{
+                      setDtext ( "Disponible");
+                      setDstyle ( "mini-banner-black-c");
+                     setDicon ("icon ion-md-information-circle-outline");  
+                    
+             }
+        }else{
+            setDtext   (soporte.marca);
+            setDstyle  ("mini-banner-red-c");
+           setDicon  ("icon ion-md-planet");
+        }
+
+    }
+
+    useEffect(()=>{
+        Inicializar(soporte);
+    
+    });
+
+    
 
     function handleEdit (e){
         e.preventDefault();
-        console.log(edit);
+        
         if(soporte.marca === ''){
-             setEdit(!edit); 
+            setEdit(!edit); 
             
-        }
+            
+            
+                const newSoporte = soportes.map((newsoporte)=>{
+                        if(newsoporte.id === soporte.id ){
+                            return{
+                                ...newsoporte,
+                                publicado: false,
+                            }
+                        }
+                        return newsoporte
+                    
+                });
+                setSoportes(newSoporte)
+                console.log( soporte);
+                
+                
+            }
+        
     }
 
 
-    function handleIcon(edit){ // se supone que cuando crea uno pone una id
+    function handleIcon(edit){ 
         if(soporte.marca === ''){
            
             if(edit === true){
-                
+                 
                 return "icon ion-md-create";
             }else{
                 return "icon ion-md-save";
@@ -30,41 +87,46 @@ function CardSoporte ({soporte, setSoportes}){
         }
     }
    
-        
-    function handleDisponibleText(){
-        
-        if(soporte.marca === ''){
-            let icon_dis = "icon ion-md-planet"
-        return  "Disponible"
-        }else{
-            let icon_dis = "icon ion-md-information-circle"
-        return soporte.marca;
-        }
-    }
-    function handleDisponibleIcon(){
-        
-        if(soporte.marca === ''){
-            return  "icon ion-md-information-circle"
-        }else{
-            return  "icon ion-md-planet"
-        }
-    }
 
-    function handleDisponibleStyle(){
-        if(soporte.marca === ''){
-        return  "mini-banner-black-c"
-        }else{
-        return  "mini-banner-red-c"
+    function handlePublish(e ){
+        e.preventDefault();
+        if(edit=== true){ 
+            const newSoporte = soportes.map((newsoporte)=>{
+
+                if(newsoporte.id === soporte.id ){
+                    if(soporte.marca === ''){
+                        return{
+                            ...newsoporte,
+                            publicado: !newsoporte.publicado,
+                        }
+                    }else{
+                        return{
+                            ...newsoporte,
+                            publicado: false,
+                        }
+                    }
+                }
+                // guardar bbdd cuando sea false
+                return newsoporte
+            });
+        // guardar bbdd cuando sea false
+            setSoportes(newSoporte)
+            console.log(soporte);
         }
     }
+    
+      
+    
+  
+
 
     return (
         <div className="card-c cblack-c cw2-c ">
    
-         <div className="banner-black-c"></div>
-        <form action="">
-      <button type='submit' className='btn-black-c d-rigth margin-edit-c ' onClick={(e)=>handleEdit(e)}><i class={handleIcon(edit)}></i></button> 
-        <label for="file-input"  >
+         <div className="banner-black-c" disabled={edit}></div>
+        <form action="" >
+      <button type='submit' className='btn-black-c d-rigth margin-edit-c ' onClick={(e)=>handleEdit(e)}><i class={handleIcon(edit)} disabled={edit}></i></button> 
+        <label for="file-input"  disabled={edit} >
         <img className='img-profile-black-c' src={soporte.imagen} disabled={edit}  />
         </label>
         <input id="file-input" type="file" className='d-none' disabled={edit}  />
@@ -77,8 +139,8 @@ function CardSoporte ({soporte, setSoportes}){
 
        
         </form>
-        <h2 className={handleDisponibleStyle()}><span>{handleDisponibleText()}</span><i class={handleDisponibleIcon()}></i></h2>
-        
+        <h2 onClick={(e)=>handlePublish(e)} className={dstyle}><span>{dtext}</span><i class={dicon}></i></h2>
+      
      </div>
     )
 

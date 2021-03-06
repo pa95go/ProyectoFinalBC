@@ -4,6 +4,7 @@ import {InicioPlayer} from './component-player/inicio-player'
 import {PerfilPlayer} from './component-player/perfil-player'
 import {LogrosPlayer} from './component-player/logros-player'
 import {SoportesPlayer} from './component-player/soportes-player'
+import {MarcasPlayer} from './component-player/marcas-player'
 
 
 function MenuPlayer (){
@@ -42,6 +43,7 @@ function MenuPlayer (){
         <Route path="/Perfil" exact component={PerfilPlayer} />
         <Route path="/Eventos" exact component={LogrosPlayer} />
         <Route path="/Soportes" exact component={SoportesPlayer} />
+        <Route path="/Marcas" exact component={MarcasPlayer} />
          
         </div>
         </div>

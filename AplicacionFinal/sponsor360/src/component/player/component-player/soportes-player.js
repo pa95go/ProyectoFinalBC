@@ -5,13 +5,13 @@ import {useState} from 'react';
 function SoportesPlayer (){
 
     const [soportes, setSoportes ] = useState([
-        { id:"0", nombre_soporte: "Camiseta Delantera", descripcion: " La descripcion es 02/03/2020" , tamano:"35cm x 45cm", precio: "300",
+        { id:"0",publicado: true, nombre_soporte: "Camiseta Delantera", descripcion: " La descripcion es 02/03/2020" , tamano:"35cm x 45cm", precio: "300",
             marca: "",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
-        { id:"1", nombre_soporte: "Pantalon Trasera", descripcion: " La descripcion es 22/04/2020", tamano:"35cm x 45cm", precio: "300",
+        { id:"1",publicado: false, nombre_soporte: "Pantalon Trasera", descripcion: " La descripcion es 22/04/2020", tamano:"35cm x 45cm", precio: "300",
             marca: "",  imagen:"https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg"},
-        { id:"2", nombre_soporte: "Gorra Central", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
-            marca: "COCACOLA",  imagen:"https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg"},
-        { id:"3", nombre_soporte: "Camiseta Detras", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
+        { id:"2",publicado: true, nombre_soporte: "Gorra Central", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
+            marca: "",  imagen:"https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg"},
+        { id:"3",publicado: false, nombre_soporte: "Camiseta Detras", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
             marca: "PePSI",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
         
     ]);
@@ -33,13 +33,13 @@ function SoportesPlayer (){
      <hr/>
 
      <div className="box-c">
-        <CardSoporte soporte = {soportes[0]} setSoportes ={setSoportes}/>
-        <CardSoporte soporte = {soportes[1]} setSoportes ={setSoportes}/>
+        <CardSoporte soporte = {soportes[0]}  soportes ={soportes} setSoportes ={setSoportes}/>
+        <CardSoporte soporte = {soportes[1]} soportes ={soportes} setSoportes ={setSoportes}/>
      </div>
 
      <div className="box-c">
-        <CardSoporte soporte = {soportes[2]} setSoportes ={setSoportes}/>
-        <CardSoporte soporte = {soportes[3]} setSoportes ={setSoportes}/>
+        <CardSoporte soporte = {soportes[2]} soportes ={soportes} setSoportes ={setSoportes}/>
+        <CardSoporte soporte = {soportes[3]} soportes ={soportes} setSoportes ={setSoportes}/>
      </div>
 
     </div>
