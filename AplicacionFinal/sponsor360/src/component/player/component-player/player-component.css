@@ -9,10 +9,12 @@
     align-items: center;
 
 }
+.m0-c{
+    margin: 0px;
+}
 .mt10-c{
     
     margin-top: 10px;
-    
 }
 
 .blue-textcolor-c{
@@ -27,9 +29,17 @@ color: #1a2079;
     margin: 0px;
     padding: 0px;
 }
-
+.text-light{
+    font-weight: lighter !important;
+}
 .text-bold{
     font-weight: bold !important;
+}
+.text-bolder{
+    font-weight: 800 !important;
+}
+.text-m{
+    font-size: medium !important;
 }
 .text-xl{
     font-size: x-large !important;
@@ -59,6 +69,17 @@ color: #1a2079;
     margin-left:auto;
     margin-right: 0;
     margin-top: 20px;
+}
+.d-center{
+    display:block;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+.text-vertical-center-c{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* STYLOS PRINCIPALES CARD */
@@ -754,10 +775,258 @@ textarea{
     color: #3337;
 }
 
+/* CARD RED ------------------------------------------------------- */
+.img-mini-profile-red-c{
+   
+    margin-top: -0px !important;
+    border-radius: 100px !important;
+    height: 80px !important;
+   width: 80px !important;
+   border: solid #c04435 4px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
+
+
+.img-profile-red-c{
+   
+    margin: 20px auto !important;
+  
+  /*   margin-top: 330px !important; */
+
+   border-radius: 100px !important;
+   height: 150px !important;
+  width: 150px !important;
+  border: solid #1a207938 6px !important;
+  background-color:  white !important;
+  padding: 5px !important;
+}
+.img-profile-red-c:hover{
+   border: solid #c04435 6px !important;
+}
+.img-profile-red-c:focus{
+   border: solid #c04435 6px !important
+}
+
+.img-profile-red-c[disabled]{
+   margin: 20px auto !important;
+   margin-top: -80px !important;
+  
+   border-radius: 100px !important;
+   height: 160px !important;
+  width: 160px !important;
+  border: solid #c04435 6px !important;
+  background-color:  white !important;
+  padding: 0% !important;
+}
+
+.banner-red-c{
+   display: flex;
+   background-color: #c04435;
+   height: 100px;
+   margin: 0px -20px;
+   border-radius: 5px 5px 0px 0px;
+}
+.mini-banner-red-c{
+   display: inline-block;
+   background-color: #c04435;
+   color: white;
+   margin: 0px -20px;
+   border-radius: 0px 50px 50px 0px;
+   padding: 10px 15px 10px 20px;
+   text-align: end;
+    
+   margin-top: 20px;
+  
+}
+.mini-banner-red-c span{
+   font-size: large; 
+   vertical-align:middle;
+   text-align: center;
+   padding-bottom: 6px;
+   margin-right: 20px;
+ 
+}
+
+.margin-edit-c{
+   margin-top: -90px;
+   margin-right: -10px;
+}
+.margin-add-c{
+   margin-top: -52px;
+   margin-right: -5px;
+   
+}
+
+.cred-c{
+   border: solid  #c0443559 1px  ;
+}
+.cred-c h1{
+   background-color: #c04435;
+   color: white;
+}
+.cred-c hr{
+   border: #c0443538 solid 1px;
+}
+.cred-c select{
+   -moz-appearance:none; /* Firefox */
+   -webkit-appearance:none; /* Safari and Chrome */
+   appearance:none;
+   display: block;
+   background-color: #0026ff17;
+    border-radius: 5px;
+   color:#c04435  ;
+   border: none;
+   font-family: 'Nunito Sans', sans-serif;
+   font-weight: normal;
+   font-size: large;
+   width: 100%;
+   padding: 5px 10px;
+   margin: 0;
+   box-sizing: border-box;
+   margin-top: 10px;
+   border: solid transparent 1px ;
+}
+.cred-c select:focus{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c select:hover{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c select:disabled{
+   display: block;
+   color: #333;
+   background-color: transparent;
+   border: none;
+   font-weight: normal;
+   padding-left: 0px;
+   border-radius: 0%;
+   border-bottom: solid #c0443538 2px;
+}
+.cred-c input{
+   display: block;
+   background-color: #0026ff17;
+    border-radius: 5px;
+   color:#c04435  ;
+   border: none;
+   font-family: 'Nunito Sans', sans-serif;
+   font-weight: normal;
+   font-size: large;
+   width: 100%;
+   padding: 5px 10px;
+   margin: 0;
+   box-sizing: border-box;
+   margin-top: 10px;
+   border: solid transparent 1px ;
+}
+.cred-c input:focus{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c input:hover{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c input:disabled{
+   display: block;
+   color: #333;
+   background-color: transparent;
+   border: none;
+   font-weight: normal;
+   padding-left: 0px;
+   border-radius: 0%;
+   border-bottom: solid #c0443538 2px;
+}
+textarea{
+   resize: none;
+}
+.cred-c textarea{
+   display: block;
+   background-color: #0026ff17;
+    border-radius: 5px;
+   color:#c04435  ;
+   border: none;
+   font-family: 'Nunito Sans', sans-serif;
+   font-weight: normal;
+   font-size: large;
+   width: 100%;
+   padding: 5px 10px;
+   margin: 0;
+   box-sizing: border-box;
+   margin-top: 10px;
+   border: solid transparent 1px ;
+}
+.cred-c textarea:focus{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c textarea:hover{
+   outline:none !important;
+   outline-width: 0 !important;
+   box-shadow: none;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   border: solid #c04435 1px ;
+   box-sizing: border-box;
+}
+.cred-c textarea:disabled{
+   display: block;
+   color: #333;
+   background-color: transparent;
+   border: none;
+   font-weight: normal;
+   padding-left: 0px;
+   border-radius: 0%;
+   border-bottom: solid #c0443538 2px;
+}
+.cred-c input[type=submit]{
+   background-color: #c04435;
+   color: white;
+   height: 40px;
+   font-size: 24px;
+   border-radius: 5px;
+   border-style: none;
+   font-family: 'Nunito Sans', sans-serif;
+   font-weight: normal;
+   vertical-align:middle;
+   padding: 0px 10px 0px 10px;
+}
+.cred-c input[type=submit]:hover{
+   border: #c04435 solid 2px;
+   background-color: white;
+   color: #c04435;
+}
 
 
 
-
+/* Mini banners */
 .mini-banner-red-c{
     display: inline-block;
     background-color: #c04435;
