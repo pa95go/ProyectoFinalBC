@@ -10,11 +10,14 @@
 
 }
 .m0-c{
-    margin: 0px;
+    margin: 0px !important;
 }
 .mt10-c{
     
-    margin-top: 10px;
+    margin-top: 10px ;
+}
+.mt20-c{
+    margin-top: 30px !important;
 }
 
 .blue-textcolor-c{
@@ -783,6 +786,17 @@ textarea{
     height: 80px !important;
    width: 80px !important;
    border: solid #c04435 4px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
+.img-xs-profile-red-c{
+   
+    /* margin-right: 0px !important; */
+    margin-top: -2px !important;
+    border-radius: 100px !important;
+    height: 40px !important;
+   width: 40px !important;
+   border: solid #c04435 2px ;
    background-color:  white !important;
    padding: 0% !important;
 }

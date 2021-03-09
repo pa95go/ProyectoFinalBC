@@ -17,11 +17,11 @@ function CardSoporte ({soporte, soportes, setSoportes}){
             if(soporte.publicado === true){
                 setDtext ( "Publicado ");
                 setDstyle ( "mini-banner-blue-c");
-                setDicon  ("icon ion-md-checkmark-circle-outline");
+                setDicon  ("icon ion-md-eye");
                 if(edit!== true){
                     setDtext ( "Disponible");
                       setDstyle ( "mini-banner-black-c");
-                     setDicon ("icon ion-md-information-circle-outline"); 
+                     setDicon ("icon ion-md-eye-off"); 
                      setEdit(false);  
                 }
         
@@ -29,7 +29,7 @@ function CardSoporte ({soporte, soportes, setSoportes}){
             else{
                       setDtext ( "Disponible");
                       setDstyle ( "mini-banner-black-c");
-                     setDicon ("icon ion-md-information-circle-outline");  
+                     setDicon ("icon ion-md-eye-off");  
                     
              }
         }else{
