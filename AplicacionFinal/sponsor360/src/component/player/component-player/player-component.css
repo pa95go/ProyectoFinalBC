@@ -66,6 +66,11 @@ color: #1a2079;
     width: 100%;
     justify-content: space-between;
   }
+.d-rigth-inline{
+    display: inline-block;
+    margin-right: 30px !important;
+    margin-left:50px !important;
+}
 
 .d-rigth{
     display:block;
@@ -168,6 +173,7 @@ color: #1a2079;
     margin: 0px;
   /*   display: inline; */
     width:30%;
+    margin-bottom: 20px;
   
 }
 /* MAQUETADO LOGROS */
@@ -196,7 +202,40 @@ color: #1a2079;
  
     
 }
+.box-noresponsive-c{
+ 
+   
+    display: flex;
+   
+    justify-content:space-between;
+    padding: 0px;
+    margin: 10px 0px;
+    
+       
+   }
 
+/* colores RRSS */
+
+.bg-twitter{
+    background-color: #00ACEE !important;
+}
+.bg-facebook{
+    background-color: #3b5998 !important;
+}
+.bg-instagram{
+    background: linear-gradient(60deg, #fdf497 -20%, #fd5949 25%,#d6249f 80%,#285AEB 120%) !important;
+}
+.text-twitter{
+    color: #00ACEE !important;
+}
+.text-facebook{
+    color: #3b5998 !important;
+}
+.text-instagram{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
 /* BOTONES STILO azul */
 
 
