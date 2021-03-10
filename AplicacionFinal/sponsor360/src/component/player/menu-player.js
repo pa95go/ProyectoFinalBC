@@ -36,7 +36,7 @@ function MenuPlayer (){
             </div> 
         </div >
        
-        <div className="center-p">
+        <div className="center-p ">
         <div className ='content-p'>
 
         <Route path="/Inicio" exact component={InicioPlayer} />

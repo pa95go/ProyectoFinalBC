@@ -1,58 +1,67 @@
 /* https://ionicons.com/v4/    ICONOS*/
 
+.center-b{
+    display: flex;
+    justify-content: center;
+}
 
-.menu-content-b {
-   height: 100vh;
-   width: 300px;
-   display: inline-block;
-   align-items: center;
-   flex-direction: column;
-    
+.content-b {
+    display: inline-block;
+    vertical-align:top;
+    height: 100vh;
+    margin-left: 300px;
+    width: 67%;
+     
+}
+
+.menu-content-b{
+    display: inline-block;
+    position:fixed; 
+    vertical-align:top;
+    height: 100vh;
+    width: 30%;
+    align-items: center;
+
 }
 .logo-b{
     
-
-    background-image: url("../../images/sponsorL2.png");
-    background-size: 260px;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    height: 100%;
-    width: 100%;
-      font-weight: 900; 
-      font-size: 30px;
-      color: #c04435;
-      height: 10%;
+    background-image: url("../../images/sponsorL2.png"); 
+   background-size: 260px;
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100%;
+   width: 100%;
+   font-weight: 900; 
+   font-size: 30px;
+   color: #c04435;
+   height: 10%;
+   width: 300px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
    
-      display: flex;
-      align-items: center;
-      justify-content: center;
- } 
+} 
 
 .panel-b{
     height: 90%;
     background-color: #c04435;
     border-radius: 0px 5px  0px 0px;
-    width: 100%;
+    width: 300px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    box-shadow: -10px 10px 10px 0px  rgba(65, 61, 61, 0.144) inset;
+    box-shadow: -10px 10px 10px 0px  rgba(65, 61, 61, 0.096) inset;
     
 }
 
 
 .image-b{
-    margin-top: 50px;
-    background-size: 100px;
-     background-image: url("https://logos-marcas.com/wp-content/uploads/2020/03/Repsol-Emblema.jpg"); 
-     background-repeat: no-repeat;
-    background-position: center;
+    margin-top: 50px; 
     border-radius: 100px;
     height: 110px;
-    width: 110px;
-    border: solid white 6px;
-    background-color: white;
+   width: 110px;
+   border: solid white 6px;
+   background-color:  #ffffff;
 }
 
 .name{
@@ -65,31 +74,38 @@
 
 
 ul{
-padding: 0px;
-width: 230px;
-
+    padding: 0px;
+    width: 220px;
+    
 }
 
 li{
     list-style: none;
     padding: 10px 0px;
-    
-     
 }
 
+
 .btn-menu-b{
+    display: block;
+    text-decoration:none;
     background-color: rgba(0, 0, 0, 0);
     color: white ;
-    width: 100%; 
-    height: 40px;
+    width: 100% ; 
+    height: 36px;
     font-size: 24px;
     border-radius: 5px;
     border-style: none;
     text-align: start;
     font-family: 'Nunito Sans', sans-serif;
-    font-weight:normal;
+    font-weight: normal;
+    padding-top: 4px;
+    padding-left: 4px;
     
+}
+.btn-menu-b-active{
     
+    color: #ffb9b1
+
 }
 .btn-menu-b:hover{
     background-color:white;
@@ -105,8 +121,18 @@ li{
     .menu-content-b {
         width: 60px;
         align-items:initial;
-        
-        
+      
+    }
+    .content-b {
+        width: 82%;
+        margin-left: 60px;
+      
+    }
+    .logo-b{
+        width: 60px;
+    }
+    .panel-b{
+        width: 60px;
     }
     
     ul{
@@ -115,6 +141,7 @@ li{
     }
     .btn-menu-b{
         text-align: center;
+        padding-left: 0px;
     }
     .btn-menu-b span{
         display: none;
@@ -124,7 +151,9 @@ li{
         
         display: none;
     }
-  
+    .deporte{
+        opacity: 0;
+    }
 
     .image-b{
         height: 40px;
@@ -140,6 +169,7 @@ li{
         background-position: center;
         background-repeat: no-repeat;
     }
+
 
 
 }

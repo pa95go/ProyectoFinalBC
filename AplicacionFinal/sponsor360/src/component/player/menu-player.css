@@ -7,24 +7,18 @@
 .content-p {
     display: inline-block;
     vertical-align:top;
-
-    
-
     height: 100vh;
     margin-left: 300px;
     width: 67%;
-     /* background-color: lightskyblue; */
 }
 
 .menu-content-p{
     display: inline-block;
     position:fixed; 
     vertical-align:top;
-
     height: 100vh;
     width: 30%;
     align-items: center;
-    /*  background-color: lightgoldenrodyellow; */
 
 }
 .logo-p{
@@ -34,21 +28,17 @@
     background-size: 260px;
     background-position: center;
     background-repeat: no-repeat;
-    
     height: 100%;
     width: 100%;
-      font-weight: 900; 
-      font-size: 30px;
-      color: #c04435;
-      height: 10%;
-   
-      
-       width: 300px;
-       display: flex;
-       align-items: center;
-       flex-direction: column;
-       
-      
+    font-weight: 900; 
+    font-size: 30px;
+    color: #c04435;
+    height: 10%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
  } 
 
 .panel-p{
@@ -72,7 +62,7 @@
      height: 110px;
     width: 110px;
     border: solid white 6px;
-    background-color:  #b7cfb8;
+    background-color:  #ffffff;
 }
 
 .name{
@@ -100,8 +90,6 @@ width: 220px;
 li{
     list-style: none;
     padding: 10px 0px;
-    
-     
 }
 
 .btn-menu-p{
