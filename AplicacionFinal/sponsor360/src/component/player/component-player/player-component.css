@@ -265,7 +265,7 @@ color: #1a2079;
 }
 .btn-blue-c:hover{
     border: #1a2079 solid 2px;
-    
+    padding: 0px 8px 0px 8px;
     background-color: white;
     color: #1a2079;
     box-sizing: border-box;
@@ -298,7 +298,7 @@ color: #1a2079;
 }
 .btn-black-c:hover{
     border: #3337 solid 2px;
-    
+    padding: 0px 8px 0px 8px;
     background-color: white;
     color: #3337;
     box-sizing: border-box;
@@ -331,7 +331,7 @@ color: #1a2079;
 }
 .btn-red-c:hover{
     border: #c04435 solid 2px;
-    
+    padding: 0px 8px 0px 8px;
     background-color: white;
     color: #c04435;
     box-sizing: border-box;

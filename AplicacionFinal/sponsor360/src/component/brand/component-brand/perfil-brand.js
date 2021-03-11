@@ -56,12 +56,13 @@ function PerfilBrand (){
      </div>
 
      <div className="box-c">
+        
 
      
 
-     <div className="card-c cred-c  cw3-c "> 
-        <h1 className='bg-twitter' ><i class="icon ion-logo-twitter "></i> </h1>
-        <input type="text" className='text-vertical-center-c text-bold text-xl ctcenter-c ' name="" id="twitter-input" placeholder='Usuario'  value='@marca' disabled={edit}  />
+     <div className="card-c cred-c  cw3-c ">  
+        <h1 className='bg-twitter'   ><i class="icon ion-logo-twitter "></i> </h1>
+        <input type="text" className='text-vertical-center-c text-bold text-xl ctcenter-c '  name="" id="twitter-input" placeholder='Usuario'  value='@marca' disabled={edit}  />
         <div className="box-noresponsive-c m0-c">
             <p className=' text-vertical-center-c text-s mt10-c'>Seguidores:</p>
             <p className=' text-vertical-center-c mt10-c' >10.589  <i class="icon ion-md-people red-textcolor-c"></i> </p>
@@ -72,9 +73,9 @@ function PerfilBrand (){
             <p className=' text-vertical-center-c m0-c' >0.8  <i class="icon ion-md-stats red-textcolor-c "></i> </p>
         </div>
         <hr/>
-     
+        
      </div>
-
+    
 
         
      <div className="card-c cred-c cw3-c "> 

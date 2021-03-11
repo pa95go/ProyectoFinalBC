@@ -4,17 +4,7 @@ import {useState} from 'react';
 
 function MarcasPlayer (){
 
-   /*  const [soportes, setSoportes ] = useState([
-        { id:"0", nombre_soporte: "COCACOLA", descripcion: " La descripcion es 02/03/2020" , tamano:"35cm x 45cm", precio: "300",
-            marca: "",  imagen:"https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg"},
-        { id:"1", nombre_soporte: "REDBULL", descripcion: " La descripcion es 22/04/2020", tamano:"35cm x 45cm", precio: "300",
-            marca: "REDBULL",  imagen:"https://www.crazy-stuff.net/crazy-img/content/logos/23-redbull.jpg"},
-        { id:"2", nombre_soporte: "HUAWEI", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
-            marca: "",  imagen:"https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Huawei_Standard_logo.svg/1200px-Huawei_Standard_logo.svg.png"},
-        { id:"3", nombre_soporte: "REPSOL", descripcion: " La descripcion es 08/10/2020", tamano:"35cm x 45cm", precio: "300",
-            marca: "PePSI",  imagen:"https://i.pinimg.com/474x/d4/43/00/d4430044ab4991aff35cb7610fded4b0.jpg"},
-        
-    ]); */
+  
 
     const [marcas, setMarcas]= useState([
         { id:"3", nombre_marca: "cocacola", fecha_inicio: "02/03/2020" , fecha_fin: "05/07/2022",

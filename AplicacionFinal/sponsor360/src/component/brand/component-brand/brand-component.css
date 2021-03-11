@@ -9,9 +9,13 @@
      align-items: center;
  
  }
+ .p0-c{
+     padding: 0% !important;
+ }
  .m0-c{
      margin: 0px !important;
  }
+ 
  .mt10-c{
      
      margin-top: 10px ;
@@ -88,6 +92,13 @@
  .text-vertical-center-c{
      margin-top: auto;
      margin-bottom: auto;
+ }
+ .right{
+position: absolute;
+right: 0px;
+ }
+ .justify-end{
+     float:right
  }
  
  /* STYLOS PRINCIPALES CARD */
@@ -189,6 +200,22 @@
      justify-content:space-between;
      width: 10%; 
  }
+
+ /* Maquetado Mis soportes */
+ .cw10-c{
+     width: 10%;
+ }
+ .cw30-c{
+    position: relative;
+     width: 30%;
+    
+    
+ }
+ .cw50-c{
+     width: 50%;
+ }
+
+
  /* Box sizing */
  
  .box-c{
@@ -236,6 +263,23 @@
      -webkit-background-clip: text !important;
      -webkit-text-fill-color: transparent !important;
  }
+
+/* BOTONES DE ENLACE  */
+.btn-enlace-c{
+
+    border: none;
+    background: none;
+    
+  /*   position: absolute;
+    bottom: -10px;
+    right: 0px; */
+}
+
+.btn-enlace-c:hover{
+    font-weight: bolder;
+   
+}
+
  /* BOTONES STILO azul */
  
  
@@ -265,7 +309,7 @@
  }
  .btn-blue-c:hover{
      border: #1a2079 solid 2px;
-     
+     padding: 0px 8px 0px 8px;
      background-color: white;
      color: #1a2079;
      box-sizing: border-box;
@@ -298,7 +342,7 @@
  }
  .btn-black-c:hover{
      border: #3337 solid 2px;
-     
+     padding: 0px 8px 0px 8px;
      background-color: white;
      color: #3337;
      box-sizing: border-box;
@@ -331,7 +375,7 @@
  }
  .btn-red-c:hover{
      border: #c04435 solid 2px;
-     
+     padding: 0px 8px 0px 8px;
      background-color: white;
      color: #c04435;
      box-sizing: border-box;
@@ -341,7 +385,28 @@
  
  /* Personalizacion Perfil */
  /*  COLOR CARD AZUL */
- 
+ .img-mini-profile-blue-c{
+    
+    margin-top: -0px !important;
+    border-radius: 100px !important;
+    height: 80px !important;
+   width: 80px !important;
+   border: solid #1a2079 4px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
+.img-xs-profile-blue-c{
+   
+    /* margin-right: 0px !important; */
+    margin-top: -3px !important;
+    border-radius: 100px !important;
+    height: 40px !important;
+   width: 40px !important;
+   border: solid #1a2079 2px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
+
  .img-profile-blue-c{
     
       margin: 20px auto !important;
@@ -582,6 +647,27 @@
  }
  
  /*  COLOR CARD GRIS */
+ .img-mini-profile-black-c{
+    
+    margin-top: -0px !important;
+    border-radius: 100px !important;
+    height: 80px !important;
+   width: 80px !important;
+   border: solid #3337 4px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
+.img-xs-profile-black-c{
+   
+    /* margin-right: 0px !important; */
+    margin-top: -3px !important;
+    border-radius: 100px !important;
+    height: 40px !important;
+   width: 40px !important;
+   border: solid #3337 2px ;
+   background-color:  white !important;
+   padding: 0% !important;
+}
  
  .img-profile-black-c{
     
@@ -831,7 +917,7 @@
  .img-xs-profile-red-c{
     
      /* margin-right: 0px !important; */
-     margin-top: -2px !important;
+     margin-top: -3px !important;
      border-radius: 100px !important;
      height: 40px !important;
     width: 40px !important;
@@ -1149,5 +1235,28 @@
          margin-left: 10px; 
          
      }
+       
+    .cw10-c{
+        width: 10%;
+    }
+    .cw30-c{
+    position: relative;
+        width: 100%;
+         margin-top: -50px; 
+    
+    }
+  
+    .cw50-c{
+        width: 100%;
+    }
+    .cw50-c h3{
+        text-align: center;
+    }
      
+ }
+ @media screen and (max-width: 550px){
+    .cw30-c p{
+        display: none;
+        
+        }
  }
