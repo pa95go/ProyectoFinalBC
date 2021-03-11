@@ -4,11 +4,12 @@ import {BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 import {PerfilBrand} from './component-brand/perfil-brand'
 import {SoportesBrand} from './component-brand/soportes-brand'
+import {DeportistasBrand} from './component-brand/deportistas-brand'
+import {TiendaBrand} from './component-brand/tienda-brand'
 
 import {InicioPlayer} from '../player/component-player/inicio-player'
 
-import {LogrosPlayer} from '../player/component-player/logros-player'
-import {MarcasPlayer} from '../player/component-player/marcas-player'
+import {SoportesPlayer} from '../player/component-player/soportes-player'
 
 
 
@@ -35,8 +36,9 @@ function MenuBrand (){
                          <li> <NavLink to ="/Inicio" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
                          <li> <NavLink to ="/Perfil" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
                          <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
-                         <li> <NavLink to ="/Marcas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
-                         <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
+                         <li> <NavLink to ="/Deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
+                         <li> <NavLink to ="/Tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
+                         <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Muestra</span> </NavLink></li>
                      </ul>
                  </div>
              </div> 
@@ -49,8 +51,9 @@ function MenuBrand (){
          <Route path="/Inicio" exact component={InicioPlayer} />
          <Route path="/Perfil" exact component={PerfilBrand} />
          <Route path="/Soportes" exact component={SoportesBrand} />
-         <Route path="/Marcas" exact component={MarcasPlayer} /> 
-         <Route path="/Eventos" exact component={LogrosPlayer} />
+         <Route path="/Deportistas" exact component={DeportistasBrand} /> 
+         <Route path="/Tienda" exact component={TiendaBrand} />
+         <Route path="/Eventos" exact component={SoportesPlayer} />
           
         
          </div>

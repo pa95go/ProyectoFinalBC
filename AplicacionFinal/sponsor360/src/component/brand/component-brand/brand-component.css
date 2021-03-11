@@ -30,6 +30,9 @@
  .red-textcolor-c{
      color:#c04435 !important ;
  }
+ .white-textcolor-c{
+    color:white !important ;
+}
  
  .title-c{
      font-weight: 1000;
@@ -54,8 +57,20 @@
  .text-s{
      font-size: small !important;
  }
- 
- 
+ .box-space-between{
+    margin: 20px 0% 0px -3% ;
+ }
+ .m3-b{
+     vertical-align: top;
+     margin-left: 3.3% !important;
+ }
+ .mt-75{
+     margin-top: -75px !important;
+ }
+ .w100-c{
+     width: 100% !important;
+ }
+
  .d-none {
      display: none !important; 
    
@@ -179,14 +194,21 @@ right: 0px;
      margin-bottom: 0px;
      
  }
+ .cw2-responsive-c{
+    margin: 0px;
+  /*   display: inline; */
+    width:46%;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
  
  .cw3-c{
      margin: 0px;
    /*   display: inline; */
      width:30%;
      margin-bottom: 20px;
-   
  }
+
  /* MAQUETADO LOGROS */
  .cw1l-c{
      width: 62%; 
@@ -1214,6 +1236,10 @@ right: 0px;
          margin-bottom: 10px;
        
      }
+     .cw2-responsive-c{
+        width:100%;
+        margin-bottom: 10px;;
+    }
          /* MAQUETADO LOGROS */
      .cw1l-c{
          text-align: center ;
@@ -1252,7 +1278,13 @@ right: 0px;
     .cw50-c h3{
         text-align: center;
     }
-     
+    .box-space-between{
+   
+        margin: 20px 0% 0px -0% ;
+     }
+     .m3-b{
+         margin-left:0% !important;
+     }
  }
  @media screen and (max-width: 550px){
     .cw30-c p{
