@@ -38,7 +38,6 @@ function MenuBrand (){
                          <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
                          <li> <NavLink to ="/Deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
                          <li> <NavLink to ="/Tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
-                         <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Muestra</span> </NavLink></li>
                      </ul>
                  </div>
              </div> 
@@ -53,7 +52,6 @@ function MenuBrand (){
          <Route path="/Soportes" exact component={SoportesBrand} />
          <Route path="/Deportistas" exact component={DeportistasBrand} /> 
          <Route path="/Tienda" exact component={TiendaBrand} />
-         <Route path="/Eventos" exact component={SoportesPlayer} />
           
         
          </div>
