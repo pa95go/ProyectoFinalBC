@@ -58,6 +58,7 @@ function MenuBrand (){
          <Route path="/Deportistas" exact component={DeportistasBrand} /> 
          <Route path="/Tienda" exact component={TiendaBrand} />
          <Route path="/Carrito" exact component={CarritoBrand} />
+         <Route path="/player/user" exact component={InicioBrand} />
           
         
          </div>

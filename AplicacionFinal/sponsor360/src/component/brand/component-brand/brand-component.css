@@ -16,17 +16,18 @@
      padding-top: 3px !important;
      padding-bottom: auto !important;
  }
+ 
  .m0-c{
      margin: 0px !important;
  }
  
  .mt10-c{
      
-     margin-top: 10px ;
+     margin-top: 10px !important;
  }
  .mt15-c{
      
-    margin-top: 15px ;
+    margin-top: 15px !important;
 }
  .mt20-c{
      margin-top: 30px !important;
@@ -406,6 +407,11 @@ right: 0px;
    
  }
  /* BOTON STILO Rojo */
+ .btn-c{
+     background-color: transparent;
+     border: none;
+    
+ }
  .btn-red-c{
      background-color: #c04435;
      color: white;
