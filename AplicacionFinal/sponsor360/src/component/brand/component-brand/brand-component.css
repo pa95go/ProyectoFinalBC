@@ -12,6 +12,10 @@
  .p0-c{
      padding: 0% !important;
  }
+ .pt3-c{
+     padding-top: 3px !important;
+     padding-bottom: auto !important;
+ }
  .m0-c{
      margin: 0px !important;
  }
@@ -30,7 +34,9 @@
  .mt20{
     margin-top: 20px !important;
 }
-
+.mr20-c{
+    margin-right: 20px !important;
+}
 .h-extra-c{
  height: 48px !important;
  width: 48px;

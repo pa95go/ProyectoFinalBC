@@ -12,7 +12,8 @@ function ListMisSoportes ({soportes, setSoportes}){
   
                 
                         return(
-                            <div>
+                            <div className='card-c cblack-c cw1-c'>
+                                <h1></h1>
                                     <div className="box-c">
 
                                     <div className='cw10-c text-vertical-center-c'>
@@ -27,6 +28,7 @@ function ListMisSoportes ({soportes, setSoportes}){
                                         <p className=' text-bolder m0-c '><i class="icon ion-md-expand "></i> {soporte.tamano}</p>
                                     </div>
                                     
+                                       
                                     <div className="cw30-c">
                                         <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c">
                                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={soporte.img_player} /></h2>
@@ -35,7 +37,7 @@ function ListMisSoportes ({soportes, setSoportes}){
                                     </div>
                                 
                                 </div>
-                                <hr/>
+                                
                         </div>
                         
                         )

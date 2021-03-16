@@ -25,9 +25,9 @@ function DeportistasBrand (){
 return(
 
     <div >
-        <div className="nav-top">
+      {/*   <div className="nav-top">
             <button className='btn-red-c'> <i class="icon ion-md-power"></i></button>
-        </div>
+        </div> */}
 
         <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-tennisball"></i> DEPORTISTAS </h1>
         <hr/>

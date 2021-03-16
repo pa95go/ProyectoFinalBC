@@ -26,12 +26,12 @@ function PerfilBrand (){
     return(
     
     <div >
-        <div className="nav-top">
+       {/*  <div className="nav-top">
             
             
             <button className='btn-red-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
            
-        </div>
+        </div> */}
 
 
      <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-person"></i> PERFIL</h1>

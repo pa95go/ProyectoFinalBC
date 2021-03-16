@@ -30,9 +30,14 @@ function TiendaBrand (){
 return(
 
     <div >
-        <div className="nav-top">
+       {/*  <div className="nav-top">
+            
+        <input type="text" className=' mr20-c' name="" id="" placeholder='Email' placeholder="email"    />
+
+                    
+            <button className='btn-red-c  mr20-c'> <i class="icon ion-md-cart"></i></button>
             <button className='btn-red-c'> <i class="icon ion-md-power"></i></button>
-        </div>
+        </div> */}
 
         <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-basket"></i> TIENDA </h1>
         <hr/>

@@ -26,7 +26,7 @@ function MenuPlayer (){
                
                 <div className="sections">
                     <ul>
-                        <li> <NavLink to ="/Inicio" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
+                        <li> <NavLink to ="/" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
                         <li> <NavLink to ="/Perfil" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
                         <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-trophy"></i><span > Eventos</span> </NavLink></li>
                         <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
@@ -39,7 +39,7 @@ function MenuPlayer (){
         <div className="center-p ">
         <div className ='content-p'>
 
-        <Route path="/Inicio" exact component={InicioPlayer} />
+        <Route path="/" exact component={InicioPlayer} />
         <Route path="/Perfil" exact component={PerfilPlayer} />
         <Route path="/Eventos" exact component={LogrosPlayer} />
         <Route path="/Soportes" exact component={SoportesPlayer} />

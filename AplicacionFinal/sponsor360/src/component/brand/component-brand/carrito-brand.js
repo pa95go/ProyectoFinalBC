@@ -2,7 +2,7 @@ import './brand-component.css';
 import {ListMisSoportes} from './soportes-component-brand/ListMisSoportes' 
 import {useState} from 'react';
 
-function SoportesBrand (){
+function CarritoBrand (){
 
   const [soportes, setSoportes]= useState([
     { id: "1", nombre_soporte: "Camiseta delantera", fecha_inicio: "02/03/2020" , fecha_fin: "05/07/2022",tamano: "25cm x60cm",
@@ -31,7 +31,7 @@ return(
             <button className='btn-red-c'> <i class="icon ion-md-power"></i></button>
         </div> */}
 
-        <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-shirt"></i> SOPORTES </h1>
+        <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-cart"></i> CARRITO </h1>
         <hr/>
 
                     <ListMisSoportes soportes = {soportes} setSoportes= {setSoportes}/>
@@ -46,4 +46,4 @@ return(
 );
 }
 
-export {SoportesBrand};
+export {CarritoBrand};

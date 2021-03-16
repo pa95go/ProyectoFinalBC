@@ -2,14 +2,14 @@ import './menu-brand.css';
 import {BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 
+import {InicioBrand} from './component-brand/inicio-brand'
 import {PerfilBrand} from './component-brand/perfil-brand'
 import {SoportesBrand} from './component-brand/soportes-brand'
 import {DeportistasBrand} from './component-brand/deportistas-brand'
 import {TiendaBrand} from './component-brand/tienda-brand'
+import {CarritoBrand} from './component-brand/carrito-brand'
 
-import {InicioPlayer} from '../player/component-player/inicio-player'
 
-import {SoportesPlayer} from '../player/component-player/soportes-player'
 
 
 
@@ -46,12 +46,18 @@ function MenuBrand (){
          <div className="center-b">
      
          <div className="content-b">
- 
-         <Route path="/Inicio" exact component={InicioPlayer} />
+         <div className="nav-top">
+         <NavLink to ="/Carrito"  className="btn-red-c  mr20-c pt3-c"> <i class="icon ion-md-cart pt3-c "></i></NavLink>
+           {/*  <button className='btn-red-c mr20-c'><NavLink to ="/Tienda"> </NavLink>gfd <i class="icon ion-md-cart"></i></button> */}
+            <button className='btn-red-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
+        </div>
+
+         <Route path="/Inicio" exact component={InicioBrand} />
          <Route path="/Perfil" exact component={PerfilBrand} />
          <Route path="/Soportes" exact component={SoportesBrand} />
          <Route path="/Deportistas" exact component={DeportistasBrand} /> 
          <Route path="/Tienda" exact component={TiendaBrand} />
+         <Route path="/Carrito" exact component={CarritoBrand} />
           
         
          </div>
