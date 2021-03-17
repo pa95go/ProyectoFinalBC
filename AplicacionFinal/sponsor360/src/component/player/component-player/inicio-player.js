@@ -8,12 +8,6 @@ function InicioPlayer (){
     return(
     
     <div >
-        <div className="nav-top">
-            
-            
-            <button className='btn-blue-c'> <span> CERRAR SESIÓN </span>  <i class="icon ion-md-exit"></i></button>
-           
-        </div>
 
 
      <h1 className = 'title-c blue-textcolor-c'> <i class="icon ion-md-home"></i> INICIO</h1>

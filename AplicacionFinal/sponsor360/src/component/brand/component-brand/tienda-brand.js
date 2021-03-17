@@ -1,6 +1,6 @@
 import './brand-component.css';
 import {ListAnuncios} from './anuncios-component-brand/ListAnuncios' 
-import {useState} from 'react';
+import {useState, useEffect} from 'react'
 
 function TiendaBrand (){
 
@@ -24,6 +24,9 @@ function TiendaBrand (){
   ]);
 
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
 
 

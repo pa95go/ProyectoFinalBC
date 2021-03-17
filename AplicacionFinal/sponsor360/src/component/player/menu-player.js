@@ -5,6 +5,7 @@ import {PerfilPlayer} from './component-player/perfil-player'
 import {LogrosPlayer} from './component-player/logros-player'
 import {SoportesPlayer} from './component-player/soportes-player'
 import {MarcasPlayer} from './component-player/marcas-player'
+import {ViewBrand} from './component-player/view-brand'
 
 
 function MenuPlayer (){
@@ -26,7 +27,7 @@ function MenuPlayer (){
                
                 <div className="sections">
                     <ul>
-                        <li> <NavLink to ="/" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
+                        <li> <NavLink to ="/Inicio" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
                         <li> <NavLink to ="/Perfil" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
                         <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-trophy"></i><span > Eventos</span> </NavLink></li>
                         <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
@@ -38,12 +39,18 @@ function MenuPlayer (){
        
         <div className="center-p ">
         <div className ='content-p'>
+        
+        <div className="nav-top">
+       
+            <button className='btn-blue-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
+        </div>
 
-        <Route path="/" exact component={InicioPlayer} />
+        <Route path="/Inicio" exact component={InicioPlayer} />
         <Route path="/Perfil" exact component={PerfilPlayer} />
         <Route path="/Eventos" exact component={LogrosPlayer} />
         <Route path="/Soportes" exact component={SoportesPlayer} />
         <Route path="/Marcas" exact component={MarcasPlayer} />
+        <Route path="/brand/user" exact component={ViewBrand} />
          
         </div>
         </div>

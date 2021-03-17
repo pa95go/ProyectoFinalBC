@@ -1,8 +1,10 @@
 import './brand-component.css';
-
+import {useState, useEffect} from 'react'
 
 function InicioBrand (){
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
 
     return(

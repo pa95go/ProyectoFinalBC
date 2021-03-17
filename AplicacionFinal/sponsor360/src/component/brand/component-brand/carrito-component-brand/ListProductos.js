@@ -1,5 +1,5 @@
 import './../brand-component.css';
-import {BrowserRouter, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {useState} from 'react';
 
 
@@ -16,7 +16,7 @@ function ListProductos ({productos, setProductos}){
                         return(
                             <div >
                                 
-                                    <div className="box-c">
+                                    <div className="box-c" >
 
                                     <div className='cw10-c text-vertical-center-c'>
                                        

@@ -1,9 +1,13 @@
 import './brand-component.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react'
 
 function PerfilBrand (){
 
     const [edit, setEdit] = useState(true);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     function handleEdit (e){
         e.preventDefault();

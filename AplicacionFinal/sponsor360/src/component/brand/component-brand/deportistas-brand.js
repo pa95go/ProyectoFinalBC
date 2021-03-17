@@ -1,6 +1,6 @@
 import './brand-component.css';
 import {ListMisDeportistas} from './deportistas-component-brand/ListMisDeportistas' 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function DeportistasBrand (){
 
@@ -20,6 +20,10 @@ function DeportistasBrand (){
         {id: '5', nombre_deportista: "Lucia Perez Cabello", deporte: "Tenis", img_deportista:'https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg' },
 
     ]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
 
 return(

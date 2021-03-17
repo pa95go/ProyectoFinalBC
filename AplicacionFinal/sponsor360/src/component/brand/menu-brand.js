@@ -8,6 +8,7 @@ import {SoportesBrand} from './component-brand/soportes-brand'
 import {DeportistasBrand} from './component-brand/deportistas-brand'
 import {TiendaBrand} from './component-brand/tienda-brand'
 import {CarritoBrand} from './component-brand/carrito-brand'
+import {ViewPlayer} from './component-brand/view-player'
 
 
 
@@ -58,7 +59,7 @@ function MenuBrand (){
          <Route path="/Deportistas" exact component={DeportistasBrand} /> 
          <Route path="/Tienda" exact component={TiendaBrand} />
          <Route path="/Carrito" exact component={CarritoBrand} />
-         <Route path="/player/user" exact component={InicioBrand} />
+         <Route path="/player/user" exact component={ViewPlayer} />
           
         
          </div>
