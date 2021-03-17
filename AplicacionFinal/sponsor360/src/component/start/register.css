@@ -129,6 +129,28 @@
   color: #c04435;
 }
 
+/* gris */
+.btn-black-r{
+  margin-top: 20px;
+  border:none;
+  background-color:  #3337;
+  height: 40px;
+  border-radius: 5px ;
+  color:white;
+  font-family: 'Nunito Sans', sans-serif; 
+  font-size: medium;
+  font-weight:normal;
+  width: 130px;
+}
+.btn-black-r:hover{
+
+  border: #3337 solid 2px;
+  
+  background-color:  white;
+  font-weight: 200;
+  color: #3337;
+}
+
 .box{
     box-sizing: border-box;
     border: #c04435 solid 5px;

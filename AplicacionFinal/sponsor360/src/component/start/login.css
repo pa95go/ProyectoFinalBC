@@ -114,3 +114,23 @@
   background-color:  #1a2079;
   
 }
+.btn-black{
+ 
+  border:none;
+  background-color:  #3337;
+  height: 40px;
+  border-radius: 5px ;
+  color:white;
+  font-family: 'Nunito Sans', sans-serif; 
+  font-size: medium;
+  font-weight:normal;
+  width: 130px;
+}
+.btn-black:hover{
+
+  border: #3337 solid 2px;
+  
+  background-color:  white;
+  font-weight: 200;
+  color: #3337;
+}
