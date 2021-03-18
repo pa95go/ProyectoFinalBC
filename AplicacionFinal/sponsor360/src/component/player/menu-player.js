@@ -27,11 +27,11 @@ function MenuPlayer (){
                
                 <div className="sections">
                     <ul>
-                        <li> <NavLink to ="/Inicio" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
-                        <li> <NavLink to ="/Perfil" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
-                        <li> <NavLink to ="/Eventos" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-trophy"></i><span > Eventos</span> </NavLink></li>
-                        <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
-                        <li> <NavLink to ="/Marcas" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-planet"></i><span > Marcas</span> </NavLink></li>
+                        <li> <NavLink to ="/player/inicio" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
+                        <li> <NavLink to ="/player/perfil" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
+                        <li> <NavLink to ="/player/eventos" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-trophy"></i><span > Eventos</span> </NavLink></li>
+                        <li> <NavLink to ="/player/soportes" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
+                        <li> <NavLink to ="/player/marcas" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-planet"></i><span > Marcas</span> </NavLink></li>
                     </ul>
                 </div>
             </div> 
@@ -45,12 +45,12 @@ function MenuPlayer (){
             <button className='btn-blue-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
-        <Route path="/Inicio" exact component={InicioPlayer} />
-        <Route path="/Perfil" exact component={PerfilPlayer} />
-        <Route path="/Eventos" exact component={LogrosPlayer} />
-        <Route path="/Soportes" exact component={SoportesPlayer} />
-        <Route path="/Marcas" exact component={MarcasPlayer} />
-        <Route path="/brand/user" exact component={ViewBrand} />
+        <Route path="/player/inicio" exact component={InicioPlayer} />
+        <Route path="/player/perfil" exact component={PerfilPlayer} />
+        <Route path="/player/eventos" exact component={LogrosPlayer} />
+        <Route path="/player/soportes" exact component={SoportesPlayer} />
+        <Route path="/player/marcas" exact component={MarcasPlayer} />
+        <Route path="/player/brand/user" exact component={ViewBrand} />
          
         </div>
         </div>

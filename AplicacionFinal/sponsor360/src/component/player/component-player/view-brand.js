@@ -5,23 +5,7 @@ function ViewBrand (){
 
     const [edit, setEdit] = useState(true);
 
-    function handleEdit (e){
-        e.preventDefault();
-        console.log(edit);
-         setEdit(!edit); 
-    }
-
-
-    function handleIcon(edit){ // se supone que cuando crea uno pone una id
-       
-        if(edit === true){
-
-            return "icon ion-md-create";
-        }else{
-            return "icon ion-md-save";
-
-        }
-    }
+   
 
     return(
     
