@@ -1,11 +1,12 @@
 import './login.css';
-import { Redirect } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
-
+import swal from "sweetalert";
 
 function Login (){
-
+    const history = useHistory();
 
     let username;
     let password;
@@ -19,19 +20,28 @@ function Login (){
         console.log(password);
         
     };
-
+    function errorf(error){
+    swal({
+        title: "Email o contraseña incorrecta",
+        text: "Vuelve a introducir los datos.",
+        icon: "error",
+        button: ["si"],
+        timer: "3000"
+    });
+    console.log(error);
+    
+    }
    
 
     function handleLogin(e){
+    
         e.preventDefault();
-
+        
         let credentials ={
             username: username,
             password: password
         }
-  
-    
-
+     
       /* ... FECH ... */
       fetch('http://localhost:8000/login',{
         method: 'POST',
@@ -57,14 +67,22 @@ function Login (){
 
              console.log(decoded.roles);
              
+             if(decoded.roles.includes("ROLE_PLAYER")){
+                 history.push("/player/inicio");
+             }else if(decoded.roles.includes("ROLE_BRAND")){
+                history.push("/brand/inicio");
+             }
              
             }
             )
             .catch(
-                error => console.log('Erorr: ', error) /* Funcion Error mostrar   */
+                
+               error=>  errorf(error)
+               //  error => swal('Erorr: ', error)  /* Funcion Error mostrar   */
+
                 ));
                 
-               /*  <Redirect to={'player/inicio'} />  redireccionar a pagina player o brand */
+             
     };
 
     return(
@@ -72,19 +90,21 @@ function Login (){
     <div className ="login-content"  >
        <div className="logo-l">	&nbsp;</div>
        <div >
-           <div  className="login-form">
+           <form  className="login-form">
            <span className ='txt-l  '>INICIAR SESIÓN</span>
+           
            <input type="email" name="" id="" placeholder ='Email' className=' input-1 marg-2 width-full'  onChange = {(e)=>usernamef(e)}/>
             <input type="password" name="" id="" placeholder='Contraseña' className='input-1  width-full' onChange = {(e)=>passwordf(e)}/> 
             
-            <button  className='btn-l width-full' onClick = {(e)=>handleLogin(e)} >Entrar</button>
             
-
+             <button  className='btn-l width-full' onClick = {(e)=>handleLogin(e)} >Entrar</button> 
+            
+            
             <Link to={'/register'}>
 
            <button className='btn-black '>Registrate</button>
             </Link>
-           </div>
+           </form>
 
 
        </div>

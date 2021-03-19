@@ -17,12 +17,10 @@ function App() {
      
     
         <BrowserRouter>
-      
-
           <Route path="/" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/player/inicio" exact component={MenuPlayer} />
-          <Route path="/brand" exact component={MenuBrand} />
+          <Route path="/brand/inicio" exact component={MenuBrand} />
         </BrowserRouter>
      
     </div> 
