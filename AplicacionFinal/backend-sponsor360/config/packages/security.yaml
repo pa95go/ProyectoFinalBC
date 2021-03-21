@@ -19,7 +19,7 @@ security:
             lazy: true
             provider: app_user_provider
             json_login:
-                check_path: /login
+                check_path: /login #Intentar cambiar la url de inicio si es Player o Brand
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             guard:

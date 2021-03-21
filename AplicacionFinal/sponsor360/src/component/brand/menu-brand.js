@@ -34,11 +34,11 @@ function MenuBrand (){
                 
                  <div className="sections">
                      <ul>
-                         <li> <NavLink to ="/Inicio" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
-                         <li> <NavLink to ="/Perfil" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
-                         <li> <NavLink to ="/Soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
-                         <li> <NavLink to ="/Deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
-                         <li> <NavLink to ="/Tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
+                         <li> <NavLink to ="/brand/inicio" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
+                         <li> <NavLink to ="/brand/perfil" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
+                         <li> <NavLink to ="/brand/soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
+                         <li> <NavLink to ="/brand/deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
+                         <li> <NavLink to ="/brand/tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
                      </ul>
                  </div>
              </div> 
@@ -48,17 +48,17 @@ function MenuBrand (){
      
          <div className="content-b">
          <div className="nav-top">
-         <NavLink to ="/Carrito"  className="btn-red-c  mr20-c pt3-c"> <i class="icon ion-md-cart pt3-c "></i></NavLink>
+         <NavLink to ="/brand/carrito"  className="btn-red-c  mr20-c pt3-c"> <i class="icon ion-md-cart pt3-c "></i></NavLink>
            {/*  <button className='btn-red-c mr20-c'><NavLink to ="/Tienda"> </NavLink>gfd <i class="icon ion-md-cart"></i></button> */}
             <button className='btn-red-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
-         <Route path="/Inicio" exact component={InicioBrand} />
-         <Route path="/Perfil" exact component={PerfilBrand} />
-         <Route path="/Soportes" exact component={SoportesBrand} />
-         <Route path="/Deportistas" exact component={DeportistasBrand} /> 
-         <Route path="/Tienda" exact component={TiendaBrand} />
-         <Route path="/Carrito" exact component={CarritoBrand} />
+         <Route path="/brand/inicio" exact component={InicioBrand} />
+         <Route path="/brand/perfil" exact component={PerfilBrand} />
+         <Route path="/brand/soportes" exact component={SoportesBrand} />
+         <Route path="/brand/deportistas" exact component={DeportistasBrand} /> 
+         <Route path="/brand/tienda" exact component={TiendaBrand} />
+         <Route path="/brand/carrito" exact component={CarritoBrand} />
          <Route path="/player/user" exact component={ViewPlayer} />
           
         
