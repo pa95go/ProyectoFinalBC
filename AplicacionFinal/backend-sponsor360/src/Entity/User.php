@@ -34,6 +34,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Player::class, mappedBy="usuario", cascade={"persist", "remove"})
+     */
+    private $player;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Brand::class, mappedBy="usuario", cascade={"persist", "remove"})
+     */
+    private $brand;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,5 +123,39 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function setPlayer(Player $player): self
+    {
+        // set the owning side of the relation if necessary
+        if ($player->getUsuario() !== $this) {
+            $player->setUsuario($this);
+        }
+
+        $this->player = $player;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(Brand $brand): self
+    {
+        // set the owning side of the relation if necessary
+        if ($brand->getUsuario() !== $this) {
+            $brand->setUsuario($this);
+        }
+
+        $this->brand = $brand;
+
+        return $this;
     }
 }

@@ -45,7 +45,7 @@ function MenuPlayer (){
             <button className='btn-blue-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
-        <Route  exact path="/player/" exact component={InicioPlayer} />
+        <Route  exact path="/player/inicio" exact component={InicioPlayer} />
         <Route path="/player/perfil" exact component={PerfilPlayer} />
         <Route path="/player/eventos" exact component={LogrosPlayer} />
         <Route path="/player/soportes" exact component={SoportesPlayer} />
