@@ -50,9 +50,29 @@ class Brand
      */
     private $misDeportistas;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Soporte::class, mappedBy="brand")
+     */
+    private $soportes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Carrito::class, mappedBy="brand")
+     */
+    private $carritos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MisSoportes::class, mappedBy="brand")
+     */
+    private $misSoportes;
+
+    
+
     public function __construct()
     {
         $this->misDeportistas = new ArrayCollection();
+        $this->soportes = new ArrayCollection();
+        $this->carritos = new ArrayCollection();
+        $this->misSoportes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,4 +169,98 @@ class Brand
 
         return $this;
     }
+
+
+
+    /**
+     * @return Collection|Soporte[]
+     */
+    public function getSoportes(): Collection
+    {
+        return $this->soportes;
+    }
+
+    public function addSoporte(Soporte $soporte): self
+    {
+        if (!$this->soportes->contains($soporte)) {
+            $this->soportes[] = $soporte;
+            $soporte->setBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSoporte(Soporte $soporte): self
+    {
+        if ($this->soportes->removeElement($soporte)) {
+            // set the owning side to null (unless already changed)
+            if ($soporte->getBrand() === $this) {
+                $soporte->setBrand(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Carrito[]
+     */
+    public function getCarritos(): Collection
+    {
+        return $this->carritos;
+    }
+
+    public function addCarrito(Carrito $carrito): self
+    {
+        if (!$this->carritos->contains($carrito)) {
+            $this->carritos[] = $carrito;
+            $carrito->setBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarrito(Carrito $carrito): self
+    {
+        if ($this->carritos->removeElement($carrito)) {
+            // set the owning side to null (unless already changed)
+            if ($carrito->getBrand() === $this) {
+                $carrito->setBrand(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MisSoportes[]
+     */
+    public function getMisSoportes(): Collection
+    {
+        return $this->misSoportes;
+    }
+
+    public function addMisSoporte(MisSoportes $misSoporte): self
+    {
+        if (!$this->misSoportes->contains($misSoporte)) {
+            $this->misSoportes[] = $misSoporte;
+            $misSoporte->setBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMisSoporte(MisSoportes $misSoporte): self
+    {
+        if ($this->misSoportes->removeElement($misSoporte)) {
+            // set the owning side to null (unless already changed)
+            if ($misSoporte->getBrand() === $this) {
+                $misSoporte->setBrand(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

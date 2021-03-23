@@ -19,7 +19,7 @@ function ListMisDeportistas ({deportistas}){
                                     <div >
                                         <h3 className='ctcenter-c m0-c'>{deportista.nombre_deportista.toUpperCase()} </h3>
                                         <h3 className='ctcenter-c text-light m0-c'>{deportista.deporte.toUpperCase()} </h3>
-                                        <Link to={`/player/user`}>
+                                        <Link to={`userplayer`}>
                                         <button className='btn-blue-c text-m text-bold mt10-c w100-c'> ver perfil</button>
                                         </Link>
                                         

@@ -37,5 +37,5 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/player, roles: ROLE_PLAYER }
-         - { path: ^/brand, roles: ROLE_BRAND }
+        # - { path: ^/player, roles: ROLE_PLAYER }
+        # - { path: ^/brand, roles: ROLE_BRAND }

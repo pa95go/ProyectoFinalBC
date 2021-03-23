@@ -10,11 +10,27 @@ import {TiendaBrand} from './component-brand/tienda-brand'
 import {CarritoBrand} from './component-brand/carrito-brand'
 import {ViewPlayer} from './component-brand/view-player'
 
-
+import { useEffect} from 'react';
+import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 
 
 
 function MenuBrand (){
+    const history = useHistory();
+
+    useEffect(()=>{
+        console.log('Effect');
+        console.log(localStorage.getItem('token'));
+        console.log(jwt_decode(localStorage.getItem('token')));
+        const user = jwt_decode(localStorage.getItem('token'));
+        console.log(user.roles);
+        if(!user.roles.includes('ROLE_BRAND') ){
+            console.log("Redirigiendo a Login");
+            history.push("/")
+        }
+
+    });
 
 
 
@@ -34,11 +50,11 @@ function MenuBrand (){
                 
                  <div className="sections">
                      <ul>
-                         <li> <NavLink to ="/brand/inicio" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
-                         <li> <NavLink to ="/brand/perfil" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
-                         <li> <NavLink to ="/brand/soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
-                         <li> <NavLink to ="/brand/deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
-                         <li> <NavLink to ="/brand/tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
+                         <li> <NavLink to ="inicio" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
+                         <li> <NavLink to ="perfil" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-person"></i><span > Perfil</span> </NavLink></li>
+                         <li> <NavLink to ="soportes" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-shirt"></i><span > Soportes</span> </NavLink></li>
+                         <li> <NavLink to ="deportistas" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-tennisball"></i><span > Deportistas</span> </NavLink></li>
+                         <li> <NavLink to ="tienda" activeClassName ="btn-menu-b-active" className="btn-menu-b"><span>&nbsp;</span><i class="icon ion-md-basket"></i><span > Tienda</span> </NavLink></li>
                      </ul>
                  </div>
              </div> 
@@ -49,17 +65,16 @@ function MenuBrand (){
          <div className="content-b">
          <div className="nav-top">
          <NavLink to ="/brand/carrito"  className="btn-red-c  mr20-c pt3-c"> <i class="icon ion-md-cart pt3-c "></i></NavLink>
-           {/*  <button className='btn-red-c mr20-c'><NavLink to ="/Tienda"> </NavLink>gfd <i class="icon ion-md-cart"></i></button> */}
             <button className='btn-red-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
-         <Route path="/brand/inicio" exact component={InicioBrand} />
-         <Route path="/brand/perfil" exact component={PerfilBrand} />
-         <Route path="/brand/soportes" exact component={SoportesBrand} />
-         <Route path="/brand/deportistas" exact component={DeportistasBrand} /> 
-         <Route path="/brand/tienda" exact component={TiendaBrand} />
-         <Route path="/brand/carrito" exact component={CarritoBrand} />
-         <Route path="/player/user" exact component={ViewPlayer} />
+         <Route path="/brand/inicio"  component={InicioBrand} />
+         <Route path="/brand/perfil"  component={PerfilBrand} />
+         <Route path="/brand/soportes"  component={SoportesBrand} />
+         <Route path="/brand/deportistas"  component={DeportistasBrand} /> 
+         <Route path="/brand/tienda"  component={TiendaBrand} />
+         <Route path="/brand/carrito"  component={CarritoBrand} />
+         <Route path="/brand/userplayer"  component={ViewPlayer} />
           
         
          </div>

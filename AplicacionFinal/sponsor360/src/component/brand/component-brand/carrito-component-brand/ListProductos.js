@@ -36,7 +36,7 @@ function ListProductos ({productos, setProductos}){
                                      
                                     <div className="cw30-c">
                                    {/*  <Link to={`/player/user/${producto.id_player}`}> */}
-                                    <Link to={`/player/user`}>
+                                    <Link to={`userplayer`}>
 
                                          <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c"  >
                                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={producto.img_player} /></h2>

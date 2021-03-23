@@ -1,6 +1,6 @@
 
 import './App.css';
-import {BrowserRouter, Route, NavLink } from 'react-router-dom';
+import {Switch, BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 
 import {MenuPlayer} from './component/player/menu-player'
@@ -19,8 +19,8 @@ function App() {
         <BrowserRouter>
           <Route path="/" exact component={Login} />
           <Route path="/register" exact component={Register} />
-          <Route path="/player/inicio" exact component={MenuPlayer} />
-          <Route path="/brand/inicio" exact component={MenuBrand} />
+          <Route path="/player/"  component={MenuPlayer} />
+          <Route path="/brand/"  component={MenuBrand} />
         </BrowserRouter>
      
     </div> 

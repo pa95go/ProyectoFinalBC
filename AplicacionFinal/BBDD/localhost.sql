@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-03-2021 a las 19:54:48
+-- Tiempo de generación: 23-03-2021 a las 20:02:47
 -- Versión del servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versión de PHP: 7.4.3
 
@@ -696,7 +696,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"sponsor360_db\",\"table\":\"brand\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_marcas\"},{\"db\":\"sponsor360_db\",\"table\":\"player\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_deportistas\"},{\"db\":\"sponsor360_db\",\"table\":\"red_social\"},{\"db\":\"sponsor360_db\",\"table\":\"evento\"},{\"db\":\"sponsor360_db\",\"table\":\"user\"},{\"db\":\"phpmyadmin\",\"table\":\"pma__users\"},{\"db\":\"phpmyadmin\",\"table\":\"pma__usergroups\"},{\"db\":\"phpmyadmin\",\"table\":\"pma__userconfig\"}]');
+('root', '[{\"db\":\"sponsor360_db\",\"table\":\"red_social\"},{\"db\":\"sponsor360_db\",\"table\":\"player\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_deportistas\"},{\"db\":\"sponsor360_db\",\"table\":\"soporte\"},{\"db\":\"sponsor360_db\",\"table\":\"user\"},{\"db\":\"sponsor360_db\",\"table\":\"brand\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_soportes\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_marcas\"},{\"db\":\"sponsor360_db\",\"table\":\"evento\"},{\"db\":\"sponsor360_db\",\"table\":\"carrito\"}]');
 
 -- --------------------------------------------------------
 
@@ -803,7 +803,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `config_data`) VALUES
-('root', '{\"Console\\/Mode\":\"show\",\"ThemeDefault\":\"pmahomme\",\"Console\\/Height\":54,\"lang\":\"es\"}');
+('root', '{\"Console\\/Mode\":\"show\",\"ThemeDefault\":\"pmahomme\",\"Console\\/Height\":40,\"lang\":\"es\"}');
 
 -- --------------------------------------------------------
 
@@ -1012,6 +1012,25 @@ CREATE TABLE `brand` (
   `rrss_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `brand`
+--
+
+INSERT INTO `brand` (`id`, `usuario_id`, `nombre`, `imagen`, `descripcion`, `rrss_id`) VALUES
+(2, 2, 'Marca Pablo', NULL, 'Soy la marca de Pablo', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` int NOT NULL,
+  `brand_id` int DEFAULT NULL,
+  `soporte_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -1038,7 +1057,13 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20210322183209', '2021-03-22 19:32:16', 217),
 ('DoctrineMigrations\\Version20210322183424', '2021-03-22 19:34:29', 86),
 ('DoctrineMigrations\\Version20210322184440', '2021-03-22 19:44:45', 377),
-('DoctrineMigrations\\Version20210322185240', '2021-03-22 19:52:46', 276);
+('DoctrineMigrations\\Version20210322185240', '2021-03-22 19:52:46', 276),
+('DoctrineMigrations\\Version20210323091942', '2021-03-23 10:20:07', 339),
+('DoctrineMigrations\\Version20210323093321', '2021-03-23 10:33:27', 783),
+('DoctrineMigrations\\Version20210323101959', '2021-03-23 11:20:05', 346),
+('DoctrineMigrations\\Version20210323102239', '2021-03-23 11:22:46', 298),
+('DoctrineMigrations\\Version20210323102659', '2021-03-23 11:27:06', 212),
+('DoctrineMigrations\\Version20210323105311', '2021-03-23 11:53:17', 297);
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1075,8 @@ CREATE TABLE `evento` (
   `id` int NOT NULL,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
-  `clasificacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `clasificacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `player_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1082,6 +1108,18 @@ CREATE TABLE `mis_marcas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `mis_soportes`
+--
+
+CREATE TABLE `mis_soportes` (
+  `id` int NOT NULL,
+  `brand_id` int DEFAULT NULL,
+  `soporte_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `player`
 --
 
@@ -1096,6 +1134,14 @@ CREATE TABLE `player` (
   `usuario_id` int NOT NULL,
   `rrss_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `player`
+--
+
+INSERT INTO `player` (`id`, `nombre`, `deporte`, `imagen`, `fecha_nacimiento`, `sexo`, `descripcion`, `usuario_id`, `rrss_id`) VALUES
+(1, 'Pablo Gómez Osuna*', 'Tenis', NULL, '2020-05-13', 'Hombre', 'Estoy muy contento de estar aqui', 1, 1),
+(2, 'Pepe Garcia Lorca', 'Badminton', NULL, NULL, 'Hombre', NULL, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -1114,6 +1160,33 @@ CREATE TABLE `red_social` (
   `insta_usuario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `insta_seg` double DEFAULT NULL,
   `insta_eng` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `red_social`
+--
+
+INSERT INTO `red_social` (`id`, `twitter_usuario`, `twitter_seg`, `twitter_eng`, `fb_usuario`, `fb_seg`, `fb_eng`, `insta_usuario`, `insta_seg`, `insta_eng`) VALUES
+(1, '@pablito', 5, 5, '@pablito.fb', 3, 3, '@instapablo', 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `soporte`
+--
+
+CREATE TABLE `soporte` (
+  `id` int NOT NULL,
+  `player_id` int DEFAULT NULL,
+  `brand_id` int DEFAULT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` longtext COLLATE utf8mb4_unicode_ci,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tamano` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `precio` double DEFAULT NULL,
+  `estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1135,7 +1208,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
 (1, 'pablo@player.com', '[\"ROLE_PLAYER\"]', '$argon2id$v=19$m=65536,t=4,p=1$//tSVjnQ49lyJHfUdXbtiw$/lDH6vt2R032EtOw/C8SYN7ZrQxcfTeM9pEDeW1MMb0'),
-(2, 'pablo@brand.com', '[\"ROLE_BRAND\"]', '$argon2id$v=19$m=65536,t=4,p=1$//tSVjnQ49lyJHfUdXbtiw$/lDH6vt2R032EtOw/C8SYN7ZrQxcfTeM9pEDeW1MMb0');
+(2, 'pablo@brand.com', '[\"ROLE_BRAND\"]', '$argon2id$v=19$m=65536,t=4,p=1$//tSVjnQ49lyJHfUdXbtiw$/lDH6vt2R032EtOw/C8SYN7ZrQxcfTeM9pEDeW1MMb0'),
+(3, 'julio@player.com', '[\"ROLE_PLAYER\"]', '$argon2id$v=19$m=65536,t=4,p=1$//tSVjnQ49lyJHfUdXbtiw$/lDH6vt2R032EtOw/C8SYN7ZrQxcfTeM9pEDeW1MMb0');
 
 --
 -- Índices para tablas volcadas
@@ -1150,6 +1224,14 @@ ALTER TABLE `brand`
   ADD UNIQUE KEY `UNIQ_1C52F958FE893BF9` (`rrss_id`);
 
 --
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_77E6BED573C044D2` (`soporte_id`),
+  ADD KEY `IDX_77E6BED544F5D008` (`brand_id`);
+
+--
 -- Indices de la tabla `doctrine_migration_versions`
 --
 ALTER TABLE `doctrine_migration_versions`
@@ -1159,7 +1241,8 @@ ALTER TABLE `doctrine_migration_versions`
 -- Indices de la tabla `evento`
 --
 ALTER TABLE `evento`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_47860B0599E6F5DF` (`player_id`);
 
 --
 -- Indices de la tabla `mis_deportistas`
@@ -1178,6 +1261,14 @@ ALTER TABLE `mis_marcas`
   ADD KEY `IDX_EE64FA1344F5D008` (`brand_id`);
 
 --
+-- Indices de la tabla `mis_soportes`
+--
+ALTER TABLE `mis_soportes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_5A0DE3D573C044D2` (`soporte_id`),
+  ADD KEY `IDX_5A0DE3D544F5D008` (`brand_id`);
+
+--
 -- Indices de la tabla `player`
 --
 ALTER TABLE `player`
@@ -1190,6 +1281,14 @@ ALTER TABLE `player`
 --
 ALTER TABLE `red_social`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `soporte`
+--
+ALTER TABLE `soporte`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_2273AC699E6F5DF` (`player_id`),
+  ADD KEY `IDX_2273AC644F5D008` (`brand_id`);
 
 --
 -- Indices de la tabla `user`
@@ -1206,6 +1305,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `brand`
 --
 ALTER TABLE `brand`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
@@ -1227,22 +1332,34 @@ ALTER TABLE `mis_marcas`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `mis_soportes`
+--
+ALTER TABLE `mis_soportes`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `player`
 --
 ALTER TABLE `player`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `red_social`
 --
 ALTER TABLE `red_social`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `soporte`
+--
+ALTER TABLE `soporte`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -1254,6 +1371,19 @@ ALTER TABLE `user`
 ALTER TABLE `brand`
   ADD CONSTRAINT `FK_1C52F958DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `FK_1C52F958FE893BF9` FOREIGN KEY (`rrss_id`) REFERENCES `red_social` (`id`);
+
+--
+-- Filtros para la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD CONSTRAINT `FK_77E6BED544F5D008` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
+  ADD CONSTRAINT `FK_77E6BED573C044D2` FOREIGN KEY (`soporte_id`) REFERENCES `soporte` (`id`);
+
+--
+-- Filtros para la tabla `evento`
+--
+ALTER TABLE `evento`
+  ADD CONSTRAINT `FK_47860B0599E6F5DF` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`);
 
 --
 -- Filtros para la tabla `mis_deportistas`
@@ -1270,11 +1400,25 @@ ALTER TABLE `mis_marcas`
   ADD CONSTRAINT `FK_EE64FA1399E6F5DF` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`);
 
 --
+-- Filtros para la tabla `mis_soportes`
+--
+ALTER TABLE `mis_soportes`
+  ADD CONSTRAINT `FK_5A0DE3D544F5D008` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
+  ADD CONSTRAINT `FK_5A0DE3D573C044D2` FOREIGN KEY (`soporte_id`) REFERENCES `soporte` (`id`);
+
+--
 -- Filtros para la tabla `player`
 --
 ALTER TABLE `player`
   ADD CONSTRAINT `FK_98197A65DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `FK_98197A65FE893BF9` FOREIGN KEY (`rrss_id`) REFERENCES `red_social` (`id`);
+
+--
+-- Filtros para la tabla `soporte`
+--
+ALTER TABLE `soporte`
+  ADD CONSTRAINT `FK_2273AC644F5D008` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
+  ADD CONSTRAINT `FK_2273AC699E6F5DF` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

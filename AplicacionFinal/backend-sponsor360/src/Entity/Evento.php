@@ -32,6 +32,11 @@ class Evento
      */
     private $clasificacion;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Player::class, inversedBy="eventos")
+     */
+    private $player;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Evento
     public function setClasificacion(string $clasificacion): self
     {
         $this->clasificacion = $clasificacion;
+
+        return $this;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function setPlayer(?Player $player): self
+    {
+        $this->player = $player;
 
         return $this;
     }

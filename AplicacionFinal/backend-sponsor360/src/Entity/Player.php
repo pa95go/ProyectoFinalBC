@@ -65,9 +65,21 @@ class Player
      */
     private $misMarcas;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Soporte::class, mappedBy="player")
+     */
+    private $soportes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evento::class, mappedBy="player")
+     */
+    private $eventos;
+
     public function __construct()
     {
         $this->misMarcas = new ArrayCollection();
+        $this->soportes = new ArrayCollection();
+        $this->eventos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +207,67 @@ class Player
             // set the owning side to null (unless already changed)
             if ($misMarca->getPlayer() === $this) {
                 $misMarca->setPlayer(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Soporte[]
+     */
+    public function getSoportes(): Collection
+    {
+        return $this->soportes;
+    }
+
+    public function addSoporte(Soporte $soporte): self
+    {
+        if (!$this->soportes->contains($soporte)) {
+            $this->soportes[] = $soporte;
+            $soporte->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSoporte(Soporte $soporte): self
+    {
+        if ($this->soportes->removeElement($soporte)) {
+            // set the owning side to null (unless already changed)
+            if ($soporte->getPlayer() === $this) {
+                $soporte->setPlayer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evento[]
+     */
+    public function getEventos(): Collection
+    {
+        return $this->eventos;
+    }
+
+    public function addEvento(Evento $evento): self
+    {
+        if (!$this->eventos->contains($evento)) {
+            $this->eventos[] = $evento;
+            $evento->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvento(Evento $evento): self
+    {
+        if ($this->eventos->removeElement($evento)) {
+            // set the owning side to null (unless already changed)
+            if ($evento->getPlayer() === $this) {
+                $evento->setPlayer(null);
             }
         }
 

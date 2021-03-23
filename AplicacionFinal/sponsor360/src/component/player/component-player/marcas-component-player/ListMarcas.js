@@ -24,7 +24,7 @@ function ListMarcas ({marcas, setMarcas}){
                         
                         <h4 className='  text-light text-vertical-center-c '>{marca.fecha_inicio} - {marca.fecha_fin}</h4>
 
-                        <Link className='text-vertical-center-c' to={`/brand/user`}>
+                        <Link className='text-vertical-center-c' to={`userbrand`}>
                         <button className='btn-red-c text-vertical-center-c '> <i class="icon ion-md-information-circle"></i></button>
                         </Link>
                         

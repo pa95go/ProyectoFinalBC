@@ -28,7 +28,7 @@ function ListAnuncios ({anuncios, setAnuncios}){
                         <h3 className='ctcenter-c0 text-bolder m0-c red-textcolor-c  '><i class="icon ion-md-ca2sh "></i> {anuncio.precio} €/año </h3>
                         </div>
                         <button className='btn-red-c text-m text-bold mt15-c '><span className='text-xl'><i class="icon ion-md-add-circle"></i></span> Añadir</button>
-                        <Link to={`/player/user`}>
+                        <Link to={`userplayer`}>
                         <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c ">
                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={anuncio.img_player} /></h2>
                             <p className='text-vertical-center-c ' >  &nbsp;&nbsp;{ anuncio.nombre_player.toUpperCase()}</p>

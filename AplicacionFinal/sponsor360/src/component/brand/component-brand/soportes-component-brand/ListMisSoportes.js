@@ -29,7 +29,7 @@ function ListMisSoportes ({soportes, setSoportes}){
                                     </div>
                                        
                                     <div className="cw30-c">
-                                    <Link to={`/player/user`}>
+                                    <Link to={`userplayer`}>
                                         <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c">
                                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={soporte.img_player} /></h2>
                                             <p className='text-vertical-center-c ' >  &nbsp;&nbsp; {soporte.nombre_player.toUpperCase()}</p>
