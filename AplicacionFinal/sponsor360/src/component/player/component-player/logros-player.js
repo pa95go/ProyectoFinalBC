@@ -1,6 +1,6 @@
 import './player-component.css';
 import {ListLogros} from './logros-component-player/ListLogros'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 
 function LogrosPlayer (){
@@ -13,12 +13,71 @@ function LogrosPlayer (){
         
     ]);
 
+    const [proximosEventos, setProximosEventos] =useState([{}]);
+
+    let eventosDB =[];
+    useEffect(()=>{
+
+         /* ... FECH ... */
+      fetch('http://localhost:8000/eventos',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+         body: JSON.stringify({
+            idPlayer: localStorage.getItem('idPerfil')
+            
+         }) 
+      })
+      .then( response => response.json()
+      .then(
+          response => {
+           //console.log(response.eventos);
+           //console.log(response.player);
+           //const fecha = new Date(response.player.fecha_nacimiento).toISOString().slice(0, 10);
+          
+       
+            //setProximosEventos( response.eventos);
+           
+         
+                eventosDB =  response.eventos;
+                eventosDB.forEach(evento => {
+                    setProximosEventos(...proximosEventos,
+                        {
+                            nombre: evento.nombre,
+                            fecha: evento.fecha,
+                            estado: evento.estado
+                        } );
+                });
+                
+          
+            
+            //  console.log("perfil");
+            //  console.log(perfil);
+            })
+            .catch(
+               error=> console.log('error Catch', error) 
+      ));
+
+    
+    
+
+
+    },[]);
+
+    console.log('proximos: ' ,proximosEventos);
+
+
+
+
+
     function handleAddLogro(e) {
 
         e.preventDefault();
         
-       setLogros([ {id:logros.length, nombre_logro: "", fecha: "", disabled: false}, ...logros]);
-
+       setLogros([ {id:logros.length, nombre: "", fecha: "", disabled: false}, ...logros]);
+       console.log('kgk' ,eventosDB);
        console.log(logros.length);
     };
 
