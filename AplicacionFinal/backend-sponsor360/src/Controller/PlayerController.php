@@ -18,18 +18,6 @@ class PlayerController extends AbstractController
      */
     public function index( PlayerRepository $repo, UserRepository $repouser, Request $request): Response
     {
-        
-        // $players =[]; // Estoy mostrando todos los player pero depues lo tengo que cambiar para que miestre solo uno
-        // $playerEntitys = $repo->findAll();
-        // foreach($playerEntitys as $playerEntity){
-        //     $reed = $red ->findOneBy(["id"=>1]);
-        //     $player = [];
-        //     $player ["nombre"] = $playerEntity->getNombre();
-        //     $player ['social'] = $reed;
-        //     $players[] = $player;
-        // }
-        
-       // $playerEntity = $repo->find($id);
 
        $jsonData = json_decode($request->getContent());
         $em = $jsonData->email;

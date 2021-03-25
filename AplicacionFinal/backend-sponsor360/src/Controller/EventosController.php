@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Repository\PlayerRepository;
 use App\Repository\EventoRepository;
+use Doctrine\ORM\EntityManagerInterface;
+
+use App\Entity\Evento;
 
 class EventosController extends AbstractController
 {
@@ -43,4 +46,27 @@ class EventosController extends AbstractController
             "eventos" =>($eventos)
             ]);
     }
+
+    /**
+     * @Route("/eventos/add", name="eventos_add")
+     */
+    public function add(EntityManagerInterface $em, PlayerRepository $repo, Request $request ): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+
+        $evento = new Evento();
+        $evento->setNombre($jsonData->nombre);
+        $evento->setFecha(new \DateTime($jsonData->fecha)); 
+        $evento->setClasificacion("aaa");
+        $player= $repo->find($jsonData->player);
+        $evento->setPlayer($player);
+
+        $em->persist($evento);
+        $em->flush();
+        return true;
+    }
+
+
+    
 }
