@@ -14,8 +14,9 @@ function LogrosPlayer (){
     ]);
 
     const [proximosEventos, setProximosEventos] =useState([{}]);
+    const [asistidosEventos, setAsistidosEventos] =useState([{}]);
 
-    let eventosDB =[];
+    
     useEffect(()=>{
 
          /* ... FECH ... */
@@ -38,37 +39,35 @@ function LogrosPlayer (){
            //const fecha = new Date(response.player.fecha_nacimiento).toISOString().slice(0, 10);
           
        
-            //setProximosEventos( response.eventos);
-           
-         
-                eventosDB =  response.eventos;
-                eventosDB.forEach(evento => {
-                    setProximosEventos(...proximosEventos,
-                        {
-                            nombre: evento.nombre,
-                            fecha: evento.fecha,
-                            estado: evento.estado
-                        } );
-                });
-                
-          
-            
-            //  console.log("perfil");
-            //  console.log(perfil);
+            setProximosEventos( response.eventos);
+            //setProximosEventos( response.eventos.splice(0,5));//mostrar solo 5
+              console.log("fech");
+              console.log( response.eventos[1]["estado"]);
+              console.log( response.eventos.length);
+
+
+              for (let index = 0; index < response.eventos.length; index++) {
+                  if(response.eventos[index]["proximo"]){
+                    setProximosEventos( prev => [...prev, response.eventos[index]]);
+                  }else if(response.eventos[index]["asistido"]){
+                      setAsistidosEventos(prev => [...prev, response.eventos[index]])
+                  }
+                  
+              }
+              console.log("prox", asistidosEventos); // SELECCIONAR Y HACE DOS ARRAYS
+
+
+
+
+
             })
             .catch(
                error=> console.log('error Catch', error) 
       ));
-
-    
-    
-
-
     },[]);
 
     console.log('proximos: ' ,proximosEventos);
-
-
+    
 
 
 
@@ -77,7 +76,7 @@ function LogrosPlayer (){
         e.preventDefault();
         
        setLogros([ {id:logros.length, nombre: "", fecha: "", disabled: false}, ...logros]);
-       console.log('kgk' ,eventosDB);
+       console.log('kgk' ,proximosEventos);
        console.log(logros.length);
     };
 
@@ -97,7 +96,7 @@ function LogrosPlayer (){
 
          <button className='btn-blue-c d-rigth margin-add-c' onClick={handleAddLogro} ><i class="icon ion-md-add-circle"></i></button>
          </div>
-            <ListLogros logros = {logros} setLogros ={setLogros}/> 
+            <ListLogros logros = {proximosEventos} setLogros ={setProximosEventos}/> 
     </div>
 
     <div className="card-c cblue-c cw1-c ">
@@ -106,7 +105,7 @@ function LogrosPlayer (){
 
          <button className='btn-blue-c d-rigth margin-add-c' onClick={handleAddLogro} ><i class="icon ion-md-add-circle"></i></button>
          </div>
-            <ListLogros logros = {logros} setLogros ={setLogros}/> 
+         {/*    <ListLogros logros = {logros} setLogros ={setLogros}/>  */}
     </div>
 
 

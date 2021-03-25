@@ -27,12 +27,16 @@ class EventosController extends AbstractController
 
         $eventos =[]; 
         $eventoEntitys = $repoEvento->findByPlayer($idPlayer);
+        $index = 0;
         foreach($eventoEntitys as $eventoEntity){
             $evento = [];
+            $evento ["id"] = $index;
             $evento ["nombre"] = $eventoEntity->getNombre();
             $evento ['fecha'] = $eventoEntity->getFecha();
             $evento ['estado'] = $eventoEntity->getClasificacion();
+            $evento ['disabled'] = true;
             $eventos[] = $evento;
+            $index++;
         }
 
         return $this->json([
