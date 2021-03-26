@@ -2,77 +2,12 @@ import './../player-component.css';
 import {useState, useEffect} from 'react';
 
 
-function ListLogros ({logros, setLogros}){
+function ListLogros ({logros, setLogros, todosEventos}){
 
-/* const [datos, setDatos] = useState([{}]); */
 
 const clasebut ="icon ion-md-create";
 
 
-    const datosArray =[{}];
-    const nombreArray =[{}];
-    const fechaArray =[];
-
-    function handleDisable  (e, id) { 
-       
-        e.preventDefault();
-        const newLogro = logros.map((logro)=>{
-
-            if(logro.id === id ){
-
-                if(logro.disabled === false){
-
-                    console.log('Prueba react *********************');
-
-                    const array =[1,2,3,4];
-                    console.log(array);
-                     array.splice(2, 1, 'Feb');
-                    console.log(array.indexOf('Feb'));
-
-                    console.log('Prueba react *********************');
-                    console.log(datosArray);
-                    console.log( nombreArray);
-                    
-                    console.log("GUARDADO" )
-                    console.log(e.value)
-                    setLogros([...logros, {id:logro.id, nombre: '', fecha: "",estado: "proximo", disabled: false}]);
-                    console.log(logro.id,  localStorage.getItem('idPerfil') )
-                    const datos= {
-                        nombre: logro.nombre,
-                        fecha: logro.fecha,
-                        clasificacion: logro.estado,
-                        player: localStorage.getItem('idPerfil')
-                    }
-
-                     /* ... FECH ... */
-                    fetch('http://localhost:8000/eventos/add',{
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                        'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(datos)
-                    })
-                    .then( response => response.json() )
-                    .then( response => {})
-                    .catch(
-                            error=>  console.log(error)
-                            //  error => swal('Erorr: ', error)  /* Funcion Error mostrar   */
-                    );
-
-                }
-                return{
-                    ...logro,
-                    disabled: !logro.disabled,
-                }
-            }
-            // guardar bbdd cuando sea false
-            return logro
-        });
-        ;
-    // guardar bbdd cuando sea false
-        setLogros(newLogro)
-    }
 
 
     function handleIcon(disable){ // se supone que cuando crea uno pone una id
@@ -88,55 +23,135 @@ const clasebut ="icon ion-md-create";
     }
 
 
-    function handleRemove(e, id){
-        e.preventDefault();
-        const newLogros = logros.filter((logro)=> logro.id !== id);
-        setLogros(newLogros);
-        
-        
-    }
-     function handleChange2(e, id, logroId) {
-        
-        console.log(logroId);
-        setLogros([ {
-            id:logroId, 
-            nombre: e.target.value,
-            fecha: logros[logroId].fecha ,
-            estado: logros[logroId].estado,
-            disabled: logros[logroId].disabled
-        }, ...logros]);
-
-    }  
-     function handleChange(e, id, logroId) { // que caundo le pulse a guardar se lo tenemos que enviar al fech
-        /* e.preventDefault();
-        console.log(e.target.value);
-        setNombre(e.target.value); */
-        if(datosArray.includes(logroId)==true){
-            nombreArray.splice(datosArray.indexOf(logroId), 1, e.target.value);
-                console.log("change", logroId);
-        }else{
-            datosArray.push(logroId);
-            nombreArray.push(logroId);
-        }
-
-    } 
-    function fechahandle(e, fecha){
-    const fechalogro = new Date(fecha).toISOString().slice(0, 10);
     
-        return fechalogro; 
-    }
+     
 
 
     return (
         <div>
             {
              logros.map((logro, index)=>{
+
+                function handleRemove(e, id){
+                    e.preventDefault();
+                    const newLogros = logros.filter((logro)=> logro.id !== id);
+                    setLogros(newLogros);
+
+                     /* ... FECH ... */
+                     fetch(`http://localhost:8000/eventos/delete/${id}`,{
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        
+                    })
+                    .then( response => response.json() )
+                    .then( response => {
+                    })
+                    .catch(
+                            error=>  console.log(error)
+                    );
+                    
+                    
+                }
                
+                function fechahandleChange(e, id, logroId){
+                    e.preventDefault();
+
+                    console.log('id es: ',todosEventos);
+                       console.log(e.target.value);
+                       logro.fecha =e.target.value;
+                       if(logro.nombre == ''){
+                        logro.nombre = 'Evento';
+                     }else{
+                         logro.nombre = logro.nombre;
+                         
+                     }
+               }
 
                 const fecha = String(logro.fecha).substr(0,10);
-              
+
+                function handleChange(e, id, logroId){
+                     e.preventDefault();
+                       
+                        logro.nombre =e.target.value;
+                        if(logro.fecha == ''){
+                           logro.fecha = '1900-01-01';
+                        }else{
+                            logro.fecha = logro.fecha;
+                            
+                        }
+                }
                
-                 
+
+                function handleDisable  (e, id) { 
+       
+                    e.preventDefault();todosEventos={todosEventos}
+                    const newLogro = logros.map((logro)=>{
+            
+                        if(logro.id === id ){
+            
+                            if(logro.disabled === false){
+            
+                                if((logro.nombre !== '')||(logro.fecha !=='')){
+
+                                
+
+                                const datos= {
+                                    idlogro: logro.id,
+                                    nombre: logro.nombre,
+                                    fecha: logro.fecha,
+                                    clasificacion: logro.estado,
+                                    player: localStorage.getItem('idPerfil')
+                                }
+                                console.log('datos: ', datos);
+            
+                                 /* ... FECH ... */
+                                fetch('http://localhost:8000/eventos/add',{
+                                    method: 'POST',
+                                    mode: 'cors',
+                                    headers: {
+                                    'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(datos)
+                                })
+                                .then( response => response.json() )
+                                .then( response => {
+                                    //idlogro = response.nuevoid;
+                                    if(!response.Modificado){
+
+                                        const nuevoslogros= logros.slice(0, (logros.length-1));
+                                        setLogros([...nuevoslogros, {id:response.nuevoid, nombre: logro.nombre, fecha: logro.fecha, estado: logro.estado, disabled: true}]);
+                                    }
+                                })
+                                .catch(
+                                        error=>  console.log(error)
+                                        //  error => swal('Erorr: ', error)  /* Funcion Error mostrar   */
+                                );
+                            }
+            
+                            }
+                            return{
+                                ...logro,
+                                disabled: !logro.disabled,
+                            }
+                        }
+                        // guardar bbdd cuando sea false
+                        return logro
+                    });
+                    ;
+                // guardar bbdd cuando sea false
+                    setLogros(newLogro)
+                }
+
+                
+                
+
+
+
+
+
                  return(
                      <div className="box-c">
                         <form action="" className='form-inline '>
@@ -145,7 +160,7 @@ const clasebut ="icon ion-md-create";
                             </div>
             
                             <div className="cw2l-c  ">
-                                <input type="date" name="" id=""   className='ctcenter-c 'key={logro.fecha} defaultValue ={fecha} disabled={logro.disabled} />
+                                <input type="date" name="" id=""   className='ctcenter-c 'key={logro.fecha} defaultValue ={fecha} onChange={(e)=>fechahandleChange(e, index, logro.id)} disabled={logro.disabled} />
                             </div>
             
                             <div className="cw3l-c ">

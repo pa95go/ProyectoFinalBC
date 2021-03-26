@@ -2,7 +2,9 @@ import './../player-component.css';
 import {useState, useEffect} from 'react';
 
 
-function CardSoporte ({soporte, soportes, setSoportes}){
+function CardSoporte ({id, soportes, setSoportes}){
+
+   
 
    
     const [edit, setEdit] = useState(true);
@@ -10,11 +12,11 @@ function CardSoporte ({soporte, soportes, setSoportes}){
     const [dstyle, setDstyle]= useState("mini-banner-black-c");
     const [dicon, setDicon]= useState("icon ion-md-information-circle-outline");
 
-    function Inicializar(soporte) {
+    function Inicializar() {
        
 
-        if(soporte.marca === ""){
-            if(soporte.publicado === true){
+        if(soportes[id].marca === ""){
+            if(soportes[id].estado === true){
                 setDtext ( "Publicado ");
                 setDstyle ( "mini-banner-blue-c");
                 setDicon  ("icon ion-md-eye");
@@ -33,7 +35,7 @@ function CardSoporte ({soporte, soportes, setSoportes}){
                     
              }
         }else{
-            setDtext   (soporte.marca);
+            setDtext   (soportes[id].marca);
             setDstyle  ("mini-banner-red-c");
            setDicon  ("icon ion-md-planet");
         }
@@ -41,7 +43,7 @@ function CardSoporte ({soporte, soportes, setSoportes}){
     }
 
     useEffect(()=>{
-        Inicializar(soporte);
+        Inicializar();
     
     });
 
@@ -50,23 +52,23 @@ function CardSoporte ({soporte, soportes, setSoportes}){
     function handleEdit (e){
         e.preventDefault();
         
-        if(soporte.marca === ''){
+        if(soportes[id].marca === ''){
             setEdit(!edit); 
             
             
             
                 const newSoporte = soportes.map((newsoporte)=>{
-                        if(newsoporte.id === soporte.id ){
+                        if(newsoporte.id === soportes[id].id ){
                             return{
                                 ...newsoporte,
-                                publicado: false,
+                                estado: false,
                             }
                         }
                         return newsoporte
                     
                 });
                 setSoportes(newSoporte)
-                console.log( soporte);
+                
                 
                 
             }
@@ -75,16 +77,16 @@ function CardSoporte ({soporte, soportes, setSoportes}){
 
 
     function handleIcon(edit){ 
-        if(soporte.marca === ''){
+        if(soportes[id].marca == ''){
            
             if(edit === true){
                  
                 return "icon ion-md-create";
             }else{
-                return "icon ion-md-save";
-                
+                    return "icon ion-md-save";
+            
+                }
             }
-        }
     }
    
 
@@ -93,16 +95,16 @@ function CardSoporte ({soporte, soportes, setSoportes}){
         if(edit=== true){ 
             const newSoporte = soportes.map((newsoporte)=>{
 
-                if(newsoporte.id === soporte.id ){
-                    if(soporte.marca === ''){
+                if(newsoporte.id === soportes[id].id ){
+                    if(soportes[id].marca === ''){
                         return{
                             ...newsoporte,
-                            publicado: !newsoporte.publicado,
+                            estado: !newsoporte.estado,
                         }
                     }else{
                         return{
                             ...newsoporte,
-                            publicado: false,
+                            estado: false,
                         }
                     }
                 }
@@ -111,7 +113,7 @@ function CardSoporte ({soporte, soportes, setSoportes}){
             });
         // guardar bbdd cuando sea false
             setSoportes(newSoporte)
-            console.log(soporte);
+            
         }
     }
     
@@ -127,15 +129,15 @@ function CardSoporte ({soporte, soportes, setSoportes}){
         <form action="" >
       <button type='submit' className='btn-black-c d-rigth margin-edit-c ' onClick={(e)=>handleEdit(e)}><i class={handleIcon(edit)} disabled={edit}></i></button> 
         <label for="file-input"  disabled={edit} >
-        <img className='img-profile-black-c' src={soporte.imagen} disabled={edit}  />
+          <img className='img-profile-black-c' src={soportes[id].imagen} disabled={edit}  />  
         </label>
         <input id="file-input" type="file" className='d-none' disabled={edit}  />
 
         
-        <input type="text"  className='text-bold  ctcenter-c ' name="d" id="f" name="nombre" onChange placeholder="escribe tu nombre" value={soporte.nombre_soporte} disabled={edit} />
-        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' value={soporte.descripcion} disabled={edit}  ></textarea>
-        <input type="text"  className=' ' name="d" id="f" name="tamano" onChange placeholder="Temaño del soporte" value={soporte.tamano} disabled={edit} />
-        <input type="number"  className=' ' name="price" id="f" name="precio" onChange placeholder="Precio" value={soporte.precio} disabled={edit} />
+        <input type="text"  className='text-bold  ctcenter-c ' name="d" id="f" name="nombre"  placeholder="escribe tu nombre" value={soportes[id].nombre} disabled={edit} />
+        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' value={soportes[id].descripcion} disabled={edit}  ></textarea>
+        <input type="text"  className=' ' name="d" id="f" name="tamano" onChange placeholder="Tamaño del soporte" value={soportes[id].tamano} disabled={edit} />
+        <input type="number"  className=' ' name="price" id="f" name="precio" onChange placeholder="Precio" value={soportes[id].precio} disabled={edit} />
 
        
         </form>

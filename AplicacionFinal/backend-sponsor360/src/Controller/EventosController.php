@@ -33,7 +33,7 @@ class EventosController extends AbstractController
         $index = 0;
         foreach($eventoEntitys as $eventoEntity){
             $evento = [];
-            $evento ["id"] = $index;
+            $evento ["id"] = $eventoEntity->getId();//$index;
             $evento ["nombre"] = $eventoEntity->getNombre();
             $evento ['fecha'] = $eventoEntity->getFecha();
             $evento ['estado'] = $eventoEntity->getClasificacion();
@@ -50,23 +50,59 @@ class EventosController extends AbstractController
     /**
      * @Route("/eventos/add", name="eventos_add")
      */
-    public function add(EntityManagerInterface $em, PlayerRepository $repo, Request $request ): Response
+    public function add(EntityManagerInterface $em, PlayerRepository $repo, EventoRepository $repoevent, Request $request ): Response
     {
 
         $jsonData = json_decode($request->getContent());
 
-        $evento = new Evento();
-        $evento->setNombre($jsonData->nombre);
-        $evento->setFecha(new \DateTime($jsonData->fecha)); 
-        $evento->setClasificacion("aaa");
-        $player= $repo->find($jsonData->player);
-        $evento->setPlayer($player);
+        $existe = $repoevent->find($jsonData->idlogro);
+        if (is_null($existe) == false) {
 
-        $em->persist($evento);
-        $em->flush();
-        return true;
+         
+            $evento = $repoevent->find($jsonData->idlogro);
+            $evento->setNombre($jsonData->nombre);
+            $evento->setFecha(new \DateTime($jsonData->fecha)) ;
+            $em->persist($evento);
+            $em->flush();
+        return $this->json(["Modificado" =>($jsonData->idlogro)]);
+            
+        }if((is_null($existe) == true)){
+            $evento = new Evento();
+            $evento->setNombre($jsonData->nombre);
+            $evento->setFecha(new \DateTime($jsonData->fecha)); 
+            $evento->setClasificacion($jsonData->clasificacion);
+            $player= $repo->find($jsonData->player);
+            $evento->setPlayer($player);
+    
+            $em->persist($evento);
+            $em->flush();
+
+            //$nuevoId = $repoevent->find($jsonData->idlogro);
+
+            return $this->json(["nuevoid" =>($evento->getId())]);
+        }
+
+
+        
     }
 
+    /**
+     * @Route("/eventos/delete/{id}", name="eventos_delete")
+     */
+    public function delete($id, EntityManagerInterface $emi, EventoRepository $repoevent, Request $request ): Response
+    {
+
+
+
+        $evento = $repoevent->find($id);
+
+        $emi->remove($evento);
+        $emi->flush();
+       
+        return $this->json(["Eliminado " =>($id)]);
+    }
+
+    
 
     
 }
