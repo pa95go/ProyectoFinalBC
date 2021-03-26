@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-03-2021 a las 20:02:47
+-- Tiempo de generación: 26-03-2021 a las 18:13:01
 -- Versión del servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versión de PHP: 7.4.3
 
@@ -696,7 +696,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"sponsor360_db\",\"table\":\"red_social\"},{\"db\":\"sponsor360_db\",\"table\":\"player\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_deportistas\"},{\"db\":\"sponsor360_db\",\"table\":\"soporte\"},{\"db\":\"sponsor360_db\",\"table\":\"user\"},{\"db\":\"sponsor360_db\",\"table\":\"brand\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_soportes\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_marcas\"},{\"db\":\"sponsor360_db\",\"table\":\"evento\"},{\"db\":\"sponsor360_db\",\"table\":\"carrito\"}]');
+('root', '[{\"db\":\"sponsor360_db\",\"table\":\"soporte\"},{\"db\":\"sponsor360_db\",\"table\":\"evento\"},{\"db\":\"sponsor360_db\",\"table\":\"player\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_soportes\"},{\"db\":\"sponsor360_db\",\"table\":\"carrito\"},{\"db\":\"sponsor360_db\",\"table\":\"user\"},{\"db\":\"sponsor360_db\",\"table\":\"red_social\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_deportistas\"},{\"db\":\"sponsor360_db\",\"table\":\"brand\"},{\"db\":\"sponsor360_db\",\"table\":\"mis_marcas\"}]');
 
 -- --------------------------------------------------------
 
@@ -1079,6 +1079,20 @@ CREATE TABLE `evento` (
   `player_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `evento`
+--
+
+INSERT INTO `evento` (`id`, `nombre`, `fecha`, `clasificacion`, `player_id`) VALUES
+(182, 'carrera 1', '1900-01-01', 'proximo', 1),
+(191, 'Carrera 3', '1900-01-01', 'proximo', 1),
+(192, 'carrera 4', '1900-01-01', 'asistido', 1),
+(193, 'Carrerita de julillo', '1900-01-01', 'proximo', 2),
+(194, 'Jauja', '1900-01-01', 'asistido', 2),
+(195, 'noseque', '1900-01-01', 'proximo', 2),
+(197, 'holass', '1900-01-01', 'proximo', 1),
+(198, 'ddddd', '1900-01-01', 'proximo', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1140,8 +1154,9 @@ CREATE TABLE `player` (
 --
 
 INSERT INTO `player` (`id`, `nombre`, `deporte`, `imagen`, `fecha_nacimiento`, `sexo`, `descripcion`, `usuario_id`, `rrss_id`) VALUES
-(1, 'Pablo Gómez Osuna*', 'Tenis', NULL, '2020-05-13', 'Hombre', 'Estoy muy contento de estar aqui', 1, 1),
-(2, 'Pepe Garcia Lorca', 'Badminton', NULL, NULL, 'Hombre', NULL, 3, NULL);
+(1, 'Pablo Gómez Osuna', 'Tenis', NULL, '2020-05-13', 'Hombre', 'Estoy muy contento de estar aqui', 1, 1),
+(2, 'Pepe Garcia Lorca', 'Badminton', NULL, NULL, 'Hombre', NULL, 3, NULL),
+(5, 'ewwerwe', 'rweeeee', NULL, NULL, 'xcsasa', NULL, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -1188,6 +1203,16 @@ CREATE TABLE `soporte` (
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `soporte`
+--
+
+INSERT INTO `soporte` (`id`, `player_id`, `brand_id`, `nombre`, `descripcion`, `imagen`, `tamano`, `precio`, `estado`, `fecha_inicio`, `fecha_fin`) VALUES
+(149, 1, NULL, NULL, NULL, 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg', NULL, 0, 'false', NULL, NULL),
+(150, 1, NULL, NULL, NULL, 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg', NULL, 0, 'false', NULL, NULL),
+(151, 1, NULL, NULL, NULL, 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg', NULL, 0, 'false', NULL, NULL),
+(152, 1, NULL, NULL, NULL, 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg', NULL, 0, 'false', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1317,7 +1342,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT de la tabla `mis_deportistas`
@@ -1341,7 +1366,7 @@ ALTER TABLE `mis_soportes`
 -- AUTO_INCREMENT de la tabla `player`
 --
 ALTER TABLE `player`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `red_social`
@@ -1353,7 +1378,7 @@ ALTER TABLE `red_social`
 -- AUTO_INCREMENT de la tabla `soporte`
 --
 ALTER TABLE `soporte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
