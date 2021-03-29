@@ -94,16 +94,7 @@ class SoportesController extends AbstractController
     {
 
        
-        // for ($i=0; $i < 4; $i++) { 
-        //     $soporte = new Soporte;
-        // $soporte->setPlayer($repoPlayer->find($id));
-        // $soporte->setEstado('false');
-        // $soporte->setImagen('https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg');
-        // $soporte->setPrecio(0);
-
-        // $em->persist($soporte);
-        // $em->flush();
-        // }
+       
         $jsonData = json_decode($request->getContent());
         $soporte = $repoSop->find($jsonData->id);
         $soporte->setNombre($jsonData->nombre);

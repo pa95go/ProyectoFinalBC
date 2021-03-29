@@ -19,23 +19,7 @@ function PerfilPlayer (){
         }
     );
 
-    
- /* const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
-    const [deporte, setDeporte] = useState("");
-    const [fechaNacimiento, setFechaNacimiento] = useState("");
-    const [sexo, setSexo] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [imagen, setImagen] = useState("");
-    const [twitter, setTwitter] = useState("No tiene");
-    const [twitterSeg, setTwitterSeg] = useState("0");
-    const [twitterEng, setTwitterEng] = useState("0");
-    const [facebook, setFacebook] = useState("No tiene");
-    const [facebookSeg, setFacebookSeg] = useState("0");
-    const [facebookEng, setFacebookEng] = useState("0");
-    const [instagram, setInstagram] = useState("No tiene");
-    const [instagramSeg, setInstagramSeg] = useState("0");
-    const [instagramEng, setInstagramEng] = useState("0"); */
+
     
 
     useEffect(()=>{
@@ -57,8 +41,7 @@ function PerfilPlayer (){
       .then( response => response.json()
       .then(
           response => {
-           //console.log(response.player.rrss.twitterSeg);
-           //console.log(response.player);
+          
            const fecha = new Date(response.player.fecha_nacimiento).toISOString().slice(0, 10);
           
             setPerfil({

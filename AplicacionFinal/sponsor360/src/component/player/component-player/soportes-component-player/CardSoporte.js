@@ -139,10 +139,8 @@ function CardSoporte ({id, soportes, setSoportes}){
 
                 if(newsoporte.id === soportes[id].id ){
                     if(soportes[id].marca === ''){
-                        console.log('publico',newsoporte.estado);
-
                     
-                        if (newsoporte.estado== 'true') {
+                        if (newsoporte.estado== true) {
 
                             /* ... FECH ... */
                     fetch('http://localhost:8000/soportes/edit',{
