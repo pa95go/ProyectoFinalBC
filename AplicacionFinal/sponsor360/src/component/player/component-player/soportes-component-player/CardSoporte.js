@@ -4,13 +4,18 @@ import {useState, useEffect} from 'react';
 
 function CardSoporte ({id, soportes, setSoportes}){
 
-   
-
-   
+      
     const [edit, setEdit] = useState(true);
     const [dtext, setDtext]= useState("Disponible");
     const [dstyle, setDstyle]= useState("mini-banner-black-c");
     const [dicon, setDicon]= useState("icon ion-md-information-circle-outline");
+
+    // const [edit, setEdit] = useState('');
+    // const [edit, setEdit] = useState('');
+    // const [edit, setEdit] = useState('');
+    // const [edit, setEdit] = useState('');
+    // const [edit, setEdit] = useState('');
+
 
     function Inicializar() {
        
@@ -43,6 +48,7 @@ function CardSoporte ({id, soportes, setSoportes}){
     }
 
     useEffect(()=>{
+       
         Inicializar();
     
     });
@@ -55,6 +61,43 @@ function CardSoporte ({id, soportes, setSoportes}){
         if(soportes[id].marca === ''){
             setEdit(!edit); 
             
+            if(edit === false){
+                
+                console.log("Guardo", soportes[id].id);
+
+                /* ... FECH ... */
+                fetch('http://localhost:8000/soportes/edit',{
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: soportes[id].id,
+                        nombre: soportes[id].nombre ,
+                        imagen: soportes[id].imagen ,
+                        descripcion: soportes[id].descripcion,
+                        tamano: soportes[id].tamano,
+                        precio: soportes[id].precio,
+                        estado: 'false' // hacer en cada on change un set al soporte
+
+                        
+                    }) 
+                })
+                .then( response => response.json()
+                .then(
+                    response => {
+
+                        })
+                        .catch(
+                        error=> console.log(error) 
+                ));
+
+               
+
+            } 
+            
+
             
             
                 const newSoporte = soportes.map((newsoporte)=>{
@@ -67,10 +110,9 @@ function CardSoporte ({id, soportes, setSoportes}){
                         return newsoporte
                     
                 });
+                
                 setSoportes(newSoporte)
-                
-                
-                
+    
             }
         
     }
@@ -97,6 +139,59 @@ function CardSoporte ({id, soportes, setSoportes}){
 
                 if(newsoporte.id === soportes[id].id ){
                     if(soportes[id].marca === ''){
+                        console.log('publico',newsoporte.estado);
+
+                    
+                        if (newsoporte.estado== 'true') {
+
+                            /* ... FECH ... */
+                    fetch('http://localhost:8000/soportes/edit',{
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: soportes[id].id,
+                            nombre: soportes[id].nombre ,
+                            imagen: soportes[id].imagen ,
+                            descripcion: soportes[id].descripcion,
+                            tamano: soportes[id].tamano,
+                            precio: soportes[id].precio,
+                            estado:  'false'
+    
+                        }) 
+                    })
+                    .then( response => response.json()
+                    .then().catch(error=> console.log(error) ));
+                
+                }else if (newsoporte.estado == false){
+
+                            /* ... FECH ... */
+                            fetch('http://localhost:8000/soportes/edit',{
+                                method: 'POST',
+                                mode: 'cors',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    id: soportes[id].id,
+                                    nombre: soportes[id].nombre ,
+                                    imagen: soportes[id].imagen ,
+                                    descripcion: soportes[id].descripcion,
+                                    tamano: soportes[id].tamano,
+                                    precio: soportes[id].precio,
+                                    estado:  'true'
+            
+                                }) 
+                            })
+                            .then( response => response.json()
+                            .then().catch(error=> console.log(error) ));
+
+                }
+
+
+
                         return{
                             ...newsoporte,
                             estado: !newsoporte.estado,
@@ -117,7 +212,98 @@ function CardSoporte ({id, soportes, setSoportes}){
         }
     }
     
-      
+    function handleNombre(e){
+        e.preventDefault();
+
+        const newSoporte = soportes.map((newsoporte)=>{
+
+            if(newsoporte.id === soportes[id].id ){
+                return{
+                    ...newsoporte,
+                    nombre: e.target.value,
+                }
+            }else{
+                return newsoporte
+            }
+           
+        });
+
+        setSoportes(newSoporte);
+    };
+
+    function handleImagen(e){
+        e.preventDefault();
+
+        const newSoporte = soportes.map((newsoporte)=>{
+
+            if(newsoporte.id === soportes[id].id ){
+                return{
+                    ...newsoporte,
+                    imagen: e.target.value,
+                }
+            }else{
+                return newsoporte
+            }
+           
+        });
+
+        setSoportes(newSoporte);
+    };
+
+    function handleDescripcion(e){
+        e.preventDefault();
+
+        const newSoporte = soportes.map((newsoporte)=>{
+
+            if(newsoporte.id === soportes[id].id ){
+                return{
+                    ...newsoporte,
+                    descripcion: e.target.value,
+                }
+            }else{
+                return newsoporte
+            }
+           
+        });
+
+        setSoportes(newSoporte);
+    };
+    function handleTamano(e){
+        e.preventDefault();
+
+        const newSoporte = soportes.map((newsoporte)=>{
+
+            if(newsoporte.id === soportes[id].id ){
+                return{
+                    ...newsoporte,
+                    tamano: e.target.value,
+                }
+            }else{
+                return newsoporte
+            }
+           
+        });
+
+        setSoportes(newSoporte);
+    };
+    function handlePrecio(e){
+        e.preventDefault();
+
+        const newSoporte = soportes.map((newsoporte)=>{
+
+            if(newsoporte.id === soportes[id].id ){
+                return{
+                    ...newsoporte,
+                    precio: e.target.value,
+                }
+            }else{
+                return newsoporte
+            }
+           
+        });
+
+        setSoportes(newSoporte);
+    }
     
   
 
@@ -131,13 +317,13 @@ function CardSoporte ({id, soportes, setSoportes}){
         <label for="file-input"  disabled={edit} >
           <img className='img-profile-black-c' src={soportes[id].imagen} disabled={edit}  />  
         </label>
-        <input id="file-input" type="file" className='d-none' disabled={edit}  />
+        <input id="file-input" type="file" className='d-none' onChange={(e)=>handleImagen(e)} disabled={edit}  />
 
         
-        <input type="text"  className='text-bold  ctcenter-c ' name="d" id="f" name="nombre"  placeholder="escribe tu nombre" value={soportes[id].nombre} disabled={edit} />
-        <textarea name="Descripcion" className='text-s' id="" placeholder='Descripción' value={soportes[id].descripcion} disabled={edit}  ></textarea>
-        <input type="text"  className=' ' name="d" id="f" name="tamano" onChange placeholder="Tamaño del soporte" value={soportes[id].tamano} disabled={edit} />
-        <input type="number"  className=' ' name="price" id="f" name="precio" onChange placeholder="Precio" value={soportes[id].precio} disabled={edit} />
+        <input type="text"  className='text-bold  ctcenter-c '  id="nombre" name="nombre"  placeholder="Titulo del soporte" onChange={(e)=>handleNombre(e)} defaultValue={soportes[id].nombre} disabled={edit} />
+        <textarea  className='text-s' name="descripcion" id="descripcion" placeholder='Descripción' defaultValue={soportes[id].descripcion} onChange={(e)=>handleDescripcion(e)} disabled={edit}  ></textarea>
+        <input type="text"  className=' '  id="tamano" name="tamano"  placeholder="Tamaño del soporte" defaultValue={soportes[id].tamano} onChange={(e)=>handleTamano(e)} disabled={edit} />
+        <input type="number"  className=' ' id="precio" name="precio"  placeholder="Precio" defaultValue={soportes[id].precio} onChange={(e)=>handlePrecio(e)} disabled={edit} />
 
        
         </form>

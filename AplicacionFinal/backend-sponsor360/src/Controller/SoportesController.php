@@ -13,19 +13,21 @@ use App\Repository\PlayerRepository;
 use App\Repository\BrandRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Soporte;
+use App\Entity\User;
 use App\Entity\Player;
+use App\Entity\Brand;
 
 class SoportesController extends AbstractController
 {
     /**
-     * @Route("/soportes", name="soportes")
+     * @Route("/soportes/show/{id}", name="soportes_show")
      */
-    public function index(SoporteRepository $repoSop): Response
+    public function index($id,  SoporteRepository $repoSop,PlayerRepository $repoPlayer,BrandRepository $repoBrand, EntityManagerInterface $em,  Request $request): Response
     {
 
 
         $soportes =[]; 
-        $soporteEntitys = $repoSop->findByPlayer(1);
+        $soporteEntitys = $repoSop->findByPlayer($id);
         foreach($soporteEntitys as $soporteEntity){
             $soporte = [];
             $soporte ["id"] = $soporteEntity->getId();//$index;
@@ -35,44 +37,89 @@ class SoportesController extends AbstractController
             $soporte ['tamano'] = $soporteEntity->getTamano();
             $soporte ['precio'] = $soporteEntity->getPrecio();
             $soporte ['estado'] = $soporteEntity->getEstado()  === 'true' ? true: false;
-            // $soporte ['fechaInicio'] = $soporteEntity->getFechaInicio();
-            // $soporte ['fechaFin'] = $soporteEntity->getFechaFin();
-            $soporte ['marca'] = '';
-            // $soporte ['marca'] = $soporteEntity->getBrand();
+         
+            $soporte ['marca'] = $soporteEntity->getBrand() === null ? '': $soporteEntity->getBrand()->getNombre(); 
             $soportes[] = $soporte;
             
         }
         
+        if ($soportes !== []) {
+            return $this->json([
+                "soportes" => $soportes
+                ]);
+
+        }else{
+           
+            $soportes =[];
+               /*  $soportes = ['nada']; */
+                for ($i=0; $i < 4; $i++)  {
+                    $soportenew = new Soporte;
+                    $soportenew->setPlayer($repoPlayer->find($id));
+                    $soportenew->setEstado('false');
+                    $soportenew->setImagen('https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg');
+                    $soportenew->setPrecio(0);
+            
+                    
+                    $em->persist($soportenew);
+                    $em->flush();
+
+                    
+                   $soport ["id"] = $soportenew->getId();//$index;
+                    $soport ["nombre"] = '';
+                    $soport ['descripcion'] = '';
+                    $soport ['imagen'] = 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg';
+                    $soport ['tamano'] = '';
+                    $soport ['precio'] = 0;
+                    $soport ['estado'] = false;
+                   
+                    $soport ['marca'] = '';
+                    $soportes[] = $soport;
+                    
+
+
+                }
+                
+                return $this->json([
+                    "soportes" => $soportes
+                    ]);
+        }
         
-        return $this->json([
-            "soportes" => $soportes
-            ]);
     }
 
 
     /**
-     * @Route("/soportes/add/{id}", name="soportes_add")
+     * @Route("/soportes/edit", name="soportes_edit")
      */
-    public function add($id, SoporteRepository $repoSop,PlayerRepository $repoPlayer, EntityManagerInterface $em,  Request $request): Response
+    public function edit( SoporteRepository $repoSop,PlayerRepository $repoPlayer, EntityManagerInterface $em,  Request $request): Response
     {
 
        
-        for ($i=0; $i < 4; $i++) { 
-            $soporte = new Soporte;
-        $soporte->setPlayer($repoPlayer->find($id));
-        $soporte->setEstado('false');
-        $soporte->setImagen('https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg');
-        $soporte->setPrecio(0);
+        // for ($i=0; $i < 4; $i++) { 
+        //     $soporte = new Soporte;
+        // $soporte->setPlayer($repoPlayer->find($id));
+        // $soporte->setEstado('false');
+        // $soporte->setImagen('https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg');
+        // $soporte->setPrecio(0);
 
+        // $em->persist($soporte);
+        // $em->flush();
+        // }
+        $jsonData = json_decode($request->getContent());
+        $soporte = $repoSop->find($jsonData->id);
+        $soporte->setNombre($jsonData->nombre);
+        $soporte->setImagen($jsonData->imagen);
+        $soporte->setDescripcion($jsonData->descripcion);
+        $soporte->setTamano($jsonData->tamano);
+        $soporte->setPrecio($jsonData->precio);
+        $soporte->setEstado($jsonData->estado);
         $em->persist($soporte);
-        $em->flush();
-        }
+            $em->flush();
         
 
        
         
         return $this->json([
-            "BD Creada" =>( 'OK')
+            "Modificado el soporte con id: " =>$jsonData->id
             ]);
     }
 }
