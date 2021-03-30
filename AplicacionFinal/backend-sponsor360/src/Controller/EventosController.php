@@ -21,9 +21,7 @@ class EventosController extends AbstractController
      */
     public function index(EventoRepository $repoEvento, Request $request): Response
     {
-        // Cojo el email del Token por request
-         //$jsonData = json_decode($request->getContent());
-         //$idPlayer = 2; 
+   
 
          $jsonData = json_decode($request->getContent());
          $idPlayer = $jsonData->idPlayer;

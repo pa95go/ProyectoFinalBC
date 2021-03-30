@@ -16,6 +16,7 @@ function MenuPlayer (){
     const history = useHistory();
     const [nombre, setNombre ] = useState("")
     const [deporte, setDeporte ] = useState("")
+    const [imagen, setImagen ] = useState("https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg")
 
     useEffect(()=>{
         // console.log('Effect');
@@ -44,10 +45,9 @@ function MenuPlayer (){
       .then( response => response.json()
       .then(
           response => {
-           //console.log(response.player.rrss.twitterSeg);
-           console.log(response.player);
             setNombre(response.player.nombre)
             setDeporte(response.player.deporte)
+            setImagen(response.player.imagen)
             localStorage.setItem('idPerfil', response.player.id );
             //setImagen
             })
@@ -70,7 +70,7 @@ function MenuPlayer (){
         <div className ="menu-content-p"  >
              <span className ='logo-p'></span>
             <div className="panel-p">
-                <img className="image-p" src="https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg" alt=""/>
+                <img className="image-p" src={imagen} alt={nombre}/>
                 <h3 className = 'name'>{nombre.toUpperCase()}</h3>
                 <h5 className='deporte'>{deporte.toUpperCase()}</h5>
                

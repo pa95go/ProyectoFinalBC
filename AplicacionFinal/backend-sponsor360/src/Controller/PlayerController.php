@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlayerRepository;
 use App\Repository\UserRepository;
 use App\Repository\RedSocialRepository;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 class PlayerController extends AbstractController
 {
@@ -21,8 +23,9 @@ class PlayerController extends AbstractController
 
        $jsonData = json_decode($request->getContent());
         $em = $jsonData->email;
+        
 
-       //$em = "pablo@player.com"; // esta variable metersela por post
+       
        $userEntity = $repouser->findOneByEmail($em);
        $email[] =   $userEntity->getId();
 
@@ -32,17 +35,85 @@ class PlayerController extends AbstractController
         $player['nombre'] = $playerEntity->getNombre();
         $player['email'] = $userEntity->getEmail();
         $player['deporte'] = $playerEntity->getDeporte();
-        $player['imagen'] = $playerEntity->getImagen();
-        $player['fecha_nacimiento'] = $playerEntity->getFechaNacimiento();
+        $player['imagen'] = $playerEntity->getImagen() ;
+        $player['fechaNacimiento'] = $playerEntity->getFechaNacimiento()->format('Y-m-d');
         $player['sexo'] = $playerEntity->getSexo();
         $player['descripcion'] = $playerEntity->getDescripcion();
-        $player['rrss'] = $playerEntity->getRrss();
+        $player['twitter'] = $playerEntity->getRrss()->getTwitterUsuario();
+        $player['twitterSeg'] = $playerEntity->getRrss()->getTwitterSeg();
+        $player['twitterEng'] = $playerEntity->getRrss()->getTwitterEng();
+        $player['facebook'] = $playerEntity->getRrss()->getFbUsuario();
+        $player['facebookSeg'] = $playerEntity->getRrss()->getFbSeg();
+        $player['facebookEng'] = $playerEntity->getRrss()->getFbEng();
+        $player['instagram'] = $playerEntity->getRrss()->getInstaUsuario();
+        $player['instagramSeg'] = $playerEntity->getRrss()->getInstaSeg();
+        $player['instagramEng'] = $playerEntity->getRrss()->getInstaEng();
         
 
         return $this->json([
              "player" =>( $player)
              ]);
        
+        
+    }
+
+    /**
+     * @Route("/player/edit", name="player_edit")
+     */
+    public function edit(EntityManagerInterface $em, PlayerRepository $repoPlayer, UserRepository $repoUser, Request $request): Response
+    {
+
+       $jsonData = json_decode($request->getContent());
+
+        $id = $jsonData->id;
+        
+        $newPlayer = $repoPlayer->find($id);
+        $newPlayer->setNombre($jsonData->nombre);
+        $newPlayer->setDeporte($jsonData->deporte);
+        $newPlayer->setImagen($jsonData->imagen) ;
+        $newPlayer->setFechaNacimiento(new \DateTime($jsonData->fechaNacimiento)) ;
+        $newPlayer->setSexo($jsonData->sexo);
+        $newPlayer->setDescripcion($jsonData->descripcion);
+        $newPlayer->getRrss()->setTwitterUsuario($jsonData->twitter);
+        $newPlayer->getRrss()->setTwitterSeg($jsonData->twitterSeg);
+        $newPlayer->getRrss()->setTwitterEng($jsonData->twitterEng);
+        $newPlayer->getRrss()->setFbUsuario($jsonData->facebook);
+        $newPlayer->getRrss()->setFbSeg($jsonData->facebookSeg);
+        $newPlayer->getRrss()->setFbEng($jsonData->facebookEng);
+        $newPlayer->getRrss()->setInstaUsuario($jsonData->instagram);
+        $newPlayer->getRrss()->setInstaSeg($jsonData->instagramSeg);
+        $newPlayer->getRrss()->setInstaEng($jsonData->instagramEng);
+        $em->persist($newPlayer);
+        $em->flush();
+
+       
+
+        $player = [];
+        $playerEntity = $repoPlayer->find($id);
+        $player['id'] = $playerEntity->getId();
+        $player['nombre'] = $playerEntity->getNombre();
+        $player['deporte'] = $playerEntity->getDeporte();
+        $player['email'] = $playerEntity->getUsuario()->getEmail();
+        $player['imagen'] = $playerEntity->getImagen() ;
+        $player['fechaNacimiento'] = $playerEntity->getFechaNacimiento()->format('Y-m-d');
+        $player['sexo'] = $playerEntity->getSexo();
+        $player['descripcion'] = $playerEntity->getDescripcion();
+        $player['twitter'] = $playerEntity->getRrss()->getTwitterUsuario();
+        $player['twitterSeg'] = $playerEntity->getRrss()->getTwitterSeg();
+        $player['twitterEng'] = $playerEntity->getRrss()->getTwitterEng();
+        $player['facebook'] = $playerEntity->getRrss()->getFbUsuario();
+        $player['facebookSeg'] = $playerEntity->getRrss()->getFbSeg();
+        $player['facebookEng'] = $playerEntity->getRrss()->getFbEng();
+        $player['instagram'] = $playerEntity->getRrss()->getInstaUsuario();
+        $player['instagramSeg'] = $playerEntity->getRrss()->getInstaSeg();
+        $player['instagramEng'] = $playerEntity->getRrss()->getInstaEng();
+
+            
+
+        return $this->json([
+             "player" =>( $player)
+             ]);
+        
         
     }
 }
