@@ -18,7 +18,7 @@ function PerfilPlayer (){
             fechaNacimiento: "",
             sexo: "",
             descripcion: "",
-            imagen: "",
+            imagen: [],
             twitter: '',
             twitterSeg: '',
             twitterEng: '',
@@ -74,11 +74,11 @@ function PerfilPlayer (){
         e.preventDefault();
         setEdit(!edit); 
         if (!edit) {
-            console.log("GUARDADO hacer Fech");
-            console.log(perfil);
+            
             setPerfil(perfil)
+            /* FECH IMAGEN con el form Data */
 
-             /* ... FECH ... */
+             /* ... FECH DATOS... */
       fetch('http://localhost:8000/player/edit',{
         method: 'POST',
         mode: 'cors',
@@ -110,11 +110,12 @@ function PerfilPlayer (){
       .then(response => {
         setPerfil(response.player);
         swal({
+            position: 'top-end',
             title: "Actualizando datos",
             text: "Espere un momento por favor.",
-            icon: "success",
+            icon: "info",
             button: ["si"],
-            timer: "1000"
+            timer: "1000",
         }).then(() => {
             history.go(0)
             // history.push("/player/perfil")
@@ -195,8 +196,19 @@ function PerfilPlayer (){
         e.preventDefault();
         const newPerfil = {...perfil,instagram: e.target.value, instagramSeg: Math.round(Math.random()*30000)+100, instagramEng: (Math.round(Math.random()*80)/10)+2 };
         setPerfil(newPerfil);
+        console.log(perfil);
        
     }
+
+    const handleImagen = (e)=> {
+        const newPerfil = {...perfil, imagen: e.target.files[0]};
+        setPerfil(newPerfil);
+        console.log(e.target.files[0]);
+        
+        
+    }
+
+
 
     return(
     
@@ -213,7 +225,7 @@ function PerfilPlayer (){
         <label for="file-input"  >
         <img className='img-profile-blue-c' src={perfil.imagen} disabled={edit}  />
         </label>
-        <input id="file-input" type="file" className='d-none' disabled={edit}  />
+        <input id='file-input' type="file" className='d-none' disabled={edit}  onChange={handleImagen}  />
 
 
         <input type="text"  className='text-bold text-xl ctcenter-c '   placeholder="Nombre y apellidos" onChange={(e)=>handleNombre(e)} defaultValue={perfil.nombre} disabled={edit} />

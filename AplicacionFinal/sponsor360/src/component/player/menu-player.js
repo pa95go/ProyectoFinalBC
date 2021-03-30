@@ -19,14 +19,11 @@ function MenuPlayer (){
     const [imagen, setImagen ] = useState("https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg")
 
     useEffect(()=>{
-        // console.log('Effect');
-        // console.log(localStorage.getItem('token'));
-        //console.log(jwt_decode(localStorage.getItem('token')));
+        
         const user = jwt_decode(localStorage.getItem('token'));
-        //  console.log(user.roles);
-        //  console.log(user.username); // username es el email
+      
         if(!user.roles.includes('ROLE_PLAYER') ){
-            // console.log("Redirigiendo a Login");
+       
             history.push("/")
         }
 

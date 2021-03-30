@@ -70,7 +70,7 @@ class PlayerController extends AbstractController
         $newPlayer = $repoPlayer->find($id);
         $newPlayer->setNombre($jsonData->nombre);
         $newPlayer->setDeporte($jsonData->deporte);
-        $newPlayer->setImagen($jsonData->imagen) ;
+        //$newPlayer->setImagen($jsonData->imagen);
         $newPlayer->setFechaNacimiento(new \DateTime($jsonData->fechaNacimiento)) ;
         $newPlayer->setSexo($jsonData->sexo);
         $newPlayer->setDescripcion($jsonData->descripcion);
@@ -83,6 +83,11 @@ class PlayerController extends AbstractController
         $newPlayer->getRrss()->setInstaUsuario($jsonData->instagram);
         $newPlayer->getRrss()->setInstaSeg($jsonData->instagramSeg);
         $newPlayer->getRrss()->setInstaEng($jsonData->instagramEng);
+        
+         $imagen = $request->files->get('imagen') ;
+         $imagen->move($this->getParameter('imagenesDirectorio'), 'perfil.jpeg') ;
+         $newPlayer->setImagen($imagen);
+
         $em->persist($newPlayer);
         $em->flush();
 
