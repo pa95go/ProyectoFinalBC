@@ -10,6 +10,7 @@ import {ViewBrand} from './component-player/view-brand'
 
 import { useEffect, useState} from 'react';
 import jwt_decode from "jwt-decode";
+import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
 
@@ -43,8 +44,6 @@ function MenuPlayer (){
         },
          body: JSON.stringify({
             email: user.username
-            
-            
          }) 
       })
       .then( response => response.json())
@@ -53,7 +52,6 @@ function MenuPlayer (){
           
             setPerfil(response.player);
             localStorage.setItem('idPerfil', response.player.id);
-            
             
             })
             .catch(
@@ -65,6 +63,35 @@ function MenuPlayer (){
 
     },[]);
 
+    function signOff(e) {
+        e.preventDefault();
+
+        swal({
+          
+            title: "¿Seguro que desea cerrar sesion?",
+            text: "Espere un momento por favor.",
+            icon: "warning",
+            buttons: ['Cancelar', 'Salir'],
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              swal({
+                title: "Cerrando sesión",
+                icon: "info",
+                button: false,
+                timer: "1000",
+              }).then(() => {
+                 localStorage.removeItem("token");
+                localStorage.removeItem("idPerfil");
+                history.push('/')
+            })
+            } 
+          });
+          
+
+        
+        
+    }
   
 
 
@@ -98,7 +125,7 @@ function MenuPlayer (){
         
         <div className="nav-top">
        
-            <button className='btn-blue-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
+            <button className='btn-blue-c'  onClick={(e)=>signOff(e)}><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
        

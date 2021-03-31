@@ -10,7 +10,7 @@ import {TiendaBrand} from './component-brand/tienda-brand'
 import {CarritoBrand} from './component-brand/carrito-brand'
 import {ViewPlayer} from './component-brand/view-player'
 
-import { useEffect} from 'react';
+import {useState,useEffect} from 'react';
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
@@ -18,17 +18,43 @@ import { useHistory } from "react-router-dom";
 
 function MenuBrand (){
     const history = useHistory();
+    const [perfil, setPerfil] = useState(
+        {
+            
+            nombre: "",
+            imagen: [],
+            
+
+        }
+    );
 
     useEffect(()=>{
-        console.log('Effect');
-        console.log(localStorage.getItem('token'));
-        console.log(jwt_decode(localStorage.getItem('token')));
+       
         const user = jwt_decode(localStorage.getItem('token'));
-        console.log(user.roles);
         if(!user.roles.includes('ROLE_BRAND') ){
-            console.log("Redirigiendo a Login");
             history.push("/")
         }
+        
+                  /* ... FECH ... */
+      fetch('http://localhost:8000/brand',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+         body: JSON.stringify({
+            email: user.username
+             
+         }) 
+      })
+      .then( response => response.json())
+      .then(
+          response => {
+          
+            setPerfil(response.brand);
+            localStorage.setItem('idPerfil', response.brand.id);
+            })
+            .catch( error=> console.log(error) );
 
         
 
@@ -48,7 +74,7 @@ function MenuBrand (){
               <div className="panel-b">
            
            <img className="image-b" src="https://www.crazy-stuff.net/crazy-img/content/logos/23-redbull.jpg" alt=""/>
-           <h3 className = 'name'>REPSOL S.L</h3>
+           <h3 className = 'name'>{perfil.nombre.toUpperCase()}</h3>
                 
                  <div className="sections">
                      <ul>

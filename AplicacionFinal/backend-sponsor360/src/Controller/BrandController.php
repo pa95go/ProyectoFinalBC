@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\UserRepository;
 use App\Repository\BrandRepository;
 use App\Repository\SoporteRepository;
+
 
 
 class BrandController extends AbstractController
@@ -15,12 +17,43 @@ class BrandController extends AbstractController
     /**
      * @Route("/brand", name="brand")
      */
-    public function index(): Response
+    public function index(BrandRepository $repoBrand, UserRepository $repoUser, Request $request): Response
     {
-        return $this->render('brand/index.html.twig', [
-            'controller_name' => 'BrandController',
-        ]);
+        $jsonData = json_decode($request->getContent());
+        $em = $jsonData->email;
+
+        //$em= "pablo@brand.com";
+
+        $userEntity = $repoUser->findOneByEmail($em);
+         $email[] =   $userEntity->getId();
+
+        $brandEntity = $repoBrand->findOneByUsuario($email);
+        $brand = [];
+        $imagenPerfil = $brandEntity->getImagen() === null ? 'default/perfil_player.jpeg': $brandEntity->getImagen();
+
+        $brand['id'] = $brandEntity->getId();
+        $brand['nombre'] = $brandEntity->getNombre();
+        $brand['email'] = $userEntity->getEmail();
+        $brand['imagen'] = $request->getSchemeAndHttpHost() ."/images"."/". $imagenPerfil ;
+        $brand['descripcion'] = $brandEntity->getDescripcion();
+        $brand['twitter'] = $brandEntity->getRrss()->getTwitterUsuario();
+        $brand['twitterSeg'] = $brandEntity->getRrss()->getTwitterSeg();
+        $brand['twitterEng'] = $brandEntity->getRrss()->getTwitterEng();
+        $brand['facebook'] = $brandEntity->getRrss()->getFbUsuario();
+        $brand['facebookSeg'] = $brandEntity->getRrss()->getFbSeg();
+        $brand['facebookEng'] = $brandEntity->getRrss()->getFbEng();
+        $brand['instagram'] = $brandEntity->getRrss()->getInstaUsuario();
+        $brand['instagramSeg'] = $brandEntity->getRrss()->getInstaSeg();
+        $brand['instagramEng'] = $brandEntity->getRrss()->getInstaEng();
+
+
+        return $this->json([
+            "brand" =>( $brand)
+            ]);
     }
+
+
+
 
     /**
      * @Route("/brand/showprofile/{id}", name="brand_showprofile")
