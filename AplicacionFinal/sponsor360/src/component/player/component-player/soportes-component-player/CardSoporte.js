@@ -1,20 +1,21 @@
 import './../player-component.css';
 import {useState, useEffect} from 'react';
+import swal from "sweetalert";
+import { useHistory } from "react-router-dom";
 
 
-function CardSoporte ({id, soportes, setSoportes}){
 
-      
-    const [edit, setEdit] = useState(true);
+function CardSoporte ({id, soporteid ,soportes, setSoportes, editar, setEditar}){
+
+    const history = useHistory();
+    //const [edit, setEdit] = useState(true);
     const [dtext, setDtext]= useState("Disponible");
     const [dstyle, setDstyle]= useState("mini-banner-black-c");
     const [dicon, setDicon]= useState("icon ion-md-information-circle-outline");
 
-    // const [edit, setEdit] = useState('');
-    // const [edit, setEdit] = useState('');
-    // const [edit, setEdit] = useState('');
-    // const [edit, setEdit] = useState('');
-    // const [edit, setEdit] = useState('');
+    
+
+    
 
 
     function Inicializar() {
@@ -25,11 +26,20 @@ function CardSoporte ({id, soportes, setSoportes}){
                 setDtext ( "Publicado ");
                 setDstyle ( "mini-banner-blue-c");
                 setDicon  ("icon ion-md-eye");
-                if(edit!== true){
+                if(editar[id]!== true){
                     setDtext ( "Disponible");
                       setDstyle ( "mini-banner-black-c");
                      setDicon ("icon ion-md-eye-off"); 
-                     setEdit(false);  
+
+                     let newEditar = [];
+                     for (let index = 0; index < editar.length; index++) {
+                         if(index== id){
+                            newEditar.push( !editar[index]);
+                        }else{
+                             newEditar.push(editar[index]);
+                         }
+                     }
+                     setEditar(newEditar);  
                 }
         
             }
@@ -57,11 +67,20 @@ function CardSoporte ({id, soportes, setSoportes}){
 
     function handleEdit (e){
         e.preventDefault();
-        
+        console.log("Edit", editar[id], soporteid.id);
         if(soportes[id].marca === ''){
-            setEdit(!edit); 
+            let newEditar = [];
+            for (let index = 0; index < editar.length; index++) {
+                if(index== id){
+                   newEditar.push(!editar[index]);
+               }else{
+                    newEditar.push( editar[index]);
+                }
+            }
+            console.log(newEditar);
+            setEditar(newEditar);
             
-            if(edit === false){
+            if(editar[id] === false){
                 
                 console.log("Guardo", soportes[id].id);
 
@@ -75,13 +94,11 @@ function CardSoporte ({id, soportes, setSoportes}){
                     body: JSON.stringify({
                         id: soportes[id].id,
                         nombre: soportes[id].nombre ,
-                        imagen: soportes[id].imagen ,
+                       // imagen: soportes[id].imagen ,
                         descripcion: soportes[id].descripcion,
                         tamano: soportes[id].tamano,
                         precio: soportes[id].precio,
-                        estado: 'false' // hacer en cada on change un set al soporte
-
-                        
+                        estado: 'false' 
                     }) 
                 })
                 .then( response => response.json()
@@ -92,6 +109,30 @@ function CardSoporte ({id, soportes, setSoportes}){
                         .catch(
                         error=> console.log(error) 
                 ));
+                
+                    /* FECH IMAGEN con el form Data */
+
+                const formDataImagenSop = new FormData();
+                formDataImagenSop.append('imagensoporte', soportes[id].imagen);
+                    /* ... FECH DATOS... */
+                fetch(`http://localhost:8000/soportes/editimagen/${soporteid.id}`,{
+                    method: 'POST',
+                    mode: 'cors',
+                    body:  formDataImagenSop
+                })
+                .then( response => response.json())
+                .then(response =>{
+                    swal({
+                        title: "Actualizando datos",
+                        text: "Espere un momento por favor.",
+                        icon: "info",
+                        button: ["si"],
+                        timer: "1000",
+                    }).then(() => {
+                        history.go(0)
+                    });
+                })
+                .catch (error => console.log(error) );
 
                
 
@@ -118,10 +159,10 @@ function CardSoporte ({id, soportes, setSoportes}){
     }
 
 
-    function handleIcon(edit){ 
+    function handleIcon(edito){ 
         if(soportes[id].marca == ''){
            
-            if(edit === true){
+            if(edito === true){
                  
                 return "icon ion-md-create";
             }else{
@@ -134,7 +175,7 @@ function CardSoporte ({id, soportes, setSoportes}){
 
     function handlePublish(e ){
         e.preventDefault();
-        if(edit=== true){ 
+        if(editar[id]=== true){ 
             const newSoporte = soportes.map((newsoporte)=>{
 
                 if(newsoporte.id === soportes[id].id ){
@@ -232,13 +273,14 @@ function CardSoporte ({id, soportes, setSoportes}){
 
     function handleImagen(e){
         e.preventDefault();
-
+       
+console.log(id);
         const newSoporte = soportes.map((newsoporte)=>{
 
             if(newsoporte.id === soportes[id].id ){
                 return{
                     ...newsoporte,
-                    imagen: e.target.value,
+                    imagen: e.target.files[0],
                 }
             }else{
                 return newsoporte
@@ -303,6 +345,7 @@ function CardSoporte ({id, soportes, setSoportes}){
 
         setSoportes(newSoporte);
     }
+   
     
   
 
@@ -310,19 +353,19 @@ function CardSoporte ({id, soportes, setSoportes}){
     return (
         <div className="card-c cblack-c cw2-c ">
    
-         <div className="banner-black-c" disabled={edit}></div>
+         <div className="banner-black-c" disabled={editar[id]}></div>
         <form action="" >
-      <button type='submit' className='btn-black-c d-rigth margin-edit-c ' onClick={(e)=>handleEdit(e)}><i class={handleIcon(edit)} disabled={edit}></i></button> 
-        <label for="file-input"  disabled={edit} >
-          <img className='img-profile-black-c' src={soportes[id].imagen} disabled={edit}  />  
+      <button type='submit' className='btn-black-c d-rigth margin-edit-c ' onClick={(e)=>handleEdit(e)}><i class={handleIcon(editar[id])} disabled={editar[id]}></i></button> 
+        <label for={`file-input${id}`}  disabled={editar[id]} >
+          <img className='img-profile-black-c' src={soportes[id].imagen} disabled={editar[id]}  />  
         </label>
-        <input id="file-input" type="file" className='d-none' onChange={(e)=>handleImagen(e)} disabled={edit}  />
+        <input id={`file-input${id}`} type="file" className='d-none' onChange={(e)=>handleImagen(e)}  disabled={editar[id]}   />
 
         
-        <input type="text"  className='text-bold  ctcenter-c '  id="nombre" name="nombre"  placeholder="Titulo del soporte" onChange={(e)=>handleNombre(e)} defaultValue={soportes[id].nombre} disabled={edit} />
-        <textarea  className='text-s' name="descripcion" id="descripcion" placeholder='Descripción' defaultValue={soportes[id].descripcion} onChange={(e)=>handleDescripcion(e)} disabled={edit}  ></textarea>
-        <input type="text"  className=' '  id="tamano" name="tamano"  placeholder="Tamaño del soporte" defaultValue={soportes[id].tamano} onChange={(e)=>handleTamano(e)} disabled={edit} />
-        <input type="number"  className=' ' id="precio" name="precio"  placeholder="Precio" defaultValue={soportes[id].precio} onChange={(e)=>handlePrecio(e)} disabled={edit} />
+        <input type="text"  className='text-bold  ctcenter-c '  id="nombre" name="nombre"  placeholder="Titulo del soporte" onChange={(e)=>handleNombre(e)} defaultValue={soportes[id].nombre} disabled={editar[id]} />
+        <textarea  className='text-s' name="descripcion" id="descripcion" placeholder='Descripción' defaultValue={soportes[id].descripcion} onChange={(e)=>handleDescripcion(e)} disabled={editar[id]}  ></textarea>
+        <input type="text"  className=' '  id="tamano" name="tamano"  placeholder="Tamaño del soporte" defaultValue={soportes[id].tamano} onChange={(e)=>handleTamano(e)} disabled={editar[id]} />
+        <input type="number"  className=' ' id="precio" name="precio"  placeholder="Precio" defaultValue={soportes[id].precio} onChange={(e)=>handlePrecio(e)} disabled={editar[id]} />
 
        
         </form>

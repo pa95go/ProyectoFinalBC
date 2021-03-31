@@ -5,15 +5,16 @@ import {useState, useEffect} from 'react';
 function SoportesPlayer (){
       const [soportes, setSoportes ] = useState([
         { id:"0",estado: true, nombre: "", descripcion: "" , tamano:"", precio: "",
-            marca: "",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
+            marca: "",  imagen:[]},
         { id:"1",estado: true, nombre: "", descripcion: "" , tamano:"", precio: "",
-            marca: "",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
+            marca: "",  imagen:[]},
         { id:"3",estado: true, nombre: "", descripcion: "" , tamano:"", precio: "",
-            marca: "",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
+            marca: "",  imagen:[]},
         { id:"4",estado: true, nombre: "", descripcion: "" , tamano:"", precio: "",
-            marca: "",  imagen:"https://image.freepik.com/vector-gratis/pantalon-blanco-delantero_1053-968.jpg"},
+            marca: "",  imagen:[]},
        
     ]);
+    const [editar, setEditar ] = useState([true, true, true, false]);
 
 
 
@@ -60,13 +61,13 @@ function SoportesPlayer (){
      <hr/>
 
      <div className="box-c">
-        <CardSoporte id = {0}  soportes ={soportes} setSoportes ={setSoportes}/>
-        <CardSoporte id = {1} soportes ={soportes} setSoportes ={setSoportes}/>
+        <CardSoporte id = {0} soporteid={soportes[0]} soportes ={soportes} setSoportes ={setSoportes} editar={editar} setEditar={setEditar}/>
+        <CardSoporte id = {1} soporteid={soportes[1]}soportes ={soportes} setSoportes ={setSoportes} editar={editar} setEditar={setEditar}/>
      </div>
 
      <div className="box-c">
-          <CardSoporte id = {2}  soportes ={soportes} setSoportes ={setSoportes}/>
-        <CardSoporte id = {3} soportes ={soportes} setSoportes ={setSoportes}/>  
+          <CardSoporte id = {2} soporteid={soportes[2]}  soportes ={soportes} setSoportes ={setSoportes} editar={editar} setEditar={setEditar}/>
+        <CardSoporte id = {3} soporteid={soportes[3]}  soportes ={soportes} setSoportes ={setSoportes} editar={editar} setEditar={setEditar}/>  
      </div>
 
     </div>

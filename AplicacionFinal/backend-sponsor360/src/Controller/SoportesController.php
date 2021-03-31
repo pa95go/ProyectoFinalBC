@@ -28,16 +28,17 @@ class SoportesController extends AbstractController
 
         $soportes =[]; 
         $soporteEntitys = $repoSop->findByPlayer($id);
+
+        
         foreach($soporteEntitys as $soporteEntity){
             $soporte = [];
             $soporte ["id"] = $soporteEntity->getId();//$index;
             $soporte ["nombre"] = $soporteEntity->getNombre();
             $soporte ['descripcion'] = $soporteEntity->getDescripcion();
-            $soporte ['imagen'] = $soporteEntity->getImagen();
+            $soporte ['imagen'] = $request->getSchemeAndHttpHost() ."/images"."/". $soporteEntity->getImagen();
             $soporte ['tamano'] = $soporteEntity->getTamano();
             $soporte ['precio'] = $soporteEntity->getPrecio();
             $soporte ['estado'] = $soporteEntity->getEstado()  === 'true' ? true: false;
-         
             $soporte ['marca'] = $soporteEntity->getBrand() === null ? '': $soporteEntity->getBrand()->getNombre(); 
             $soportes[] = $soporte;
             
@@ -56,7 +57,7 @@ class SoportesController extends AbstractController
                     $soportenew = new Soporte;
                     $soportenew->setPlayer($repoPlayer->find($id));
                     $soportenew->setEstado('false');
-                    $soportenew->setImagen('https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg');
+                    $soportenew->setImagen('default/soporte.jpeg');
                     $soportenew->setPrecio(0);
             
                     
@@ -67,7 +68,7 @@ class SoportesController extends AbstractController
                    $soport ["id"] = $soportenew->getId();//$index;
                     $soport ["nombre"] = '';
                     $soport ['descripcion'] = '';
-                    $soport ['imagen'] = 'https://i.pinimg.com/736x/01/29/66/012966f0b8950ee8e67fa87f315d8eff.jpg';
+                    $soport ['imagen'] = $request->getSchemeAndHttpHost() ."/images/default/perfil_player.jpeg";
                     $soport ['tamano'] = '';
                     $soport ['precio'] = 0;
                     $soport ['estado'] = false;
@@ -98,7 +99,7 @@ class SoportesController extends AbstractController
         $jsonData = json_decode($request->getContent());
         $soporte = $repoSop->find($jsonData->id);
         $soporte->setNombre($jsonData->nombre);
-        $soporte->setImagen($jsonData->imagen);
+       // $soporte->setImagen($jsonData->imagen);
         $soporte->setDescripcion($jsonData->descripcion);
         $soporte->setTamano($jsonData->tamano);
         $soporte->setPrecio($jsonData->precio);
@@ -117,23 +118,25 @@ class SoportesController extends AbstractController
     /**
      * @Route("/soportes/editimagen/{id}", name="soportes_editimagen")
      */
-    public function editimagen($id, EntityManagerInterface $em, SoportesRepository $repoSop, Request $request): Response
+    public function editimagen($id, EntityManagerInterface $em, SoporteRepository $repoSop, Request $request): Response
     {
 
-        $imagen = $request->files->get('imagen') ;
-        $nombreImg = 'perfil_player'.$id.'.jpeg';
-        $ubicacionImg = $this->getParameter('imagenesDirectorio'). 'player/';
+        $imagen = $request->files->get('imagensoporte') ;
+        $nombreImg = 'soporte_imagen_'.$id.'.jpeg';
+        $ubicacionImg = $this->getParameter('imagenesDirectorio'). 'soportes/';
         $imagen->move($ubicacionImg, $nombreImg) ;
 
-        $newPlayer = $repoPlayer->find($id);
-        $newPlayer->setImagen('player/'.$nombreImg);
+        $newSop = $repoSop->find($id);
+        $newSop->setImagen('soportes/'.$nombreImg);
 
-        $em->persist($newPlayer);
+        $em->persist($newSop);
         $em->flush();
       
             
 
-        return $this->json([]);
+        return $this->json([ $id
+            
+        ]);
         
         
     }
