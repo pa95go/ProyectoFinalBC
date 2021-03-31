@@ -1,12 +1,14 @@
 import './player-component.css';
-import {useState, useEffect} from 'react';
+import {useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 
 function InicioPlayer (){
+    const history = useHistory();
 
-    const [perfil, setPerfil] = useState({ nombre: '', deporte:'', descripcion:'', twitter: '', twitterEng: '',facebook: '',facebookEng: '', instagram: '', instagramEng: '',});
-    const [eventos, setEventos] =useState([{nombre: 'Evento vacío'}, {nombre: 'Evento vacío'},{nombre: 'Evento vacío'}]);
+    const [perfil, setPerfil] = useState({ nombre: '', deporte:'', descripcion:'', twitter: '', twitterEng: '',facebook: '',facebookEng: '', instagram: '', instagramEng: ''});
+    const [eventos, setEventos] =useState([{nombre: 'Evento'}],[ {nombre: 'Evento'}],[{nombre: 'Evento'}],[{nombre: 'Evento'}]);
     const [soportes, setSoportes ] = useState([
         {nombre: "", estado: false},{nombre: "", estado: false},
         {nombre: "", estado: false},{nombre: "", estado: false}
@@ -16,8 +18,8 @@ function InicioPlayer (){
         {nombre: "Disponible", imagen: ""},{nombre: "Disponible", imagen: ""}]);
 
 
+        
     useEffect(()=>{
-
         const user = jwt_decode(localStorage.getItem('token'));
          /* ... FECH PLAYER... */
       fetch('http://localhost:8000/player',{
@@ -35,68 +37,75 @@ function InicioPlayer (){
       .then(
           response => {
             setPerfil(response.player);
+                        /* ... FECH EVENTOS... */
+                    fetch('http://localhost:8000/eventos',{
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            idPlayer: localStorage.getItem('idPerfil')
+                            
+                        }) 
+                    })
+                    .then( response => response.json())
+                    .then( response => {
+                            setEventos( response.eventos.filter(evento => evento['estado']=='proximo'));
+                            })
+                        .catch(error=> console.log('error Catch', error));
+
+                                /* ... FECH SOPORTES ... */
+                    fetch(`http://localhost:8000/soportes/show/${localStorage.getItem('idPerfil')}`,{
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        } 
+                    })
+                    .then( response => response.json())
+                    .then(
+                        response => {
+                            
+                        
+                            setSoportes(response.soportes);
+                        
+
+                            })
+                            .catch( error=> console.log(error));
+
+                /* ... FECH MARCAS... */
+                fetch(`http://localhost:8000/mismarcas/actuales`,{
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    } ,
+                    body: JSON.stringify({
+                    idPerfil: localStorage.getItem('idPerfil')
+                    
+                    
+                    }) 
+                })
+                .then( response => response.json())
+                .then(
+                    response => {
+
+                        setMarcas(response.misMarcasActuales);
+                        
+                        })
+                        .catch(
+                        error=> console.log(error) 
+                );
+
+
             })
             .catch(
                error=> console.log(error) 
       ));
-        /* ... FECH EVENTOS... */
-        fetch('http://localhost:8000/eventos',{
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-             body: JSON.stringify({
-                idPlayer: localStorage.getItem('idPerfil')
-                
-             }) 
-          })
-          .then( response => response.json())
-          .then( response => {
-                setEventos( response.eventos.filter(evento => evento['estado']=='proximo'));
-                })
-            .catch(error=> console.log('error Catch', error));
+        
 
-                /* ... FECH SOPORTES ... */
-        fetch(`http://localhost:8000/soportes/show/${localStorage.getItem('idPerfil')}`,{
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-            'Content-Type': 'application/json'
-            } 
-        })
-        .then( response => response.json())
-        .then(
-            response => {
-                setSoportes(response.soportes);
-                })
-                .catch( error=> console.log(error));
-
-     /* ... FECH MARCAS... */
-     fetch(`http://localhost:8000/mismarcas/actuales`,{
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        } ,
-        body: JSON.stringify({
-           idPerfil: localStorage.getItem('idPerfil')
-           
-           
-        }) 
-      })
-      .then( response => response.json())
-      .then(
-          response => {
-
-              setMarcas(response.misMarcasActuales);
-              
-              
-
-            })
-            .catch(
-               error=> console.log(error) 
-      );
+        
    
 
 
@@ -132,6 +141,16 @@ function InicioPlayer (){
         }
         
     }
+    function eventosList(evento) {
+       
+        if(evento == undefined){
+            return '[Evento vacío]';
+        }else{
+            return evento.nombre;
+        }
+        
+    }
+
 
 
     return(
@@ -156,17 +175,17 @@ function InicioPlayer (){
      </div>
      <div className="box-c">
 
-        <div className="card-c cblue-c cw2-c ">
+         <div className="card-c cblue-c cw2-c ">
             <h1 ><i class="icon ion-md-trophy"></i>  </h1> 
             
-            <p className='ctcenter-c '  >{eventos[eventos.length-1].nombre}</p>
+            <p className='ctcenter-c '  >{eventosList(eventos[0])}</p>
             <hr/>
-            <p className='ctcenter-c ' >{eventos[eventos.length-2].nombre}</p>
+            <p className='ctcenter-c ' >{eventosList(eventos[1])}</p>
             <hr/>
-            <p className='ctcenter-c ' >{eventos[eventos.length-3].nombre}</p>
+            <p className='ctcenter-c ' >{eventosList(eventos[2])}</p>
             <hr/>
           
-     </div>
+        </div> 
         <div className="card-c cblue-c cw2-c ">
             <h1 >@</h1> 
             
@@ -200,22 +219,22 @@ function InicioPlayer (){
         <div className="card-c cblack-c cw2-c ">
             <h1 ><i class="icon ion-md-shirt"></i></h1>
             <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>{soportes[0].nombre == (null||'') ? '[Soporte vacío]': soportes[0].nombre} </p>
+            <p className='ctbold-c '>{soportes[0].nombre === (null) ? '[Soporte vacío]': soportes[0].nombre} </p>
            <h2 className=' text-vertical-center-c'>{soporteStyle(soportes[0])}</h2>
             </div>
             <hr/>
             <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>{soportes[1].nombre == (null||'') ? '[Soporte vacío]': soportes[1].nombre} </p>
+            <p className='ctbold-c '>{soportes[1].nombre === (null) ? '[Soporte vacío]': soportes[1].nombre} </p>
            <h2 className=' text-vertical-center-c'>{soporteStyle(soportes[1])}</h2>
             </div>
             <hr/>
             <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>{soportes[2].nombre == (null||'') ? '[Soporte vacío]': soportes[2].nombre} </p>
+            <p className='ctbold-c '>{soportes[2].nombre === (null) ? '[Soporte vacío]': soportes[2].nombre} </p>
            <h2 className=' text-vertical-center-c'>{soporteStyle(soportes[2])}</h2>
             </div>
             <hr/>
             <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>{soportes[3].nombre == (null||'') ? '[Soporte vacío]': soportes[3].nombre} </p>
+            <p className='ctbold-c '>{soportes[3].nombre === (null) ? '[Soporte vacío]': soportes[3].nombre} </p>
             <h2 className=' text-vertical-center-c'>{soporteStyle(soportes[3])}</h2>
             </div>
            <hr/>

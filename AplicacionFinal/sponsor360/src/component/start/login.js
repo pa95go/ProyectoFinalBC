@@ -68,7 +68,7 @@ function Login (){
              console.log(decoded.roles);
              
              if(decoded.roles.includes("ROLE_PLAYER")){
-                 history.push("/player/inicio");
+                 history.push("/player");
              }else if(decoded.roles.includes("ROLE_BRAND")){
                 history.push("/brand/inicio");
              }

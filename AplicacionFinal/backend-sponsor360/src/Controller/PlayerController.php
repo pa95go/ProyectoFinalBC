@@ -11,6 +11,7 @@ use App\Repository\PlayerRepository;
 use App\Repository\UserRepository;
 use App\Repository\RedSocialRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Player;
 
 
 class PlayerController extends AbstractController
@@ -29,13 +30,16 @@ class PlayerController extends AbstractController
        $userEntity = $repouser->findOneByEmail($em);
        $email[] =   $userEntity->getId();
 
-        $playerEntity = $repo->findOneByUsuario($email);
-        $player = [];
+       
+       $playerEntity = $repo->findOneByUsuario($email);
+       $player = [];
+       $imagenPerfil = $playerEntity->getImagen() === null ? 'default/perfil_player.jpeg': $playerEntity->getImagen();
+
         $player['id'] = $playerEntity->getId();
         $player['nombre'] = $playerEntity->getNombre();
         $player['email'] = $userEntity->getEmail();
         $player['deporte'] = $playerEntity->getDeporte();
-        $player['imagen'] = $playerEntity->getImagen() ;
+        $player['imagen'] = $request->getSchemeAndHttpHost() ."/images"."/". $imagenPerfil  ;
         $player['fechaNacimiento'] = $playerEntity->getFechaNacimiento()->format('Y-m-d');
         $player['sexo'] = $playerEntity->getSexo();
         $player['descripcion'] = $playerEntity->getDescripcion();
@@ -84,22 +88,22 @@ class PlayerController extends AbstractController
         $newPlayer->getRrss()->setInstaSeg($jsonData->instagramSeg);
         $newPlayer->getRrss()->setInstaEng($jsonData->instagramEng);
         
-         $imagen = $request->files->get('imagen') ;
-         $imagen->move($this->getParameter('imagenesDirectorio'), 'perfil.jpeg') ;
-         $newPlayer->setImagen($imagen);
+        
 
         $em->persist($newPlayer);
         $em->flush();
 
-       
-
+        
         $player = [];
         $playerEntity = $repoPlayer->find($id);
+
+        $imagenPerfil = $playerEntity->getImagen() === null ? 'default/perfil_player.jpeg': $playerEntity->getImagen();
+
         $player['id'] = $playerEntity->getId();
         $player['nombre'] = $playerEntity->getNombre();
         $player['deporte'] = $playerEntity->getDeporte();
         $player['email'] = $playerEntity->getUsuario()->getEmail();
-        $player['imagen'] = $playerEntity->getImagen() ;
+        $player['imagen'] =  $request->getSchemeAndHttpHost() ."/images"."/". $imagenPerfil  ;
         $player['fechaNacimiento'] = $playerEntity->getFechaNacimiento()->format('Y-m-d');
         $player['sexo'] = $playerEntity->getSexo();
         $player['descripcion'] = $playerEntity->getDescripcion();
@@ -118,6 +122,29 @@ class PlayerController extends AbstractController
         return $this->json([
              "player" =>( $player)
              ]);
+        
+        
+    }
+    /**
+     * @Route("/player/editimagen/{id}", name="player_editimagen")
+     */
+    public function editimagen($id, EntityManagerInterface $em, PlayerRepository $repoPlayer, Request $request): Response
+    {
+
+        $imagen = $request->files->get('imagen') ;
+        $nombreImg = 'perfil_player'.$id.'.jpeg';
+        $ubicacionImg = $this->getParameter('imagenesDirectorio'). 'player/';
+        $imagen->move($ubicacionImg, $nombreImg) ;
+
+        $newPlayer = $repoPlayer->find($id);
+        $newPlayer->setImagen('player/'.$nombreImg);
+
+        $em->persist($newPlayer);
+        $em->flush();
+      
+            
+
+        return $this->json([]);
         
         
     }

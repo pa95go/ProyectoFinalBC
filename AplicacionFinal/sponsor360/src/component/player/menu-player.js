@@ -1,5 +1,6 @@
 import './menu-player.css';
 import {BrowserRouter, Route, NavLink } from 'react-router-dom';
+import {Player} from './component-player/player'
 import {InicioPlayer} from './component-player/inicio-player'
 import {PerfilPlayer} from './component-player/perfil-player'
 import {LogrosPlayer} from './component-player/logros-player'
@@ -14,9 +15,15 @@ import { useHistory } from "react-router-dom";
 
 function MenuPlayer (){
     const history = useHistory();
-    const [nombre, setNombre ] = useState("")
-    const [deporte, setDeporte ] = useState("")
-    const [imagen, setImagen ] = useState("https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg")
+    const [perfil, setPerfil] = useState(
+        {
+            
+            nombre: "",
+            deporte: "",
+            imagen: [],
+
+        }
+    );
 
     useEffect(()=>{
         
@@ -27,7 +34,7 @@ function MenuPlayer (){
             history.push("/")
         }
 
-         /* ... FECH ... */
+                  /* ... FECH ... */
       fetch('http://localhost:8000/player',{
         method: 'POST',
         mode: 'cors',
@@ -35,27 +42,30 @@ function MenuPlayer (){
           'Content-Type': 'application/json'
         },
          body: JSON.stringify({
-            email: user.username 
+            email: user.username
+            
             
          }) 
       })
-      .then( response => response.json()
+      .then( response => response.json())
       .then(
           response => {
-            setNombre(response.player.nombre)
-            setDeporte(response.player.deporte)
-            setImagen(response.player.imagen)
-            localStorage.setItem('idPerfil', response.player.id );
-            //setImagen
+          
+            setPerfil(response.player);
+            localStorage.setItem('idPerfil', response.player.id);
+            
+            
             })
             .catch(
                 
                error=> console.log(error) 
-      ));
+      );
 
+     
 
+    },[]);
 
-    });
+  
 
 
     return(
@@ -67,10 +77,10 @@ function MenuPlayer (){
         <div className ="menu-content-p"  >
              <span className ='logo-p'></span>
             <div className="panel-p">
-                <img className="image-p" src={imagen} alt={nombre}/>
-                <h3 className = 'name'>{nombre.toUpperCase()}</h3>
-                <h5 className='deporte'>{deporte.toUpperCase()}</h5>
-               
+                <img className="image-p" src={perfil.imagen} alt={perfil.nombre}/>
+                <h3 className = 'name'>{perfil.nombre.toUpperCase()}</h3>
+                <h5 className='deporte'>{perfil.deporte.toUpperCase()}</h5>
+
                 <div className="sections">
                     <ul>
                         <li> <NavLink to ="inicio" activeClassName ="btn-menu-p-active" className="btn-menu-p"><span>&nbsp;</span><i class="icon ion-md-home"></i><span > Inicio</span> </NavLink></li>
@@ -91,6 +101,8 @@ function MenuPlayer (){
             <button className='btn-blue-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
+       
+        <Route path="/player" exact component={Player} />
         <Route path="/player/inicio"  component={InicioPlayer} />
         <Route path="/player/perfil"  component={PerfilPlayer} />
         <Route path="/player/eventos"  component={LogrosPlayer} />

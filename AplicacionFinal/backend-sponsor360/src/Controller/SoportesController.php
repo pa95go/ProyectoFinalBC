@@ -51,7 +51,7 @@ class SoportesController extends AbstractController
         }else{
            
             $soportes =[];
-               /*  $soportes = ['nada']; */
+               
                 for ($i=0; $i < 4; $i++)  {
                     $soportenew = new Soporte;
                     $soportenew->setPlayer($repoPlayer->find($id));
@@ -110,7 +110,31 @@ class SoportesController extends AbstractController
        
         
         return $this->json([
-            "Modificado el soporte con id: " =>$jsonData->id
+            "Modificado el soporte con id: " =>     $jsonData->id
             ]);
+    }
+
+    /**
+     * @Route("/soportes/editimagen/{id}", name="soportes_editimagen")
+     */
+    public function editimagen($id, EntityManagerInterface $em, SoportesRepository $repoSop, Request $request): Response
+    {
+
+        $imagen = $request->files->get('imagen') ;
+        $nombreImg = 'perfil_player'.$id.'.jpeg';
+        $ubicacionImg = $this->getParameter('imagenesDirectorio'). 'player/';
+        $imagen->move($ubicacionImg, $nombreImg) ;
+
+        $newPlayer = $repoPlayer->find($id);
+        $newPlayer->setImagen('player/'.$nombreImg);
+
+        $em->persist($newPlayer);
+        $em->flush();
+      
+            
+
+        return $this->json([]);
+        
+        
     }
 }

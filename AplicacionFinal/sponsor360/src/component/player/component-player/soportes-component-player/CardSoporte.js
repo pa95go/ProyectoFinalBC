@@ -216,6 +216,7 @@ function CardSoporte ({id, soportes, setSoportes}){
         const newSoporte = soportes.map((newsoporte)=>{
 
             if(newsoporte.id === soportes[id].id ){
+                
                 return{
                     ...newsoporte,
                     nombre: e.target.value,

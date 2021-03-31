@@ -72,11 +72,26 @@ function PerfilPlayer (){
 
     function handleEdit (e){
         e.preventDefault();
+        console.log(perfil);
         setEdit(!edit); 
         if (!edit) {
             
             setPerfil(perfil)
             /* FECH IMAGEN con el form Data */
+
+            const formDataImagen = new FormData();
+            formDataImagen.append('imagen', perfil.imagen);
+                   /* ... FECH DATOS... */
+            fetch(`http://localhost:8000/player/editimagen/${localStorage.getItem('idPerfil')}`,{
+                method: 'POST',
+                mode: 'cors',
+                body:  formDataImagen
+            })
+            .then( response => response.json())
+            .then()
+            .catch (error => console.log(error) );
+        
+
 
              /* ... FECH DATOS... */
       fetch('http://localhost:8000/player/edit',{
@@ -88,7 +103,6 @@ function PerfilPlayer (){
          body: JSON.stringify({ 
             id: perfil.id,
             nombre: perfil.nombre,
-            imagen: perfil.imagen,
             email: perfil.email,
             deporte: perfil.deporte,
             sexo: perfil.sexo,
@@ -118,7 +132,6 @@ function PerfilPlayer (){
             timer: "1000",
         }).then(() => {
             history.go(0)
-            // history.push("/player/perfil")
         });
       })
             .catch(error=> console.log(error) );
