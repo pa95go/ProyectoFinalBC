@@ -68,7 +68,7 @@ class SoportesController extends AbstractController
                    $soport ["id"] = $soportenew->getId();//$index;
                     $soport ["nombre"] = '';
                     $soport ['descripcion'] = '';
-                    $soport ['imagen'] = $request->getSchemeAndHttpHost() ."/images/default/perfil_player.jpeg";
+                    $soport ['imagen'] = $request->getSchemeAndHttpHost() ."/images/default/soporte.jpeg";
                     $soport ['tamano'] = '';
                     $soport ['precio'] = 0;
                     $soport ['estado'] = false;

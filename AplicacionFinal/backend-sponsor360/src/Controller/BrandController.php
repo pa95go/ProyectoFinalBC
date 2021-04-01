@@ -140,14 +140,14 @@ class BrandController extends AbstractController
     /**
      * @Route("/brand/showprofile/{id}", name="brand_showprofile")
      */
-    public function showprofile($id, BrandRepository $repoBrand, SoporteRepository $repoSop): Response
+    public function showprofile($id, BrandRepository $repoBrand, SoporteRepository $repoSop, Request $request): Response
     {
 
         $perfilEntity = $repoBrand->find($id);
         $perfil=[];
         $perfil['nombre'] = $perfilEntity->getNombre();
-        $perfil['descripcion'] = $perfilEntity->getDescripcion();
-        $perfil['imagen'] = $perfilEntity->getImagen();
+        $perfil['descripcion'] =  $perfilEntity->getDescripcion();
+        $perfil['imagen'] = $request->getSchemeAndHttpHost() ."/images"."/".$perfilEntity->getImagen();
         $perfil['twitter'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterUsuario();
         $perfil['twitterSeg'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterSeg();
         $perfil['twitterEng'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterEng();
@@ -159,11 +159,30 @@ class BrandController extends AbstractController
         $perfil['instaEng'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getInstaEng();
 
 
-        $soportesEntity = $repoSop->findByBrand($id);
+        $soportesEntitys = $repoSop->findByBrand($id);
         
+        $perfil ['totalSoportes'] = count($soportesEntitys);
 
-        $perfil ['totalSoportes'] = count($soportesEntity);
-        $perfil ['totalPlayers'] = 'Tabla de mis Deportistas';
+        
+        $misdeportistas = [];
+        $arrayIdPlayers = [];
+        foreach($soportesEntitys as $soportesEntity){
+            if(new \DateTime() < $soportesEntity->getFechaFin()){
+
+                $idPlayer = $soportesEntity->getPlayer()->getId();
+
+                if(!in_array($idPlayer, $arrayIdPlayers)){
+
+                $mideportista = [];
+                $arrayIdPlayers[] = $idPlayer;
+                $mideportista ["id_player"] = $soportesEntity->getPlayer()->getId();
+                $misdeportistas[] = $mideportista;
+                
+                 }
+            }
+        }
+
+        $perfil ['totalPlayers'] = count($misdeportistas);
 
 
         return $this->json([
@@ -248,9 +267,6 @@ class BrandController extends AbstractController
 
                 
                  }
-
-               
-           
             }
         }
         

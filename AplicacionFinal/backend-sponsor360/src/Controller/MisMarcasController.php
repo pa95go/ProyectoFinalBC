@@ -40,7 +40,7 @@ class MisMarcasController extends AbstractController
                 $mimarca = [];
                 $mimarca ["id"] = $mismarcasEntity->getBrand()->getId();
                 $mimarca ["nombre"] = $mismarcasEntity->getBrand()->getNombre();
-                $mimarca ["imagen"] = $mismarcasEntity->getBrand()->getImagen();
+                $mimarca ["imagen"] =$request->getSchemeAndHttpHost() ."/images"."/". $mismarcasEntity->getBrand()->getImagen();
                 
                 $mimarca ['fecha_inicio'] =    $mismarcasEntity->getFechaInicio()->format('d/m/Y') ;
                 $mimarca ['fecha_fin'] = $mismarcasEntity->getFechaFin()->format('d/m/Y');
@@ -80,7 +80,7 @@ class MisMarcasController extends AbstractController
                 $mimarca = [];
                 $mimarca ["id"] = $mismarcasEntity->getBrand()->getId();
                 $mimarca ["nombre"] = $mismarcasEntity->getBrand()->getNombre();
-                $mimarca ["imagen"] = $mismarcasEntity->getBrand()->getImagen();
+                $mimarca ["imagen"] =$request->getSchemeAndHttpHost() ."/images"."/". $mismarcasEntity->getBrand()->getImagen();
                 
                 $mimarca ['fecha_inicio'] =    $mismarcasEntity->getFechaInicio()->format('d/m/Y') ;
                 $mimarca ['fecha_fin'] = $mismarcasEntity->getFechaFin()->format('d/m/Y');

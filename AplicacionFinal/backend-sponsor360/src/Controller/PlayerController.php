@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlayerRepository;
 use App\Repository\UserRepository;
 use App\Repository\RedSocialRepository;
+use App\Repository\MisMarcasRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Player;
 
@@ -146,6 +147,41 @@ class PlayerController extends AbstractController
 
         return $this->json([]);
         
-        
     }
+
+    /**
+     * @Route("/player/showprofile/{id}", name="brand_showprofile")
+     */
+    public function showprofile($id, PlayerRepository $repoPlayer, MisMarcasRepository $repoMisMarcas, Request $request): Response
+    {
+
+        $perfilEntity = $repoPlayer->find($id);
+        $perfil=[];
+        $perfil['nombre'] = $perfilEntity->getNombre();
+        $perfil['deporte'] = $perfilEntity->getDeporte();
+        $perfil['sexo'] = $perfilEntity->getSexo();
+        $perfil['fecha'] = $perfilEntity->getFechaNacimiento()->format('d/m/Y');
+        $perfil['descripcion'] =  $perfilEntity->getDescripcion();
+        $perfil['imagen'] = $request->getSchemeAndHttpHost() ."/images"."/".$perfilEntity->getImagen();
+        $perfil['twitter'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterUsuario();
+        $perfil['twitterSeg'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterSeg();
+        $perfil['twitterEng'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getTwitterEng();
+        $perfil['fb'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getFbUsuario();
+        $perfil['fbSeg'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getFbSeg();
+        $perfil['fbEng'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getFbEng();
+        $perfil['instagram'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getInstaUsuario();
+        $perfil['instaSeg'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getInstaSeg();
+        $perfil['instaEng'] = $perfilEntity->getRrss() === null ? '': $perfilEntity->getRrss()->getInstaEng();
+
+
+        $misMarcasEntitys = $repoMisMarcas->findByPlayer($id);
+        $perfil['totalSponsor'] = count($misMarcasEntitys);
+       
+
+
+        return $this->json([
+            "perfilPlayer" =>( $perfil)
+            ]);
+    }     
+
 }

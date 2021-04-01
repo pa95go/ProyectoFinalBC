@@ -5,7 +5,12 @@ function ViewBrand (){
 
     const [edit, setEdit] = useState(true);
     const [perfil, setPerfil] = useState(
-        {nombre: "", descripcion: "", imagen: "https://cdn2.vectorstock.com/i/thumb-large/63/66/profile-placeholder-default-avatar-vector-21666366.jpg", twitter: "", twitterSeg: "", twitterEng:"", fb:"",fbSeg:"", fbEng:"", instagram:"", instaSeg:"", instaEng: ""}
+        {
+        nombre: "", descripcion: "", imagen: "", totalSoportes: '0',totalPlayers: '0',
+        twitter: "", twitterSeg: "", twitterEng:"",
+        fb:"",fbSeg:"", fbEng:"",
+        instagram:"", instaSeg:"", instaEng: ""
+      }
     );
 
 

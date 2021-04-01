@@ -18,12 +18,29 @@ function ListAnuncios ({anuncios, setAnuncios}){
                     swal({
                         title: anuncio.nombre_soporte,
                         text: "Se ha añadido a tu carrito",
-                        icon: "car",
+                        icon: "info",
                         button: ["si"],
                         timer: "2000",
                     }).then(() => {
                         setAnuncios(newAnuncios);
                     });
+                                      /* ... FECH ... */
+                    fetch('http://localhost:8000/tienda/addcart',{
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            idBrand: localStorage.getItem('idPerfil'),
+                            idSop: anuncio.id
+                            
+                        }) 
+                    })
+                    .then( response => response.json())
+                    .then( response => {})
+                    .catch( error=> console.log(error) );
+
                    
                 }
 
@@ -43,7 +60,7 @@ function ListAnuncios ({anuncios, setAnuncios}){
                         <h3 className='ctcenter-c0 text-bolder m0-c red-textcolor-c  '><i class="icon ion-md-ca2sh "></i> {anuncio.precio} €/año </h3>
                         </div>
                         <button className='btn-red-c text-m text-bold mt15-c ' onClick={(e)=>handleAdd(e)}><span className='text-xl'><i class="icon ion-md-add-circle"></i></span> Añadir</button>
-                        <Link to={`userplayer`}>
+                        <Link to={`userplayer?id=${anuncio.id_player}`}>
                         <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c ">
                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={anuncio.img_player} /></h2>
                             <p className='text-vertical-center-c ' >  &nbsp;&nbsp;{ anuncio.nombre_player.toUpperCase()}</p>

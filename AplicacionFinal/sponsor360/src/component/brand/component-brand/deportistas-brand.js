@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 function DeportistasBrand (){
 
     const [deportistas, setDeportistas]= useState([
-        {id: '0', 
+        {id_player: '0', 
         nombre_deportista: "",
          deporte: "", 
          img_deportista:'' 
