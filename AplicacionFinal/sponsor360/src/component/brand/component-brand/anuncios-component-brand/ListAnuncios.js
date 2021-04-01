@@ -1,16 +1,31 @@
 import './../brand-component.css';
 import { Link } from 'react-router-dom'
 import {useState} from 'react';
+import swal from "sweetalert";
 
 
 function ListAnuncios ({anuncios, setAnuncios}){
-
 
    
     return (
         <div>
           {
              anuncios.map((anuncio, index)=>{
+
+                function handleAdd (e){
+                    e.preventDefault();
+                    const newAnuncios = anuncios.filter((anu)=> anu.id !== anuncio.id);
+                    swal({
+                        title: anuncio.nombre_soporte,
+                        text: "Se ha añadido a tu carrito",
+                        icon: "car",
+                        button: ["si"],
+                        timer: "2000",
+                    }).then(() => {
+                        setAnuncios(newAnuncios);
+                    });
+                   
+                }
 
               
                       return(
@@ -27,7 +42,7 @@ function ListAnuncios ({anuncios, setAnuncios}){
 
                         <h3 className='ctcenter-c0 text-bolder m0-c red-textcolor-c  '><i class="icon ion-md-ca2sh "></i> {anuncio.precio} €/año </h3>
                         </div>
-                        <button className='btn-red-c text-m text-bold mt15-c '><span className='text-xl'><i class="icon ion-md-add-circle"></i></span> Añadir</button>
+                        <button className='btn-red-c text-m text-bold mt15-c ' onClick={(e)=>handleAdd(e)}><span className='text-xl'><i class="icon ion-md-add-circle"></i></span> Añadir</button>
                         <Link to={`userplayer`}>
                         <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c ">
                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={anuncio.img_player} /></h2>

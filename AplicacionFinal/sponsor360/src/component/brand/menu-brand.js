@@ -58,7 +58,7 @@ function MenuBrand (){
 
         
 
-    });
+    }, []);
 
 
 
@@ -73,7 +73,7 @@ function MenuBrand (){
               <span className ='logo-b'></span>
               <div className="panel-b">
            
-           <img className="image-b" src="https://www.crazy-stuff.net/crazy-img/content/logos/23-redbull.jpg" alt=""/>
+           <img className="image-b" src={perfil.imagen} alt=""/>
            <h3 className = 'name'>{perfil.nombre.toUpperCase()}</h3>
                 
                  <div className="sections">

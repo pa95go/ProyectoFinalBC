@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use App\Repository\BrandRepository;
 use App\Repository\SoporteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 
@@ -29,7 +30,7 @@ class BrandController extends AbstractController
 
         $brandEntity = $repoBrand->findOneByUsuario($email);
         $brand = [];
-        $imagenPerfil = $brandEntity->getImagen() === null ? 'default/perfil_player.jpeg': $brandEntity->getImagen();
+        $imagenPerfil = $brandEntity->getImagen() === null ? 'default/perfil_brand.jpg': $brandEntity->getImagen();
 
         $brand['id'] = $brandEntity->getId();
         $brand['nombre'] = $brandEntity->getNombre();
@@ -52,6 +53,87 @@ class BrandController extends AbstractController
             ]);
     }
 
+
+    /**
+     * @Route("/brand/edit", name="brand_edit")
+     */
+    public function edit(EntityManagerInterface $em, BrandRepository $repoBrand, UserRepository $repoUser, Request $request): Response
+    {
+
+       $jsonData = json_decode($request->getContent());
+
+        $id = $jsonData->id;
+        
+        $newBrand = $repoBrand->find($id);
+        $newBrand->setNombre($jsonData->nombre);
+        $newBrand->setDescripcion($jsonData->descripcion);
+        $newBrand->getRrss()->setTwitterUsuario($jsonData->twitter);
+        $newBrand->getRrss()->setTwitterSeg($jsonData->twitterSeg);
+        $newBrand->getRrss()->setTwitterEng($jsonData->twitterEng);
+        $newBrand->getRrss()->setFbUsuario($jsonData->facebook);
+        $newBrand->getRrss()->setFbSeg($jsonData->facebookSeg);
+        $newBrand->getRrss()->setFbEng($jsonData->facebookEng);
+        $newBrand->getRrss()->setInstaUsuario($jsonData->instagram);
+        $newBrand->getRrss()->setInstaSeg($jsonData->instagramSeg);
+        $newBrand->getRrss()->setInstaEng($jsonData->instagramEng);
+        
+        
+
+        $em->persist($newBrand);
+        $em->flush();
+
+        
+        $brand = [];
+        $brandEntity = $repoBrand->find($id);
+
+        $imagenPerfil = $brandEntity->getImagen() === null ? 'default/perfil_brand.jpeg': $brandEntity->getImagen();
+
+        $brand['id'] = $brandEntity->getId();
+        $brand['nombre'] = $brandEntity->getNombre();
+        $brand['email'] = $brandEntity->getUsuario()->getEmail();
+        $brand['imagen'] =  $request->getSchemeAndHttpHost() ."/images"."/". $imagenPerfil  ;
+        $brand['descripcion'] = $brandEntity->getDescripcion();
+        $brand['twitter'] = $brandEntity->getRrss()->getTwitterUsuario();
+        $brand['twitterSeg'] = $brandEntity->getRrss()->getTwitterSeg();
+        $brand['twitterEng'] = $brandEntity->getRrss()->getTwitterEng();
+        $brand['facebook'] = $brandEntity->getRrss()->getFbUsuario();
+        $brand['facebookSeg'] = $brandEntity->getRrss()->getFbSeg();
+        $brand['facebookEng'] = $brandEntity->getRrss()->getFbEng();
+        $brand['instagram'] = $brandEntity->getRrss()->getInstaUsuario();
+        $brand['instagramSeg'] = $brandEntity->getRrss()->getInstaSeg();
+        $brand['instagramEng'] = $brandEntity->getRrss()->getInstaEng();
+
+            
+
+        return $this->json([
+             "brand" =>( $brand)
+             ]);
+        
+        
+    }
+    /**
+     * @Route("/brand/editimagen/{id}", name="brand_editimagen")
+     */
+    public function editimagen($id, EntityManagerInterface $em, BrandRepository $repoBrand, Request $request): Response
+    {
+
+        $imagen = $request->files->get('imagen') ;
+        $nombreImg = 'perfil_brand'.$id.'.jpeg';
+        $ubicacionImg = $this->getParameter('imagenesDirectorio'). 'brand/';
+        $imagen->move($ubicacionImg, $nombreImg) ;
+
+        $newBrand = $repoBrand->find($id);
+        $newBrand->setImagen('brand/'.$nombreImg);
+
+        $em->persist($newBrand);
+        $em->flush();
+      
+            
+
+        return $this->json([]);
+        
+        
+    }
 
 
 
@@ -86,6 +168,95 @@ class BrandController extends AbstractController
 
         return $this->json([
             "perfilBrand" =>( $perfil)
+            ]);
+    }
+
+
+    /**
+     * @Route("/brand/missoportes/", name="brand_missoportes")
+     */
+    public function missoportes( BrandRepository $repoBrand, SoporteRepository $repoSop, Request $request): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+
+        $id = $jsonData->idPerfil;
+        
+        
+        $soportesEntitys = $repoSop->findByBrand($id);
+
+        $missoportes = [];
+        foreach($soportesEntitys as $soportesEntity){
+            if(new \DateTime() < $soportesEntity->getFechaFin()){
+                $misoporte = [];
+                $misoporte ["id"] = $soportesEntity->getId();
+                $misoporte ["nombre_soporte"] = $soportesEntity->getNombre();
+                $misoporte ["img_soporte"] = $request->getSchemeAndHttpHost() ."/images"."/". $soportesEntity->getImagen();
+                $misoporte ['fecha_inicio'] =    $soportesEntity->getFechaInicio()->format('d/m/Y') ;
+                $misoporte ['fecha_fin'] = $soportesEntity->getFechaFin()->format('d/m/Y');
+                $misoporte ["tamano"] = $soportesEntity->getTamano();
+                $misoporte ["descripcion"] = $soportesEntity->getDescripcion();
+                $misoporte ["id_player"] = $soportesEntity->getPlayer()->getId();
+                $misoporte ["nombre_player"] = $soportesEntity->getPlayer()->getNombre();
+                $misoporte ["img_player"] = $request->getSchemeAndHttpHost() ."/images"."/". $soportesEntity->getPlayer()->getImagen();
+                
+            
+                $missoportes[] = $misoporte;
+           
+            }
+        }
+        
+
+        // $perfil ['totalSoportes'] = count($soportesEntitys);
+        // $perfil ['totalPlayers'] = 'Tabla de mis Deportistas';
+
+
+        return $this->json([
+            "missoportes" =>( $missoportes)
+            ]);
+    }
+    
+    /**
+     * @Route("/brand/misdeportistas/", name="brand_misdeportistas")
+     */
+    public function misdeportistas( BrandRepository $repoBrand, SoporteRepository $repoSop, Request $request): Response
+    {
+
+         $jsonData = json_decode($request->getContent());
+
+        $id = $jsonData->idPerfil;
+        
+        $soportesEntitys = $repoSop->findByBrand($id);
+
+        $misdeportistas = [];
+        $arrayIdPlayers = [];
+        foreach($soportesEntitys as $soportesEntity){
+            if(new \DateTime() < $soportesEntity->getFechaFin()){
+
+                $idPlayer = $soportesEntity->getPlayer()->getId();
+
+                if(!in_array($idPlayer, $arrayIdPlayers)){
+
+                $mideportista = [];
+                $arrayIdPlayers[] = $idPlayer;
+                $mideportista ["id_player"] = $soportesEntity->getPlayer()->getId();
+                $mideportista ["nombre_deportista"] = $soportesEntity->getPlayer()->getNombre();
+                $mideportista ["deporte"] = $soportesEntity->getPlayer()->getDeporte();
+                $mideportista ["img_deportista"] = $request->getSchemeAndHttpHost() ."/images"."/". $soportesEntity->getPlayer()->getImagen();
+            
+                $misdeportistas[] = $mideportista;
+
+                
+                 }
+
+               
+           
+            }
+        }
+        
+
+        return $this->json([
+            "misdeportistas" =>( $misdeportistas)
             ]);
     }
 }
