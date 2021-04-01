@@ -47,7 +47,7 @@ function ViewBrand (){
        
 
 
-        <h1 className = 'title-c blue-textcolor-c'> <i class="icon ion-md-planet"></i> {(perfil.nombre).toUpperCase()},  PERFIL</h1>
+        <h1 className = 'title-c blue-textcolor-c'> <i class="icon ion-md-planet"></i> {(perfil.nombre).toUpperCase()}</h1>
         <hr/>
       
            

@@ -27,19 +27,14 @@ function SoportesPlayer (){
           'Content-Type': 'application/json'
         } 
       })
-      .then( response => response.json()
+      .then( response => response.json())
       .then(
           response => {
-              
-              
-
               setSoportes(response.soportes);
-              
-           
             })
-            .catch(
-               error=> console.log(error) 
-      ));
+            .catch( error=> console.log(error) );
+
+            
     }
 
     useEffect(()=>{

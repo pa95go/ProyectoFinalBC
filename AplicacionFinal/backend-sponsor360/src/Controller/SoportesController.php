@@ -56,7 +56,8 @@ class SoportesController extends AbstractController
                 for ($i=0; $i < 4; $i++)  {
                     $soportenew = new Soporte;
                     $soportenew->setPlayer($repoPlayer->find($id));
-                    $soportenew->setEstado('false');
+                    $soportenew->setNombre("");
+                   $soportenew->setEstado('false');
                     $soportenew->setImagen('default/soporte.jpeg');
                     $soportenew->setPrecio(0);
             
@@ -66,7 +67,7 @@ class SoportesController extends AbstractController
 
                     
                    $soport ["id"] = $soportenew->getId();//$index;
-                    $soport ["nombre"] = '';
+                    $soport ["nombre"] = "";
                     $soport ['descripcion'] = '';
                     $soport ['imagen'] = $request->getSchemeAndHttpHost() ."/images/default/soporte.jpeg";
                     $soport ['tamano'] = '';

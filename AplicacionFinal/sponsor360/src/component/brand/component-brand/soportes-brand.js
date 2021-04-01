@@ -30,9 +30,7 @@ function SoportesBrand (){
             'Content-Type': 'application/json'
           },
             body: JSON.stringify({
-          //    // email: user.username
          idPerfil: localStorage.getItem('idPerfil') 
-              
             }) 
         }).then( response => response.json())
         .then(

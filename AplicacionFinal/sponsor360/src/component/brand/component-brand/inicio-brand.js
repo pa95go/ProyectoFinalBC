@@ -2,8 +2,93 @@ import './brand-component.css';
 import {useState, useEffect} from 'react'
 
 function InicioBrand (){
+
+    const [perfil, setPerfil] = useState(
+        {
+        nombre: "", descripcion: "", imagen: "",
+        totalSoportes: '0',totalPlayers: '0',
+        twitter: "",  twitterEng:"",
+        fb:"", fbEng:"",
+        instagram:"", instaEng: ""
+      }
+    );
+
+    const [soportes, setSoportes]= useState([
+        { 
+          id: "0", 
+          nombre_soporte: "", 
+          img_soporte: "", 
+          
+      },
+      ]);
+      const [deportistas, setDeportistas]= useState([
+        {id_player: '0', 
+        nombre_deportista: "",
+         img_deportista:'' 
+        },
+        
+    ]);
+
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+
+        const id = localStorage.getItem('idPerfil');
+
+     /* ... FECH Perfil... */
+     fetch(`http://localhost:8000/brand/showprofile/${id} `,{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        } 
+      })
+      .then( response => response.json())
+      .then(
+          response => {
+                setPerfil(response.perfilBrand);
+            })
+            .catch(
+               error=> console.log(error) 
+      );
+      /* ... FECH Soportes... */
+      fetch('http://localhost:8000/brand/missoportes/',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({
+       idPerfil: localStorage.getItem('idPerfil') 
+          }) 
+      }).then( response => response.json())
+      .then(
+          response => {
+            const listaSoportes = [...response.missoportes].sort((a, b) => (a.id < b.id ? 1 : a.id < b.id ? -1 : 0));
+            setSoportes(listaSoportes.slice(0, 3));
+
+        }).catch(error=> console.log(error) );
+
+        /* ... FECH Deportistas... */
+        fetch('http://localhost:8000/brand/misdeportistas/',{
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({
+            idPerfil: localStorage.getItem('idPerfil') 
+                
+                }) 
+            }).then( response => response.json())
+            .then(
+                response => {
+                //setDeportistas(response.misdeportistas);
+                const listaDeportistas = [...response.misdeportistas].sort((a, b) => (a.id_player < b.id_player ? 1 : a.id < b.id ? -1 : 0));
+                 setDeportistas(listaDeportistas.slice(0, 3));
+    
+            }).catch(error=> console.log(error) );
+
+
       }, [])
 
 
@@ -19,14 +104,12 @@ function InicioBrand (){
      
      <div className="card-c cred-c cw1-c ">
          <h1 ><i class="icon ion-md-person"></i> </h1>
-         <h3 className='ctcenter-c ctbold-c '>NOMBRE DE LA MARCA</h3>
+         <h3 className='ctcenter-c ctbold-c '>{(perfil.nombre).toUpperCase()}</h3>
         
         
          <hr/>
          
-         <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis laborum non nihil, 
-             labore accusamus assumenda quisquam quibusdam quos, vitae, 
-             velit ad porro architecto aspernatur omnis ratione sunt esse! Perspiciatis, voluptas.</p>
+         <p >{perfil.descripcion}</p>
         <hr/>
         
      </div>
@@ -37,13 +120,13 @@ function InicioBrand (){
         <h1 ><i class="icon ion-md-bookmark"></i></h1>
          <div className=" box-noresponsive-c text-vertical-center-c m0-c">
             <h4 className='ctcenter-c ctbold-c '>Número total de Soportes:</h4> 
-            <h3 className='ctcenter-c ctbold-c '>104 <i class="icon ion-md-shirt red-textcolor-c"></i></h3> 
+            <h3 className='ctcenter-c ctbold-c '>{perfil.totalSoportes} <i class="icon ion-md-shirt red-textcolor-c"></i></h3> 
         </div>
         
          <hr/>
          <div className=" box-noresponsive-c text-vertical-center-c m0-c">
             <h4 className='ctcenter-c ctbold-c '>Número total de Deportistas:</h4> 
-            <h3 className='ctcenter-c ctbold-c '>87 <i class="icon ion-md-tennisball red-textcolor-c"></i></h3> 
+            <h3 className='ctcenter-c ctbold-c '>{perfil.totalPlayers} <i class="icon ion-md-tennisball red-textcolor-c"></i></h3> 
         </div>
 
         <hr/>
@@ -55,22 +138,22 @@ function InicioBrand (){
             <div className=" box-noresponsive-c text-vertical-center-c m0-c">
             
            <h2 className=' text-vertical-center-c text-light '> <i class="icon ion-logo-twitter text-twitter"></i>   </h2>
-           <p className='ctbold-c '>@pablo   </p>
-           <p>2.7  <i class="icon ion-md-stats red-textcolor-c"></i>  </p>
+           <p className='ctbold-c '>{perfil.twitter}   </p>
+           <p>{perfil.twitterEng}  <i class="icon ion-md-stats red-textcolor-c"></i>  </p>
             </div>
          <hr/>
             <div className="box-noresponsive-c text-vertical-center-c m0-c">
             <h2 className=' text-vertical-center-c text-light '> <i class="icon ion-logo-facebook text-facebook"></i>   </h2>
-           <p className='ctbold-c '>@pablo   </p>
+           <p className='ctbold-c '>{perfil.fb}   </p>
           
-           <p >1.5  <i class="icon ion-md-stats red-textcolor-c"></i>  </p>
+           <p >{perfil.fbEng}  <i class="icon ion-md-stats red-textcolor-c"></i>  </p>
             </div>
             <hr/>
             <div className="box-noresponsive-c text-vertical-center-c m0-c">
             <h2 className=' text-vertical-center-c text-light '> <i class="icon ion-logo-instagram text-instagram"></i>   </h2>
-           <p className='ctbold-c '>@pablo   </p>
+           <p className='ctbold-c '>{perfil.instagram}   </p>
           
-           <p >0.8  <i class="icon ion-md-stats red-textcolor-c"></i> </p>
+           <p >{perfil.instaEng}  <i class="icon ion-md-stats red-textcolor-c"></i> </p>
             </div>
             <hr/>
         </div>
@@ -83,19 +166,27 @@ function InicioBrand (){
             <h1 ><i class="icon ion-md-shirt"></i></h1>
             <p className='text-s text-light0 ctcenter-c'> Últimos soportes adquiridos</p>
             <hr/>
-            <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c  '>Camiseta Delantera </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-black-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>
-            </div>
-            <hr/>
-            <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>Pantalon Trasero </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-black-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>            </div>
-            <hr/>
-            <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>Gorra </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-black-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>            </div>
-            <hr/>
+
+            {
+                soportes.map((soporte)=>{
+                    return (
+                        <div>
+
+                        <div className="box-noresponsive-c text-vertical-center-c">
+                        <p className='ctbold-c  '>{soporte.nombre_soporte} </p>
+                        <h2 className=' text-vertical-center-c'><img className='img-xs-profile-black-c text-vertical-center-c' src={soporte.img_soporte} /></h2>
+                        </div>
+                        <hr/>
+                                
+                        </div>
+                    )
+                })
+            }
+
+
+
+
+           
             
         </div>
         
@@ -104,19 +195,23 @@ function InicioBrand (){
             <h1 ><i class="icon ion-md-tennisball"> </i></h1>
             <p className='text-s text-light0 ctcenter-c'> Últimos deportistas adquiridos</p>
             <hr/>
+
+            {
+                deportistas.map((deportista)=>{
+                    return (
+                        <div>
+
             <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>COCACOLA </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-blue-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>
+            <p className='ctbold-c '>{deportista.nombre_deportista} </p>
+            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-blue-c text-vertical-center-c' src={deportista.img_deportista}/></h2>
             </div>
             <hr/>
-            <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>Disponible </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-blue-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>            </div>
-            <hr/>
-            <div className="box-noresponsive-c text-vertical-center-c">
-            <p className='ctbold-c '>REDBULL </p>
-            <h2 className=' text-vertical-center-c'><img className='img-xs-profile-blue-c text-vertical-center-c' src='https://i.etsystatic.com/12396650/r/il/b9d997/2150011366/il_570xN.2150011366_8em7.jpg ' /></h2>            </div>
-            <hr/>
+                        
+                        </div>
+                    )
+                })
+            }
+
             
         </div>
               

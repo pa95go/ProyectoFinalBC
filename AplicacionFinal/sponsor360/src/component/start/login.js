@@ -70,7 +70,7 @@ function Login (){
              if(decoded.roles.includes("ROLE_PLAYER")){
                  history.push("/player");
              }else if(decoded.roles.includes("ROLE_BRAND")){
-                history.push("/brand/inicio");
+                history.push("/brand");
              }
              
             }
@@ -78,7 +78,7 @@ function Login (){
             .catch(
                 
                error=>  errorf(error)
-               //  error => swal('Erorr: ', error)  /* Funcion Error mostrar   */
+               
 
                 ));
                 

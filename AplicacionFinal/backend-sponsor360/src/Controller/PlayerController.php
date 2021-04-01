@@ -150,9 +150,9 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/player/showprofile/{id}", name="brand_showprofile")
+     * @Route("/player/showprofile/{id}", name="player_showprofile")
      */
-    public function showprofile($id, PlayerRepository $repoPlayer, MisMarcasRepository $repoMisMarcas, Request $request): Response
+    public function showprofilep($id, PlayerRepository $repoPlayer, MisMarcasRepository $repoMisMarcas, Request $request): Response
     {
 
         $perfilEntity = $repoPlayer->find($id);

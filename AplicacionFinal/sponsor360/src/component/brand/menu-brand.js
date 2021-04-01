@@ -1,7 +1,6 @@
 import './menu-brand.css';
 import {BrowserRouter, Route, NavLink } from 'react-router-dom';
-
-
+import {Brand} from './component-brand/brand'
 import {InicioBrand} from './component-brand/inicio-brand'
 import {PerfilBrand} from './component-brand/perfil-brand'
 import {SoportesBrand} from './component-brand/soportes-brand'
@@ -9,10 +8,10 @@ import {DeportistasBrand} from './component-brand/deportistas-brand'
 import {TiendaBrand} from './component-brand/tienda-brand'
 import {CarritoBrand} from './component-brand/carrito-brand'
 import {ViewPlayer} from './component-brand/view-player'
-
+import { useHistory } from "react-router-dom";
 import {useState,useEffect} from 'react';
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
 
 
@@ -60,6 +59,33 @@ function MenuBrand (){
 
     }, []);
 
+    function signOff(e) {
+        e.preventDefault();
+
+        swal({
+          
+            title: "¿Seguro que desea cerrar sesion?",
+            text: "Espere un momento por favor.",
+            icon: "warning",
+            buttons: ['Cancelar', 'Salir'],
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              swal({
+                title: "Cerrando sesión",
+                icon: "info",
+                button: false,
+                timer: "1000",
+              }).then(() => {
+                 localStorage.removeItem("token");
+                localStorage.removeItem("idPerfil");
+                history.push('/')
+            })
+            } 
+          });
+  
+        
+    }
 
 
     return(
@@ -93,9 +119,10 @@ function MenuBrand (){
          <div className="content-b">
          <div className="nav-top">
          <NavLink to ="/brand/carrito"  className="btn-red-c  mr20-c pt3-c"> <i class="icon ion-md-cart pt3-c "></i></NavLink>
-            <button className='btn-red-c'><span>  </span>  <i class="icon ion-md-power"></i></button>
+            <button className='btn-red-c' onClick={(e)=>signOff(e)}><span>  </span>  <i class="icon ion-md-power"></i></button>
         </div>
 
+          <Route path="/brand" exact component={Brand} /> 
          <Route path="/brand/inicio"  component={InicioBrand} />
          <Route path="/brand/perfil"  component={PerfilBrand} />
          <Route path="/brand/soportes"  component={SoportesBrand} />
