@@ -46,10 +46,7 @@ function CarritoBrand (){
 
   }, [])
 
-  function click(e) {
-    e.preventDefault();
-  
-  }
+ 
 
   function BDCompra() {
     console.log(productos);
@@ -140,7 +137,7 @@ function CarritoBrand (){
 return(
 
     <div >
-     <button onClick={(e)=>click(e)}>  AAA</button>
+    
 
         <h1 className = 'title-c red-textcolor-c'> <i class="icon ion-md-cart"></i> CARRITO </h1>
         <hr/>

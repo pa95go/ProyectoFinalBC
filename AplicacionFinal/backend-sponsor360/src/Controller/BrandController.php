@@ -8,9 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use App\Repository\BrandRepository;
+use App\Repository\RedSocialRepository;
 use App\Repository\SoporteRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\User;
+use App\Entity\Brand;
+use App\Entity\RedSocial;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class BrandController extends AbstractController
@@ -275,4 +280,68 @@ class BrandController extends AbstractController
             "misdeportistas" =>( $misdeportistas)
             ]);
     }
+
+    /**
+     * @Route("/brand/registro/usuario", name="brand_reg_usuario")
+     */
+    public function brandreg(UserPasswordEncoderInterface $encoder,EntityManagerInterface $em, RedSocialRepository $repoRed, BrandRepository $repoBrand, UserRepository $repoUser, Request $request): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+        
+        $email = $jsonData->email;
+        $pass = $jsonData->pass;
+
+        $newuser = new User;
+        $newuser->setPassword($encoder->encodePassword( $newuser,$pass));
+        $newuser->setEmail($email);
+        $roles=[];
+        $roles[]= 'ROLE_BRAND';
+        $newuser->setRoles($roles);
+
+        $newred = new RedSocial;
+
+        $em->persist($newuser);
+        $em->persist($newred);
+        $em->flush();
+        $id= $newuser->getId();
+        $idRed= $newred->getId();
+
+        return $this->json([
+            "idUser" =>( $id),
+            "idRed" =>( $idRed)
+            ]);
+    }
+
+    /**
+     * @Route("/brand/registro/perfil", name="brand_reg_perfil")
+     */
+    public function brandregperfil(EntityManagerInterface $em, BrandRepository $repoBrand, UserRepository $repoUser,RedSocialRepository $repoRed, Request $request): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+        $id = $jsonData->id;
+        $idRed = $jsonData->idRed;
+        $nombre = $jsonData->nombre;
+        
+        $user = $repoUser->find($id);
+        $red = $repoRed->find($idRed);
+
+        $newbrand = new Brand;
+        $newbrand->setNombre($nombre);
+        $newbrand->setUsuario($user);
+        $newbrand->setRrss($red);
+        
+
+        $em->persist($newbrand);
+        $em->flush();
+
+        $idBrand= $newbrand->getId();
+
+        return $this->json([
+            "idBrand" =>( $idBrand)
+            ]);
+    }
+    
+    
 }

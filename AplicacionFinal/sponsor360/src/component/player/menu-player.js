@@ -81,9 +81,10 @@ function MenuPlayer (){
                 button: false,
                 timer: "1000",
               }).then(() => {
-                 localStorage.removeItem("token");
-                localStorage.removeItem("idPerfil");
-                history.push('/')
+                localStorage.removeItem("token");
+               localStorage.removeItem("idPerfil");
+               history.push('/')
+
             })
             } 
           });

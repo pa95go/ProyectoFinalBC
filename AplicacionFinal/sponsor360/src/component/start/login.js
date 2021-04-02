@@ -59,11 +59,10 @@ function Login (){
             
             const decoded = jwt_decode(response.token);          
              console.log(decoded);
-            
-            /* otra peticion si quiero otras cosas */
+             
     
             var decodedHeader = jwt_decode(response.token, { header: true });
-             console.log(decodedHeader);  /* Cabecera del token */
+             console.log(decodedHeader);  
 
              console.log(decoded.roles);
              
