@@ -1,5 +1,9 @@
 import './register-componet.css';
 import {useState} from 'react';
+import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
+
 
 
 function RegisterBrand (){
@@ -7,6 +11,7 @@ function RegisterBrand (){
     const [email, setEmail]= useState()
     const [pass, setPass]= useState()
     
+    const history = useHistory();
 
     function registro(e) {
         e.preventDefault();
@@ -40,7 +45,48 @@ function RegisterBrand (){
             
         })
         .then( response => response.json())
-        .then( response => {})
+        .then( response => {
+            let credentials ={
+                username: email,
+                password: pass
+            }
+
+                 /* ... FECH ... */
+      fetch('http://localhost:8000/login',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+      .then( response => response.json()
+      .then(
+          response => {
+            console.log('Respuesta ok: ', response);
+            localStorage.setItem('token', response.token );
+            
+            const decoded = jwt_decode(response.token);          
+             console.log(decoded);
+             
+            var decodedHeader = jwt_decode(response.token, { header: true });
+             
+                
+                swal({
+                    title: `¡Bienvenido, ${nombre}!`,
+                    text: 'Tu resgistro ha sido completado',
+                    icon: "success",
+                    buttons: false,
+                    timer: "3000",
+                  }).then(
+                    history.push("/brand")
+                  )
+            }
+            )
+            .catch(error=>  console.log(error)  ));
+
+
+        })
         .catch( error=> console.log(error) );
      
 

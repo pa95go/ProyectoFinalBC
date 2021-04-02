@@ -14,7 +14,7 @@ function Brand (){
           <p>
            {setTimeout(() => {
                cargarPaginaPrincipal()
-           }, 500) } 
+           }, 700) } 
               </p>  
         </div>
     )

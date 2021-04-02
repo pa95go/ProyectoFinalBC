@@ -13,6 +13,9 @@ use App\Repository\RedSocialRepository;
 use App\Repository\MisMarcasRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Player;
+use App\Entity\User;
+use App\Entity\RedSocial;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class PlayerController extends AbstractController
@@ -182,6 +185,77 @@ class PlayerController extends AbstractController
         return $this->json([
             "perfilPlayer" =>( $perfil)
             ]);
-    }     
+    } 
+    
+    
+    /**
+     * @Route("/player/registro/usuario", name="player_reg_usuario")
+     */
+    public function playerreg(UserPasswordEncoderInterface $encoder,EntityManagerInterface $em, RedSocialRepository $repoRed, PlayerRepository $repoPlayer, UserRepository $repoUser, Request $request): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+        
+        $email = $jsonData->email;
+        $pass = $jsonData->pass;
+
+        $newuser = new User;
+        $newuser->setPassword($encoder->encodePassword( $newuser,$pass));
+        $newuser->setEmail($email);
+        $roles=[];
+        $roles[]= 'ROLE_PLAYER';
+        $newuser->setRoles($roles);
+
+        $newred = new RedSocial;
+
+        $em->persist($newuser);
+        $em->persist($newred);
+        $em->flush();
+        $id= $newuser->getId();
+        $idRed= $newred->getId();
+
+        return $this->json([
+            "idUser" =>( $id),
+            "idRed" =>( $idRed)
+            ]);
+    }
+
+    /**
+     * @Route("/player/registro/perfil", name="player_reg_perfil")
+     */
+    public function playerregperfil(EntityManagerInterface $em, PlayerRepository $repoPlayer, UserRepository $repoUser,RedSocialRepository $repoRed, Request $request): Response
+    {
+
+        $jsonData = json_decode($request->getContent());
+        $id = $jsonData->id;
+        $idRed = $jsonData->idRed;
+        $nombre = $jsonData->nombre;
+        $deporte = $jsonData->deporte;
+        $fecha = $jsonData->fecha;
+        $sexo = $jsonData->sexo;
+        
+        $user = $repoUser->find($id);
+        $red = $repoRed->find($idRed);
+
+        $newplayer = new Player;
+        $newplayer->setNombre($nombre);
+        $newplayer->setDeporte($deporte);
+        $newplayer->setFechaNacimiento(new \DateTime($fecha));
+        $newplayer->setSexo($sexo);
+        $newplayer->setImagen('default/perfil_player.jpeg');
+        $newplayer->setUsuario($user);
+        $newplayer->setRrss($red);
+        
+
+        $em->persist($newplayer);
+        $em->flush();
+
+        $idPlayer= $newplayer->getId();
+
+        return $this->json([
+            "idPlayer" =>( $idPlayer)
+            ]);
+    }
+    
 
 }

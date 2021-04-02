@@ -60,7 +60,6 @@ function Login (){
             const decoded = jwt_decode(response.token);          
              console.log(decoded);
              
-    
             var decodedHeader = jwt_decode(response.token, { header: true });
              console.log(decodedHeader);  
 
@@ -71,15 +70,9 @@ function Login (){
              }else if(decoded.roles.includes("ROLE_BRAND")){
                 history.push("/brand");
              }
-             
             }
             )
-            .catch(
-                
-               error=>  errorf(error)
-               
-
-                ));
+            .catch(error=>  errorf(error)  ));
                 
              
     };

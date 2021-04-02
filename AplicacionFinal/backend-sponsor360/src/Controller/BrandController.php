@@ -329,6 +329,7 @@ class BrandController extends AbstractController
 
         $newbrand = new Brand;
         $newbrand->setNombre($nombre);
+        $newbrand->setImagen('default/perfil_brand.jpeg');
         $newbrand->setUsuario($user);
         $newbrand->setRrss($red);
         
