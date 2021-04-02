@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import {useState} from 'react';
 
 
-function ListProductos ({productos, setProductos}){
+function ListProductos ({productos, setProductos, total, setTotal}){
+
+    
 
 
       return (
@@ -12,21 +14,53 @@ function ListProductos ({productos, setProductos}){
             {
                productos.map((producto, index)=>{
   
+                function handleDelete(e) {
+                    e.preventDefault();
+                  console.log(producto.id);
+                  const newProductos = productos.filter((prod)=> prod.id_soporte !== producto.id_soporte);
+                  setProductos(newProductos);
+                  console.log(productos);
+
+                    /* ... FECH ... */
+                    fetch('http://localhost:8000/tienda/cart/delete',{
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        idCart: producto.id
+                        
+                        
+                    }) 
+                })
+                .then( response => response.json())
+                .then( response => {
+                    setTotal(total - response.precio_restar )
+                })
+                .catch( error=> console.log(error) );
+
+
+                  }
+
                 
                         return(
                             <div >
                                 
                                     <div className="box-c" >
-
-                                    <div className='cw10-c text-vertical-center-c'>
+                                    <div className='text-vertical-center-c w100bd'> 
+                                        <button className=" text-vertical-center-c left text-xl m0-c  btn-c btn-delete-cart " onClick={(e)=>handleDelete(e)}><i class="icon ion-md-close-circle-outline"></i></button>
+                                    </div>
+                                    <div className='cw25-c text-vertical-center-c '>
                                        
-                                        <img className='img-mini-profile-black-c' src={producto.img_soporte}  />
+
+                                       
+                                        <img className=' img-mini-profile-black-c' src={producto.img_soporte}  />
                                     </div>
 
 
                                     <div className="cw50-c text-vertical-center-c">
                                         <h3 className=' m0-c text-bolder d-inline  '>{producto.nombre_soporte.toUpperCase()}</h3>
-                                        <button className="justify-end text-xl m0-c d-inline btn-c red-textcolor-c "><i class="icon ion-md-close-circle-outline"></i></button>
                                         
                                         <p className=' text-bolder m0-c '><i class="icon ion-md-expand "></i> {producto.tamano}</p>
                                         <h4 className=' m0-c text-light  '>{producto.descripcion}</h4>
@@ -35,8 +69,8 @@ function ListProductos ({productos, setProductos}){
                                     
                                      
                                     <div className="cw30-c">
-                                   {/*  <Link to={`/player/user/${producto.id_player}`}> */}
-                                    <Link to={`userplayer`}>
+                                  
+                                    <Link to={`userplayer?id=${producto.id_player}`}>
 
                                          <button className=" p0-c box-noresponsive-c justify-end btn-enlace-c"  >
                                             <h2 className='m0-c text-vertical-center-c'> <img className='img-xs-profile-blue-c ' src={producto.img_player} /></h2>

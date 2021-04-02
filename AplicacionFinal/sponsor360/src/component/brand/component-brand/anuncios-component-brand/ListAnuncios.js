@@ -20,7 +20,7 @@ function ListAnuncios ({anuncios, setAnuncios}){
                         text: "Se ha añadido a tu carrito",
                         icon: "info",
                         button: ["si"],
-                        timer: "2000",
+                        timer: "1000",
                     }).then(() => {
                         setAnuncios(newAnuncios);
                     });

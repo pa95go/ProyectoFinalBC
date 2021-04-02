@@ -23,7 +23,7 @@ class Carrito
     private $brand;
 
     /**
-     * @ORM\OneToOne(targetEntity=Soporte::class, inversedBy="carrito", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Soporte::class, inversedBy="carrito")
      */
     private $soporte;
 
