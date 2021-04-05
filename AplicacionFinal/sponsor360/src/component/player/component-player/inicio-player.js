@@ -135,7 +135,7 @@ function InicioPlayer (){
     }
     function marcasListImagen(marca) {
         if(marca == undefined){
-            return '';
+            return "";
         }else{
             return marca.imagen;
         }
