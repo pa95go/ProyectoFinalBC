@@ -98,7 +98,7 @@ function ViewBrand (){
            </div>
    
            <div className="card-c cred-c cw3-c mt10-c ">
-               <h1 className='text-m text-bolder bg-instagram '><i class="icon ion-logo-instagram"> </i> {perfil.instgram}</h1>
+               <h1 className='text-m text-bolder bg-instagram '><i class="icon ion-logo-instagram"> </i> {perfil.instagram}</h1>
    
                <div className=" box-noresponsive-c text-vertical-center-c m0-c mt10-c">
                <p>Seguidores: </p>
